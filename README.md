@@ -40,7 +40,7 @@
  - `python3 dev_app.py`
  
  ### Start in Production mode
- - `gunicorn --bind 0.0.0.0:5000 wsgi:app`
+ - `gunicorn --bind 0.0.0.0:5001 wsgi:app`
  
  ### Test an endpoint
- - `http://localhost:5000/question/`
+ - `http://localhost:5001/question`
