@@ -6,6 +6,6 @@ client = MongoClient('mongodb+srv://' + mongo_config['username'] + ':' + mongo_c
 db = client['trivial-purfuit-test']
 
 def get_one_question():
-    questions = db.questions
-    one_question = questions.find_one()
+    question = db.question
+    one_question = question.find_one()
     return json.loads(json.dumps(one_question, default=json_util.default))
