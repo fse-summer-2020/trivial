@@ -8,7 +8,7 @@ class Token:
 
     def __init__(self, player_name, color):
         self.player_name = player_name
-        self.colr = color
+        self.color = color
         pass
 
     def has_category_wedge(self, category):
