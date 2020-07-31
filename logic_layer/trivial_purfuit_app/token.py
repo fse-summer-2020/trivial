@@ -9,10 +9,12 @@ class Token:
     def __init__(self, player_name, color):
         self.player_name = player_name
         self.color = color
-        pass
 
     def has_category_wedge(self, category):
-        pass
+        if category in self.collected_wedges:
+            return True
+        else:
+            return False
 
     def has_all_wedges(self):
         return self.collected_wedges.count == 4
@@ -24,5 +26,7 @@ class Token:
         return self.winning_condition
 
     def add_wedge(self, wedge):
-        if (wedge != None):
+        if (wedge != None and not has_category_wedge(wedge.category)):
             self.collected_wedges.append(wedge)
+        else:
+            raise Exception("Wedge is undefined")
