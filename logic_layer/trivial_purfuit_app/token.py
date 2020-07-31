@@ -26,7 +26,7 @@ class Token:
         return self.winning_condition
 
     def add_wedge(self, wedge):
-        if (wedge != None and not has_category_wedge(wedge.category)):
+        if (wedge != None and not self.has_category_wedge(wedge.category)):
             self.collected_wedges.append(wedge)
         else:
             raise Exception("Wedge is undefined")
