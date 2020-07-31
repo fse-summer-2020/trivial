@@ -90,6 +90,30 @@ class GameState:
         else:
             self.current_player = self.player_order[idx+1]
 
-    def move_token(self, direction): #this should reference token we're trying to move...right? the sequence diagram has a direction listed too?
-        pass
-    
+    def move_token(self, direction):
+        while (self.moves_left >= 0):
+            if (): #PLAYER IS AT INTERSECTION
+                #determine possible moves to gameboard (return square)
+                self.current_state = State.MOVE_DIRECTION
+                return self.current_state
+            else:
+                #move player direction to gameboard (return square)
+        if (): #player is on roll again square
+            self.current_state = State.ROLL_DIE
+            return self.current_state
+        else:
+            if (): #player is not on HQ square
+                if(): #check if they have all wedges -> to token class
+                    self.current_state = State.POLL_CATEGORY_ALL #if they have them all == TRUE poll the players
+                    return self.current_state
+                else:
+                    self.current_state = State.POLL_CATEGORY_CURRENT #let them get a random category?
+                    return self.current_state
+            else:
+                #get categroy suqure from gaembaord
+                #get question category from game factory proxy
+                    #this have to calll a random quesiton (make function in question factory to get random question VR specific catgetory)
+                self.current_state = State.ANSWER_TRIVIA
+                return self.current_state
+
+
