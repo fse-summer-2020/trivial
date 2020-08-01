@@ -1,0 +1,7 @@
+<div *ngIf="questionData" class="content" role="main">
+        {{ questionData.question }}
+        <div *ngFor="let answer of questionData.possible_answers">
+          {{ answer }}
+        </div>
+        Correct Answer is: {{ questionData.correct_answer }}
+</div>
