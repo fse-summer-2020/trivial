@@ -37,3 +37,16 @@ def roll_die():
         return jsonify({"error":"Invalid request for current state"}), 409
     state, current_player, rolled_value = game_state.get_die_roll()
     return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__, "rolled_value": rolled_value}), 200
+
+@logic.route('/move_direction', methods=['POST'])
+def move_direction():
+    body = request.get_json()
+    session_id = body["session_id"]
+    direction = body["direction"]
+    game_state = GameInstanceManager.get_game_state(session_id)
+    if game_state is None:
+        return jsonify({"error":"Game session not found"}), 404
+    if game_state.current_state is not State.MOVE_DIRECTION:
+        return jsonify({"error":"Invalid request for current state"}), 409
+    state, current_player = game_state.move_token(direction)
+    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__}), 200
