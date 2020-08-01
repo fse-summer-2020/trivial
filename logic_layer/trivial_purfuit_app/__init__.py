@@ -5,7 +5,8 @@ def create_app():
 
     from trivial_purfuit_app.views.questions import questions
     app.register_blueprint(questions)
-    
+    from trivial_purfuit_app.views.logic import logic
+    app.register_blueprint(logic)
     from trivial_purfuit_app.views.dice import roll
     app.register_blueprint(roll)
     

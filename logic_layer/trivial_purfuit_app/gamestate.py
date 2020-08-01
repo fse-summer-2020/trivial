@@ -25,11 +25,11 @@ class GameState:
         self.current_state = State.ROLL_DIE
         self.current_player = self.player_order[0]
         self.current_round = 1
-        return self.current_state
+        return self.current_state, self.current_player
 
     def set_player_order(self, players):
         for player in players:
-            token = Token(player.name, player.color)
+            token = Token(player['name'], player['color'])
             self.player_order.append(token) #assume list order is the order of play already
 
     def answer_trivia(self, answer):
