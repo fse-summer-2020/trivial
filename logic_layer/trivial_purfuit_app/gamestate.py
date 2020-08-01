@@ -78,11 +78,19 @@ class GameState:
 
     def get_die_roll(self):
         # call the DieRollAPI
-        pass
+        ################################################################
         #Add to the blueprints if this is not the returned value:
         #return self.current_state, self.current_player, self.rolled_value
+        ################################################################
+        pass
+        
+
 
     def set_category(self, category):
+        ################################################################
+        #Add to the blueprints if this is not the returned value:
+        #return self.current_state, self.current_player
+        ################################################################
         pass 
 
     def go_to_next_player(self):
