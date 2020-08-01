@@ -1,6 +1,6 @@
-from token import Token
-from gameboard import GameBoard
-from state import State
+from .token import Token
+from .gameboard import GameBoard
+from .constants import State, SquareType
 
 class GameState:
     player_order = []
@@ -49,11 +49,11 @@ class GameState:
             else:
                 return self.current_state
         else:
-            game_square_type = self.game_board.get_current_square_type()
-            if (game_square_type == "CATEGORY"): # ----------------------update definition of category square type
+            cur_square_type = self.game_board.get_current_square_type(self.current_player)
+            if (cur_square_type == SquareType.CATEGORY): # ----------------------update definition of category square type
                 self.current_state = State.ROLL_DIE
                 return self.current_state
-            if (game_square_type == "HEADQUARTERS"): # ----------------------update definition of category square type
+            if (cur_square_type == SquareType.HEADQUARTER): # ----------------------update definition of category square type
                  if (self.current_player.has_category_wedge(self.current_trivia_question.category) == False):  #----------how to extract category type from question class?
                      self.current_player.add_wedge(self.current_trivia_question.category) #----------how to extract category type from question class?
                      self.current_state = State.ROLL_DIE
@@ -85,25 +85,28 @@ class GameState:
 
     def go_to_next_player(self):
         idx = self.player_order.index(self.current_player)
-        if (idx == self.player_order.count - 1):
+        if (idx == len(self.player_order) - 1):
             self.current_player = self.player_order[0]
         else:
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
+        cur_square_type = self.game_board.get_current_square_type(self.current_player)
         while (self.moves_left >= 0):
-            if (): #PLAYER IS AT INTERSECTION
+            if (cur_square_type == SquareType.HEADQUARTER): #PLAYER IS AT INTERSECTION
                 #determine possible moves to gameboard (return square)
                 self.current_state = State.MOVE_DIRECTION
                 return self.current_state
             else:
+                return None
                 #move player direction to gameboard (return square)
-        if (): #player is on roll again square
+
+        if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE): #player is on roll again square
             self.current_state = State.ROLL_DIE
             return self.current_state
         else:
-            if (): #player is not on HQ square
-                if(): #check if they have all wedges -> to token class
+            if (cur_square_type != SquareType.HEADQUARTER): #player is not on HQ square
+                if(self.current_player.has_all_wedges()): #check if they have all wedges -> to token class
                     self.current_state = State.POLL_CATEGORY_ALL #if they have them all == TRUE poll the players
                     return self.current_state
                 else:

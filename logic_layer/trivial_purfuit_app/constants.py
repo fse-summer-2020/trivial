@@ -7,3 +7,9 @@ class State(Enum):
     POLL_CATEGORY_ALL = 'POLL_CATEGORY_ALL'
     POLL_CATEGORY_CURRENT = 'POLL_CATEGORY_CURRENT'
     GAME_END = 'GAME_END'
+
+class SquareType(Enum):
+    HEADQUARTER = 'HeadquarterSquare'
+    ROLL_AGAIN_SQUARE = 'RollAgainSquare'
+    HUB = 'HubSquare'
+    CATEGORY = 'CategorySquare'
