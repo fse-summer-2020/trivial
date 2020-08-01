@@ -15,7 +15,7 @@ class GameInstanceManager:
 
     @classmethod
     def create_game_state(cls):
-        session_id = uuid4()
+        session_id = str(uuid4())
         game_state = GameState()
         cls.instances[session_id] = game_state
         return session_id, game_state
