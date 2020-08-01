@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GameBoardService } from './game/service/gameBoard.service';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
-  ],
-  providers: [],
+    ],
+  providers: [GameBoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
