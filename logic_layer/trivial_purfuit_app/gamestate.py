@@ -45,36 +45,36 @@ class GameState:
                     if (player.check_winning_condition() == True):
                         if (idx == self.player_order.count - 1):
                             self.current_state = State.GAME_END
-                            return self.current_state
+                            return self.current_state, None
             else:
-                return self.current_state
+                return self.current_state, self.current_player
         else:
             cur_square_type = self.game_board.get_current_square_type(self.current_player)
             if (cur_square_type == SquareType.CATEGORY): # ----------------------update definition of category square type
                 self.current_state = State.ROLL_DIE
-                return self.current_state
+                return self.current_state, self.current_player
             if (cur_square_type == SquareType.HEADQUARTER): # ----------------------update definition of category square type
                  if (self.current_player.has_category_wedge(self.current_trivia_question.category) == False):  #----------how to extract category type from question class?
                      self.current_player.add_wedge(self.current_trivia_question.category) #----------how to extract category type from question class?
                      self.current_state = State.ROLL_DIE
-                     return self.current_state
+                     return self.current_state, self.current_player
             else:
                 if (self.current_player.has_all_wedges() == False):
                      self.current_state = State.ROLL_DIE
-                     return self.current_state
+                     return self.current_state, self.current_player
                 else:
                     self.current_player.set_winning_condition(True)
                     if (self.current_round == 1):
                         if (idx == self.player_order.count - 1):
                             self.current_state = State.GAME_END
-                            return self.current_state
+                            return self.current_state, None
                         else:
                             self.go_to_next_player()
                             self.current_state = State.ROLL_DIE
-                            return self.current_state
+                            return self.current_state, self.current_player
                     else:
                         self.current_state = State.GAME_END
-                        return self.current_state
+                        return self.current_state, None
 
     def get_die_roll(self):
         # call the DieRollAPI
