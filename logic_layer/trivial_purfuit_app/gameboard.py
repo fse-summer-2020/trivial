@@ -155,11 +155,11 @@ class GameBoard:
         # actually move the token now
         if (direction == Directions.LEFT):
             token.location = (token.location[0]-1, token.location[1])
-        elif (direction  == Directions.RIGHT):
+        elif (direction == Directions.RIGHT):
             token.location = (token.location[0]+1, token.location[1])
-        elif (Directions[direction]  == Directions.UP):
+        elif (direction == Directions.UP):
             token.location = (token.location[0], token.location[1]-1)
-        elif (Directions[direction]  == Directions.DOWN):
+        elif (direction == Directions.DOWN):
             token.location = (token.location[0], token.location[1]+1)
         else :
             raise Exception("Direction Choosen is Not Valid")
