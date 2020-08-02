@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: 'intro-panel',
@@ -8,10 +8,11 @@ import { Router } from "@angular/router";
 })
 export class IntroPanelComponent implements OnInit {
 
-    constructor(private router: Router) {}
+    constructor(private router: Router,
+        private route: ActivatedRoute) {}
     ngOnInit() {}
     navigateToGame() {
-        console.log("insert navigation")
+        this.router.navigate(['game'], { relativeTo: this.route} );
     }
 
     navigateToConfigurationMode() {

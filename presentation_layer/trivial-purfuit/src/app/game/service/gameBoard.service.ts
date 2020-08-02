@@ -13,8 +13,6 @@ const url = "http://localhost:5000/logic/"
 
 @Injectable()
 export class GameBoardService{
-
-
     
     constructor(public http:HttpClient){}
 
