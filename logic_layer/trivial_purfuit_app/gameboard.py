@@ -127,14 +127,35 @@ class GameBoard:
             self.categories.append(Category(item["name"], item["_id"]["$oid"]))
 
     def move_token_location(self, token, direction):
+        #update direction if token is in a corner
+        if (token.location == (0,0)):
+            if (token.last_location == (0,1)): #current direction would be LEFT approaching corner
+                direction = Directions.DOWN
+            else:
+                direction = Directions.RIGHT
+        elif (token.location == (0,8)):
+            if (token.last_location == (0,7)): #current direction would be RIGHT approaching corner
+                direction = Directions.DOWN
+            else:
+                direction = Directions.LEFT
+        elif (token.location == (8,0)):
+            if (token.last_location == (7,0)): #current direction would be DOWN approaching corner
+                direction = Directions.RIGHT
+            else:
+                direction = Directions.UP
+        elif (token.location == (8,8)):
+            if (token.last_location == (8,7)): #current direction would be RIGHT approaching corner
+                direction = Directions.UP
+            else:
+                direction = Directions.LEFT
+
+        #set old location to current location before updating to new location
         token.last_location = (token.location[0], token.location[1])
-        # update new location to be moved to given the direction passed
-        # check corners 
-        # maybe change dreciton
-        # direction = akjbkajbv
-        if (Directions[direction] == Directions.LEFT):
+
+        # actually move the token now
+        if (direction == Directions.LEFT):
             token.location = (token.location[0]-1, token.location[1])
-        elif (Directions[direction]  == Directions.RIGHT):
+        elif (direction  == Directions.RIGHT):
             token.location = (token.location[0]+1, token.location[1])
         elif (Directions[direction]  == Directions.UP):
             token.location = (token.location[0], token.location[1]-1)
@@ -142,5 +163,4 @@ class GameBoard:
             token.location = (token.location[0], token.location[1]+1)
         else :
             raise Exception("Direction Choosen is Not Valid")
-
         return direction

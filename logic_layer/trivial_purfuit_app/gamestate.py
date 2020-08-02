@@ -121,11 +121,10 @@ class GameState:
                 return self.get_class_dict()
                 
         if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE.value): #player is on roll again square
-
             self.current_state = State.ROLL_DIE
             return self.get_class_dict()
         else:
-            if (cur_square_type != SquareType.HEADQUARTER.value): #player is not on HQ square
+            if (cur_square_type == SquareType.HUB.value): #player is on Hub square
                 if(self.current_player.has_all_wedges()):
                     self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
                     return self.get_class_dict()

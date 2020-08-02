@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from trivial_purfuit_app.game_instance_manager import GameInstanceManager
 import json 
-from trivial_purfuit_app.constants import State
+from trivial_purfuit_app.constants import State, Directions
 
 logic = Blueprint('logic', __name__, url_prefix='/logic')
 
@@ -40,7 +40,7 @@ def roll_die():
 def move_direction():
     body = request.get_json()
     session_id = body["session_id"]
-    direction = body["direction"]
+    direction = Directions[body["direction"]]
     game_state = GameInstanceManager.get_game_state(session_id)
     if game_state is None:
         return jsonify({"error":"Game session not found"}), 404
