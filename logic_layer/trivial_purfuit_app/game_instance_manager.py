@@ -14,8 +14,8 @@ class GameInstanceManager:
             return cls.instances[session_id]
 
     @classmethod
-    def create_game_state(cls):
+    def create_game_state(cls, players):
         session_id = str(uuid4())
-        game_state = GameState()
+        game_state = GameState(players)
         cls.instances[session_id] = game_state
-        return session_id, game_state
+        return session_id, game_state.get_class_dict()

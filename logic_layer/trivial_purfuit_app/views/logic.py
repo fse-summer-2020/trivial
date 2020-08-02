@@ -8,8 +8,7 @@ logic = Blueprint('logic', __name__, url_prefix='/logic')
 @logic.route('/create_game', methods=['POST'])
 def create_game():
     players = request.get_json()["players"]
-    session_id, game_state = GameInstanceManager.create_game_state()
-    state = game_state.create_game(players)
+    session_id, state = GameInstanceManager.create_game_state(players)
     return jsonify({"session_id":session_id, "state":state}), 200
 
 @logic.route('/answer_trivia', methods=['POST'])
