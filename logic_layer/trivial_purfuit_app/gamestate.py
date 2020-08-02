@@ -91,10 +91,16 @@ class GameState:
                         return self.get_class_dict()
 
     def get_die_roll(self):
-        diedata = requests.get(self.url).json()
-        dieside = diedata["dice"]
-        dieValue = dieside[0].get('value')
-        return dieValue
+        if (self.current_state == State.ROLL_DIE):
+            diedata = requests.get(self.url).json()
+            dieside = diedata["dice"]
+            self.moves_left = dieside[0].get('value')
+            self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
+            self.current_state = State.MOVE_DIRECTION
+            #return self.current_player, self.current_state, self.available_next_squares
+            return self.get_class_dict()
+        else:
+             raise Exception("Gamestate has not been set to ROLL_DIE, but get_die_roll has been called")   
 
     def set_category(self, category):
         if (self.current_state == State.POLL_CATEGORY_ALL or self.current_state == State.POLL_CATEGORY_CURRENT):
