@@ -59,7 +59,8 @@ class GameState:
             cur_square_type = self.game_board.get_current_square_type(self.current_player)
             if (cur_square_type == SquareType.CATEGORY):
                 self.current_state = State.ROLL_DIE
-                return self.current_state, self.current_player
+                #return self.current_state, self.current_player
+                return self.get_class_dict()
 
             if (cur_square_type == SquareType.HEADQUARTER):
                  if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).name) == False):
@@ -100,7 +101,6 @@ class GameState:
             self.current_trivia_question = self.question_factory_proxy.get_question(category)
             self.current_state = State.ANSWER_TRIVIA
             #return self.current_player, self.current_state, self.current_trivia_question
-            class_dict = self.get_class_dict()
             return self.get_class_dict() 
         else:
             raise Exception("Players should not be choosing which category to pull the question from")
@@ -121,6 +121,7 @@ class GameState:
                 self.current_state = State.MOVE_DIRECTION
                 class_dict = self.get_class_dict()
                 class_dict['available_next_squares'] = self.available_next_squares
+                #return self.current_state, self.current_player, self.available_next_squares
                 return self.get_class_dict()
             else:
                 self.game_board.move_token_location(self.current_player, direction)
@@ -133,9 +134,11 @@ class GameState:
             if (cur_square_type != SquareType.HEADQUARTER): #player is not on HQ square
                 if(self.current_player.has_all_wedges()):
                     self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
+                    #return self.current_state, self.current_player
                     return self.get_class_dict()
                 else:
                     self.current_state = State.POLL_CATEGORY_CURRENT # Ask current player for category choice
+                    #return self.current_state, self.current_player
                     return self.get_class_dict()
             else:
                 self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)

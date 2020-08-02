@@ -14,8 +14,8 @@ class SquareType(Enum):
     HUB = 'HubSquare'
     CATEGORY = 'CategorySquare'
 
-#class Directions(Enum):
-#    LEFT = 'left'
-#    RIGHT = 'right'
-#    UP = 'up'
-#    DOWN = 'down'
+class Directions(Enum):
+    LEFT = 'left'
+    RIGHT = 'right'
+    UP = 'up'
+    DOWN = 'down'

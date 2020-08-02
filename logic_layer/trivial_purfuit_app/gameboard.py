@@ -2,6 +2,7 @@ from .square.headquartersquare import HeadquarterSquare
 from .square.roll_again_square import RollAgainSquare
 from .square.hubsquare import HubSquare
 from .square.categorysquare import CategorySquare
+from .constants import Directions
 
 from trivial_purfuit_app.data_service.data_layer_service import get_all_categories
 from .models.category import Category
@@ -128,19 +129,19 @@ class GameBoard:
     def move_token_location(self, token, direction):
         token.last_location[0] = token.location[0]
         token.last_location[1] = token.location[1]
-        # update new location we moved to
-        if (direction == "LEFT"):
-            token.location[0] = token.location[0]
+        # update new location to be moved to given the direction passed
+        if (Directions[direction] == Directions.LEFT):
+            token.location[0] = token.location[0]-1
             token.location[1] = token.location[1]
-        elif (direction == "RIGHT"):
-            token.location[0] = token.location[0]
+        elif (Directions[direction]  == Directions.RIGHT):
+            token.location[0] = token.location[0]+1
             token.location[1] = token.location[1]
-        elif (direction == "UP"):
+        elif (Directions[direction]  == Directions.UP):
             token.location[0] = token.location[0]
-            token.location[1] = token.location[1]
-        elif (direction == "DOWN"):
+            token.location[1] = token.location[1]-1
+        elif (Directions[direction]  == Directions.DOWN):
             token.location[0] = token.location[0]
-            token.location[1] = token.location[1]
+            token.location[1] = token.location[1]+1
         else :
             raise Exception("Direction Choosen is Not Valid")
         #return token
