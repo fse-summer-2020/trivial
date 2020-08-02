@@ -121,17 +121,15 @@ class GameState:
 
     def move_token(self, direction):
         cur_square_type = self.game_board.get_current_square_type(self.current_player)
-        while (self.moves_left >= 0):
+        while (self.moves_left > 0):
             if (cur_square_type == SquareType.HEADQUARTER or cur_square_type == SquareType.HUB): #player is on HQ or HUB space
                 self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
                 self.current_state = State.MOVE_DIRECTION
-                class_dict = self.get_class_dict()
-                class_dict['available_next_squares'] = self.available_next_squares
-                #return self.current_state, self.current_player, self.available_next_squares
                 return self.get_class_dict()
             else:
                 self.game_board.move_token_location(self.current_player, direction)
-
+                self.moves_left = self.moves_left - 1
+    
         if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE): #player is on roll again square
             self.current_state = State.ROLL_DIE
             #return self.current_state, self.current_player
@@ -153,9 +151,14 @@ class GameState:
                 return self.get_class_dict()
 
     def get_class_dict(self):
-        class_dict = self.__dict__
-        items_to_remove = ['player_order', 'factory_proxy', 'game_board', 'url']
-        [class_dict.pop(key) for key in items_to_remove] 
+        class_dict = dict()
+        class_dict["players"] = [token.get_dict() for token in self.player_order]
+        class_dict["current_state"] = self.current_state.value
+        class_dict["current_player"] = self.current_player.get_dict()
+        class_dict["current_trivia_question"] = self.current_trivia_question.get_dict() if self.current_trivia_question is not None else None
+        class_dict["available_next_squares"] = self.available_next_squares
+        class_dict["current_round"] = self.current_round
+        class_dict["moves_left"] = self.moves_left
         return class_dict   
 
         # player_order = []

@@ -2,8 +2,8 @@ class Token:
     player_name = None
     color = None
     collected_wedges = []
-    location = ()
-    last_location = ()
+    location = (4,4)
+    last_location = (4,4)
     winning_condition = False
 
     def __init__(self, player_name, color):
@@ -30,3 +30,12 @@ class Token:
             self.collected_wedges.append(wedge)
         else:
             raise Exception("Wedge is undefined")
+    
+    def get_dict(self):
+        obj = dict()
+        obj["player_name"]= self.player_name
+        obj["color"]= self.color
+        obj["collected_wedges"]= self.collected_wedges
+        obj["location"]= self.location
+        obj["winning_condition"]= self.winning_condition
+        return obj

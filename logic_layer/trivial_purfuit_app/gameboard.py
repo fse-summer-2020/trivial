@@ -127,21 +127,16 @@ class GameBoard:
             self.categories.append(Category(item["name"]))
 
     def move_token_location(self, token, direction):
-        token.last_location[0] = token.location[0]
-        token.last_location[1] = token.location[1]
+        token.last_location = (token.location[0], token.location[1])
         # update new location to be moved to given the direction passed
         if (Directions[direction] == Directions.LEFT):
-            token.location[0] = token.location[0]-1
-            token.location[1] = token.location[1]
+            token.location = (token.location[0]-1, token.location[1])
         elif (Directions[direction]  == Directions.RIGHT):
-            token.location[0] = token.location[0]+1
-            token.location[1] = token.location[1]
+            token.location = (token.location[0]+1, token.location[1])
         elif (Directions[direction]  == Directions.UP):
-            token.location[0] = token.location[0]
-            token.location[1] = token.location[1]-1
+            token.location = (token.location[0], token.location[1]-1)
         elif (Directions[direction]  == Directions.DOWN):
-            token.location[0] = token.location[0]
-            token.location[1] = token.location[1]+1
+            token.location = (token.location[0], token.location[1]+1)
         else :
             raise Exception("Direction Choosen is Not Valid")
         #return token

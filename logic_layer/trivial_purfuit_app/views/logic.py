@@ -9,9 +9,8 @@ logic = Blueprint('logic', __name__, url_prefix='/logic')
 def create_game():
     players = request.get_json()["players"]
     session_id, game_state = GameInstanceManager.create_game_state()
-    state, current_player = game_state.create_game(players)
-    print(state)
-    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__}), 200
+    state = game_state.create_game(players)
+    return jsonify({"session_id":session_id, "state":state}), 200
 
 @logic.route('/answer_trivia', methods=['POST'])
 def answer_trivia():
@@ -23,8 +22,8 @@ def answer_trivia():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.ANSWER_TRIVIA:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state, current_player = game_state.answer_trivia(answer)
-    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__}), 200
+    state = game_state.answer_trivia(answer)
+    return jsonify({"session_id":session_id, "state":state}), 200
 
 @logic.route('/roll_die', methods=['POST'])
 def roll_die():
@@ -35,8 +34,8 @@ def roll_die():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.ROLL_DIE:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state, current_player, rolled_value = game_state.get_die_roll()
-    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__, "rolled_value": rolled_value}), 200
+    state = game_state.get_die_roll()
+    return jsonify({"session_id":session_id, "state":state}), 200
 
 @logic.route('/move_direction', methods=['POST'])
 def move_direction():
@@ -48,8 +47,8 @@ def move_direction():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.MOVE_DIRECTION:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state, current_player = game_state.move_token(direction)
-    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__}), 200
+    state = game_state.move_token(direction)
+    return jsonify({"session_id":session_id, "state":state}), 200
 
 @logic.route('/set_category', methods=['POST'])
 def set_category():
@@ -61,5 +60,5 @@ def set_category():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state not in [State.POLL_CATEGORY_ALL, State.POLL_CATEGORY_CURRENT]:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state, current_player = game_state.set_category(category_id)
-    return jsonify({"session_id":session_id, "state":state.value, "current_player": current_player.__dict__}), 200
+    state = game_state.set_category(category_id)
+    return jsonify({"session_id":session_id, "state":state}), 200
