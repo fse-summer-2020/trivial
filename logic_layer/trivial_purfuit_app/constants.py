@@ -13,3 +13,9 @@ class SquareType(Enum):
     ROLL_AGAIN_SQUARE = 'RollAgainSquare'
     HUB = 'HubSquare'
     CATEGORY = 'CategorySquare'
+
+#class Directions(Enum):
+#    LEFT = 'left'
+#    RIGHT = 'right'
+#    UP = 'up'
+#    DOWN = 'down'

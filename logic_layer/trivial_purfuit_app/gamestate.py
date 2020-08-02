@@ -23,7 +23,7 @@ class GameState:
     
     def create_game(self, players):
         self.set_player_order(players)
-        self.game_board = GameBoard() #Easter Egg!
+        self.game_board = GameBoard() #Easter Egg! - This program is No Trivial Matter!
         self.question_factory_proxy = QuestionFactoryProxy()
         self.current_state = State.ROLL_DIE
         self.current_player = self.player_order[0]
@@ -34,14 +34,14 @@ class GameState:
     def set_player_order(self, players):
         for player in players:
             token = Token(player['name'], player['color'])
-            self.player_order.append(token) #assume list order is the order of play already
+            self.player_order.append(token)
 
     def answer_trivia(self, answer):
-        # assume answer is a string of the answer
         self.answer_result = self.current_trivia_question.validate_answer(answer)
         self.current_trivia_question = None
         idx = self.player_order.index(self.current_player)
 
+        # Start Logic Sequence to Check Answer and Change Game Parameters as Required
         if (self.answer_result == False):
             self.go_to_next_player()
             self.current_state = State.ROLL_DIE
@@ -57,14 +57,13 @@ class GameState:
                 return self.get_class_dict()
         else:
             cur_square_type = self.game_board.get_current_square_type(self.current_player)
-            if (cur_square_type == SquareType.CATEGORY): # ----------------------update definition of category square type
+            if (cur_square_type == SquareType.CATEGORY):
                 self.current_state = State.ROLL_DIE
-                #return self.current_state, self.current_player
-                return self.get_class_dict()
-                
-            if (cur_square_type == SquareType.HEADQUARTER): # ----------------------update definition of category square type
-                 if (self.current_player.has_category_wedge(self.current_trivia_question.category) == False):  #get categetoy from SPACE LOCATION nottttt question
-                     self.current_player.add_wedge(self.current_trivia_question.category)   #get categetoy from SPACE LOCATION nottttt question
+                return self.current_state, self.current_player
+
+            if (cur_square_type == SquareType.HEADQUARTER):
+                 if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).name) == False):
+                     self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).name)
                      self.current_state = State.ROLL_DIE
                      #return self.current_state, self.current_player
                      return self.get_class_dict()
@@ -97,14 +96,15 @@ class GameState:
         return dieValue
 
     def set_category(self, category):
-        ################################################################
-        self.current_trivia_question = self.question_factory_proxy.get_question(category)
-        #check sequence diagram fro missing fucntions and addd them!
-        #Add to the blueprints if this is not the returned value:
-        #return self.current_state, self.current_player
-        #when we set state to poll, the prez layer sets question based on categroy (set question from category)
-        ################################################################
-        pass 
+        if (self.current_state == State.POLL_CATEGORY_ALL or self.current_state == State.POLL_CATEGORY_CURRENT):
+            self.current_trivia_question = self.question_factory_proxy.get_question(category)
+            self.current_state = State.ANSWER_TRIVIA
+            #return self.current_player, self.current_state, self.current_trivia_question
+            class_dict = self.get_class_dict()
+            return self.get_class_dict() 
+        else:
+            raise Exception("Players should not be choosing which category to pull the question from")
+
 
     def go_to_next_player(self):
         idx = self.player_order.index(self.current_player)
@@ -114,22 +114,16 @@ class GameState:
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
-        ################################################################
-        #Add to the blueprints if this is not the returned value:
-        #return self.current_state, self.current_player
-        ################################################################
-
         cur_square_type = self.game_board.get_current_square_type(self.current_player)
         while (self.moves_left >= 0):
-            if (cur_square_type == SquareType.HEADQUARTER): #PLAYER IS AT INTERSECTION
-                #determine possible moves to gameboard (return square)
+            if (cur_square_type == SquareType.HEADQUARTER or cur_square_type == SquareType.HUB): #player is on HQ or HUB space
+                self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
                 self.current_state = State.MOVE_DIRECTION
-                #return self.current_state, self.current_player
+                class_dict = self.get_class_dict()
+                class_dict['available_next_squares'] = self.available_next_squares
                 return self.get_class_dict()
             else:
-                #TODO - actually move the player
-                return self.current_state, self.current_player
-                #move player direction to gameboard (return square)
+                self.game_board.move_token_location(self.current_player, direction)
 
         if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE): #player is on roll again square
             self.current_state = State.ROLL_DIE
@@ -137,19 +131,14 @@ class GameState:
             return self.get_class_dict()
         else:
             if (cur_square_type != SquareType.HEADQUARTER): #player is not on HQ square
-                if(self.current_player.has_all_wedges()): #check if they have all wedges -> to token class
-                    self.current_state = State.POLL_CATEGORY_ALL #if they have them all == TRUE poll the players
-                    #return self.current_state, self.current_player
+                if(self.current_player.has_all_wedges()):
+                    self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
                     return self.get_class_dict()
                 else:
-                    self.current_state = State.POLL_CATEGORY_CURRENT #let them get a random category?
-                    #return self.current_state, self.current_player
+                    self.current_state = State.POLL_CATEGORY_CURRENT # Ask current player for category choice
                     return self.get_class_dict()
             else:
-                #get categroy suqure from gaembaord
-                #get question category from game factory proxy
-                    #this have to calll a random quesiton (make function in question factory to get random question VR specific catgetory)
-                self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)
+                self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)
                 self.current_state = State.ANSWER_TRIVIA
                 #return self.current_state, self.current_player
                 return self.get_class_dict()

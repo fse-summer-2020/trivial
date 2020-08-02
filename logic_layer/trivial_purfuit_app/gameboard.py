@@ -25,6 +25,7 @@ class GameBoard:
     #6   C               C               C
     #7   RA              C               C
     #8   C   C   RA  C   HQ  C   RA  C   C
+
     def __create_game_board(self):
         self.board = [[None for i in range(self.COLS)] for j in range(self.ROWS)] 
 
@@ -123,3 +124,23 @@ class GameBoard:
         category_json = get_all_categories()
         for item in category_json:
             self.categories.append(Category(item["name"]))
+
+    def move_token_location(self, token, direction):
+        token.last_location[0] = token.location[0]
+        token.last_location[1] = token.location[1]
+        # update new location we moved to
+        if (direction == "LEFT"):
+            token.location[0] = token.location[0]
+            token.location[1] = token.location[1]
+        elif (direction == "RIGHT"):
+            token.location[0] = token.location[0]
+            token.location[1] = token.location[1]
+        elif (direction == "UP"):
+            token.location[0] = token.location[0]
+            token.location[1] = token.location[1]
+        elif (direction == "DOWN"):
+            token.location[0] = token.location[0]
+            token.location[1] = token.location[1]
+        else :
+            raise Exception("Direction Choosen is Not Valid")
+        #return token
