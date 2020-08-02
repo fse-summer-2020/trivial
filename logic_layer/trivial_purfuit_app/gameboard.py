@@ -110,12 +110,14 @@ class GameBoard:
             possible_moves.append((xPos, yPos+1))
 
         return possible_moves
-            
 
-    def get_current_square_type(self, token):
+    def get_current_square(self, token):
         xPos = token.location[0]
         yPos = token.location[1]
-        return type(self.board[xPos][yPos]).__name__
+        return type(self.board[xPos][yPos])
+
+    def get_current_square_type(self, token):
+        return self.get_current_square(token).__name__
 
     def get_and_create_categories(self):
         category_json = get_all_categories()

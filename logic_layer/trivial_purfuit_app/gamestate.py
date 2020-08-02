@@ -1,6 +1,8 @@
 from .token import Token
 from .gameboard import GameBoard
 from .constants import State, SquareType
+from .models.question_factory_proxy import QuestionFactoryProxy
+import requests
 
 class GameState:
     player_order = []
@@ -12,6 +14,7 @@ class GameState:
     current_round = None
     factory_proxy = None
     game_board = None
+    url = "http://roll.diceapi.com/json/d4"
 
     # self refers to the current object instance. This is implied in java but in python needs to the self reference.
 
@@ -21,7 +24,7 @@ class GameState:
     def create_game(self, players):
         self.set_player_order(players)
         self.game_board = GameBoard() #Easter Egg!
-        #new_factory_proxy #new factory proxy class
+        self.question_factory_proxy = QuestionFactoryProxy()
         self.current_state = State.ROLL_DIE
         self.current_player = self.player_order[0]
         self.current_round = 1
@@ -35,6 +38,7 @@ class GameState:
     def answer_trivia(self, answer):
         # assume answer is a string of the answer
         self.answer_result = self.current_trivia_question.validate_answer(answer)
+        self.current_trivia_question = None
         idx = self.player_order.index(self.current_player)
 
         if (self.answer_result == False):
@@ -54,8 +58,8 @@ class GameState:
                 self.current_state = State.ROLL_DIE
                 return self.current_state, self.current_player
             if (cur_square_type == SquareType.HEADQUARTER): # ----------------------update definition of category square type
-                 if (self.current_player.has_category_wedge(self.current_trivia_question.category) == False):  #----------how to extract category type from question class?
-                     self.current_player.add_wedge(self.current_trivia_question.category) #----------how to extract category type from question class?
+                 if (self.current_player.has_category_wedge(self.current_trivia_question.category) == False):  #get categetoy from SPACE LOCATION nottttt question
+                     self.current_player.add_wedge(self.current_trivia_question.category)   #get categetoy from SPACE LOCATION nottttt question
                      self.current_state = State.ROLL_DIE
                      return self.current_state, self.current_player
             else:
@@ -77,19 +81,18 @@ class GameState:
                         return self.current_state, None
 
     def get_die_roll(self):
-        # call the DieRollAPI
-        ################################################################
-        #Add to the blueprints if this is not the returned value:
-        #return self.current_state, self.current_player, self.rolled_value
-        ################################################################
-        pass
-        
-
+        diedata = requests.get(url).json()
+        dieside = diedata["dice"]
+        dieValue = dieside[0].get('value')
+        return dieValue
 
     def set_category(self, category):
         ################################################################
+        self.current_trivia_question = self.question_factory_proxy.get_question(category)
+        #check sequence diagram fro missing fucntions and addd them!
         #Add to the blueprints if this is not the returned value:
         #return self.current_state, self.current_player
+        #when we set state to poll, the prez layer sets question based on categroy (set question from category)
         ################################################################
         pass 
 
@@ -131,6 +134,7 @@ class GameState:
                 #get categroy suqure from gaembaord
                 #get question category from game factory proxy
                     #this have to calll a random quesiton (make function in question factory to get random question VR specific catgetory)
+                self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)
                 self.current_state = State.ANSWER_TRIVIA
                 return self.current_state, self.current_player
 
