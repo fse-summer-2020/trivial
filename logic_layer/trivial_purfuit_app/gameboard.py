@@ -116,10 +116,7 @@ class GameBoard:
     def get_current_square(self, token):
         xPos = token.location[0]
         yPos = token.location[1]
-        return type(self.board[xPos][yPos])
-
-    def get_current_square_type(self, token):
-        return self.get_current_square(token).__name__
+        return self.board[xPos][yPos]
 
     def get_and_create_categories(self):
         category_json = get_all_categories()

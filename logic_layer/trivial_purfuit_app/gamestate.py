@@ -2,6 +2,11 @@ from .token import Token
 from .gameboard import GameBoard
 from .constants import State, SquareType
 from .models.question_factory_proxy import QuestionFactoryProxy
+from trivial_purfuit_app.square.headquartersquare import HeadquarterSquare
+from trivial_purfuit_app.square.hubsquare import HubSquare
+from trivial_purfuit_app.square.categorysquare import CategorySquare
+from trivial_purfuit_app.square.roll_again_square import RollAgainSquare
+
 import requests
 
 class GameState:
@@ -48,13 +53,13 @@ class GameState:
                 #return self.current_state, self.current_player
                 return self.get_class_dict()
         else:
-            cur_square_type = self.game_board.get_current_square_type(self.current_player)
-            if (cur_square_type == SquareType.CATEGORY):
+            cur_square = self.game_board.get_current_square(self.current_player)
+            if isinstance(cur_square, CategorySquare):
                 self.current_state = State.ROLL_DIE
                 #return self.current_state, self.current_player
                 return self.get_class_dict()
 
-            if (cur_square_type == SquareType.HEADQUARTER):
+            if isinstance(cur_square, HeadquarterSquare):
                  if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).name) == False):
                      self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).name)
                      self.current_state = State.ROLL_DIE
@@ -81,6 +86,8 @@ class GameState:
                         self.current_state = State.GAME_END
                         #return self.current_state, None
                         return self.get_class_dict()
+
+        return "lol"
 
     def get_die_roll(self):
         if (self.current_state == State.ROLL_DIE):
@@ -113,18 +120,18 @@ class GameState:
         while (self.moves_left > 0):
             direction = self.game_board.move_token_location(self.current_player, direction)
             self.moves_left = self.moves_left - 1
-            cur_square_type = self.game_board.get_current_square_type(self.current_player)
+            cur_square = self.game_board.get_current_square(self.current_player)
 
-            if (self.moves_left > 0) and (cur_square_type == SquareType.HEADQUARTER.value or cur_square_type == SquareType.HUB.value): #player is on HQ or HUB space
+            if self.moves_left > 0 and isinstance(cur_square, (HeadquarterSquare, HubSquare)): #player is on HQ or HUB space
                 self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
                 self.current_state = State.MOVE_DIRECTION
                 return self.get_class_dict()
                 
-        if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE.value): #player is on roll again square
+        if isinstance(cur_square, RollAgainSquare): #player is on roll again square
             self.current_state = State.ROLL_DIE
             return self.get_class_dict()
         else:
-            if (cur_square_type == SquareType.HUB.value): #player is on Hub square
+            if isinstance(cur_square, HubSquare): #player is on Hub square
                 if(self.current_player.has_all_wedges()):
                     self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
                     return self.get_class_dict()
@@ -132,7 +139,7 @@ class GameState:
                     self.current_state = State.POLL_CATEGORY_CURRENT # Ask current player for category choice
                     return self.get_class_dict()
             else:
-                self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)
+                self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).category)
                 self.current_state = State.ANSWER_TRIVIA
                 return self.get_class_dict()
 
