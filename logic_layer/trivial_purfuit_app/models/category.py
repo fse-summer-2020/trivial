@@ -1,7 +1,7 @@
 import json
 
 class Category(object):
-    name = None
-
-    def __init__(self, name):
+    
+    def __init__(self, name, category_id):
         self.name = name
+        self.category_id = category_id

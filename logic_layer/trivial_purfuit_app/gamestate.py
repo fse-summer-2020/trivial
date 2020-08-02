@@ -89,7 +89,6 @@ class GameState:
             self.moves_left = dieside[0].get('value')
             self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
             self.current_state = State.MOVE_DIRECTION
-            #return self.current_player, self.current_state, self.available_next_squares
             return self.get_class_dict()
         else:
              raise Exception("Gamestate has not been set to ROLL_DIE, but get_die_roll has been called")   
@@ -98,7 +97,6 @@ class GameState:
         if (self.current_state == State.POLL_CATEGORY_ALL or self.current_state == State.POLL_CATEGORY_CURRENT):
             self.current_trivia_question = self.question_factory_proxy.get_question(category)
             self.current_state = State.ANSWER_TRIVIA
-            #return self.current_player, self.current_state, self.current_trivia_question
             return self.get_class_dict() 
         else:
             raise Exception("Players should not be choosing which category to pull the question from")
@@ -112,34 +110,31 @@ class GameState:
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
-        cur_square_type = self.game_board.get_current_square_type(self.current_player)
         while (self.moves_left > 0):
-            if (cur_square_type == SquareType.HEADQUARTER or cur_square_type == SquareType.HUB): #player is on HQ or HUB space
+            direction = self.game_board.move_token_location(self.current_player, direction)
+            self.moves_left = self.moves_left - 1
+            cur_square_type = self.game_board.get_current_square_type(self.current_player)
+
+            if (self.moves_left > 0) and (cur_square_type == SquareType.HEADQUARTER.value or cur_square_type == SquareType.HUB.value): #player is on HQ or HUB space
                 self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
                 self.current_state = State.MOVE_DIRECTION
                 return self.get_class_dict()
-            else:
-                self.game_board.move_token_location(self.current_player, direction)
-                self.moves_left = self.moves_left - 1
-    
-        if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE): #player is on roll again square
+                
+        if (cur_square_type == SquareType.ROLL_AGAIN_SQUARE.value): #player is on roll again square
+
             self.current_state = State.ROLL_DIE
-            #return self.current_state, self.current_player
             return self.get_class_dict()
         else:
-            if (cur_square_type != SquareType.HEADQUARTER): #player is not on HQ square
+            if (cur_square_type != SquareType.HEADQUARTER.value): #player is not on HQ square
                 if(self.current_player.has_all_wedges()):
                     self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
-                    #return self.current_state, self.current_player
                     return self.get_class_dict()
                 else:
                     self.current_state = State.POLL_CATEGORY_CURRENT # Ask current player for category choice
-                    #return self.current_state, self.current_player
                     return self.get_class_dict()
             else:
                 self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).name)
                 self.current_state = State.ANSWER_TRIVIA
-                #return self.current_state, self.current_player
                 return self.get_class_dict()
 
     def get_class_dict(self):
@@ -151,17 +146,4 @@ class GameState:
         class_dict["available_next_squares"] = self.available_next_squares
         class_dict["current_round"] = self.current_round
         class_dict["moves_left"] = self.moves_left
-        return class_dict   
-
-        # player_order = []
-        # current_state = None
-        # current_player = None
-        # current_trivia_question = None
-        # moves_left = None
-        # available_next_squares = None
-        # current_round = None
-        # factory_proxy = None
-        # game_board = None
-        # url = "http://roll.diceapi.com/json/d4"
-
-
+        return class_dict
