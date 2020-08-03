@@ -57,10 +57,10 @@ class GameState:
                 return
 
             if isinstance(cur_square, HeadquarterSquare):
-                 if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).category) == False):
-                     self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).category)
-                     self.current_state = State.ROLL_DIE
-                     return
+                if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).category) == False):
+                    self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).category)
+                self.current_state = State.ROLL_DIE
+                return
             else:
                 if (self.current_player.has_all_wedges() == False):
                      self.current_state = State.ROLL_DIE

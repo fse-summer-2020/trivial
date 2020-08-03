@@ -132,6 +132,8 @@ export class GameBoardComponent implements OnInit {
             this.currentPlayer = data.state.current_player;
             this.playerList = data.state.players;
             this.movesLeft = data.state.moves_left;
+            this.currentQuestion = data.state.current_trivia_question.question;
+            this.possibleAnswers = data.state.current_trivia_question.possible_answers;
             this.updateCurrentState(data.state.current_state);        
         })
     }
