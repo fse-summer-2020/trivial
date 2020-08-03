@@ -59,11 +59,14 @@ class GameBoard:
         self.board[0][7] = CategorySquare(self.categories[0])
         self.board[0][8] = CategorySquare(self.categories[0])
 
+        self.board[1][4] = CategorySquare(self.categories[0])
         self.board[1][8] = CategorySquare(self.categories[0])
 
         self.board[2][0] = CategorySquare(self.categories[0])
+        self.board[2][4] = CategorySquare(self.categories[0])
 
         self.board[3][0] = CategorySquare(self.categories[0])
+        self.board[3][4] = CategorySquare(self.categories[0])
         self.board[3][8] = CategorySquare(self.categories[0])
 
         self.board[4][1] = CategorySquare(self.categories[0])
@@ -74,10 +77,13 @@ class GameBoard:
         self.board[4][7] = CategorySquare(self.categories[0])
 
         self.board[5][0] = CategorySquare(self.categories[0])
+        self.board[5][4] = CategorySquare(self.categories[0])
 
         self.board[6][0] = CategorySquare(self.categories[0])
+        self.board[6][4] = CategorySquare(self.categories[0])
         self.board[6][8] = CategorySquare(self.categories[0])
 
+        self.board[7][4] = CategorySquare(self.categories[0])
         self.board[7][8] = CategorySquare(self.categories[0])
 
         self.board[8][0] = CategorySquare(self.categories[0])
@@ -95,7 +101,10 @@ class GameBoard:
         last_yPos = token.last_location[1]
 
         possible_moves = []
-
+        print(xPos)
+        print(yPos)
+        print(last_xPos)
+        print(last_yPos)
         #check down
         if xPos < 8 and (self.board[xPos+1][yPos] is not None) and (xPos+1 != last_xPos):
             possible_moves.append(Directions.DOWN)
