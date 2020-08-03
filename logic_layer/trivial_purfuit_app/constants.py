@@ -15,7 +15,7 @@ class SquareType(Enum):
     CATEGORY = 'CategorySquare'
 
 class Directions(Enum):
-    LEFT = 'left'
-    RIGHT = 'right'
-    UP = 'up'
-    DOWN = 'down'
+    LEFT = 'LEFT'
+    RIGHT = 'RIGHT'
+    UP = 'UP'
+    DOWN = 'DOWN'

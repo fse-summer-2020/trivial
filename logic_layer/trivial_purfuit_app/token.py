@@ -1,14 +1,12 @@
-class Token:
-    player_name = None
-    color = None
-    collected_wedges = []
-    location = (4,4)
-    last_location = (4,4)
-    winning_condition = False
+class Token:    
 
     def __init__(self, player_name, color):
         self.player_name = player_name
         self.color = color
+        self.collected_wedges = []
+        self.location = (4,4)
+        self.last_location = (4,4)
+        self.winning_condition = False
 
     def has_category_wedge(self, category):
         if category in self.collected_wedges:
@@ -17,7 +15,7 @@ class Token:
             return False
 
     def has_all_wedges(self):
-        return self.collected_wedges.count == 4
+        return len(self.collected_wedges) == 4
 
     def set_winning_condition(self, condition):
         self.winning_condition = condition
@@ -25,9 +23,9 @@ class Token:
     def check_winning_condition(self):
         return self.winning_condition
 
-    def add_wedge(self, wedge):
-        if (wedge != None and not self.has_category_wedge(wedge.category)):
-            self.collected_wedges.append(wedge)
+    def add_wedge(self, category):
+        if (category != None and not self.has_category_wedge(category)):
+            self.collected_wedges.append(category)
         else:
             raise Exception("Wedge is undefined")
     
@@ -35,7 +33,7 @@ class Token:
         obj = dict()
         obj["player_name"]= self.player_name
         obj["color"]= self.color
-        obj["collected_wedges"]= self.collected_wedges
+        obj["collected_wedges"]= [category.get_dict() for category in self.collected_wedges]
         obj["location"]= self.location
         obj["winning_condition"]= self.winning_condition
         return obj

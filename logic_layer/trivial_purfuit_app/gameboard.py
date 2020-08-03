@@ -31,10 +31,11 @@ class GameBoard:
         self.board = [[None for i in range(self.COLS)] for j in range(self.ROWS)] 
 
         # hq squares at the end of each spoke
-        self.board[0][4] = HeadquarterSquare()
-        self.board[4][0] = HeadquarterSquare()
-        self.board[8][4] = HeadquarterSquare()
-        self.board[4][8] = HeadquarterSquare()
+        # TODO: adjust categories as needed to comply with game board rules
+        self.board[0][4] = HeadquarterSquare(self.categories[0])
+        self.board[4][0] = HeadquarterSquare(self.categories[0])
+        self.board[8][4] = HeadquarterSquare(self.categories[0])
+        self.board[4][8] = HeadquarterSquare(self.categories[0])
 
         # roll again squares
         self.board[0][2] = RollAgainSquare()
@@ -58,11 +59,14 @@ class GameBoard:
         self.board[0][7] = CategorySquare(self.categories[0])
         self.board[0][8] = CategorySquare(self.categories[0])
 
+        self.board[1][4] = CategorySquare(self.categories[0])
         self.board[1][8] = CategorySquare(self.categories[0])
 
         self.board[2][0] = CategorySquare(self.categories[0])
+        self.board[2][4] = CategorySquare(self.categories[0])
 
         self.board[3][0] = CategorySquare(self.categories[0])
+        self.board[3][4] = CategorySquare(self.categories[0])
         self.board[3][8] = CategorySquare(self.categories[0])
 
         self.board[4][1] = CategorySquare(self.categories[0])
@@ -73,10 +77,13 @@ class GameBoard:
         self.board[4][7] = CategorySquare(self.categories[0])
 
         self.board[5][0] = CategorySquare(self.categories[0])
+        self.board[5][4] = CategorySquare(self.categories[0])
 
         self.board[6][0] = CategorySquare(self.categories[0])
+        self.board[6][4] = CategorySquare(self.categories[0])
         self.board[6][8] = CategorySquare(self.categories[0])
 
+        self.board[7][4] = CategorySquare(self.categories[0])
         self.board[7][8] = CategorySquare(self.categories[0])
 
         self.board[8][0] = CategorySquare(self.categories[0])
@@ -94,32 +101,28 @@ class GameBoard:
         last_yPos = token.last_location[1]
 
         possible_moves = []
-
         #check down
-        if (self.board[xPos+1] is not None) and (xPos+1 != last_xPos):
-            possible_moves.append((xPos+1, yPos))
+        if xPos < 8 and (self.board[xPos+1][yPos] is not None) and (xPos+1 != last_xPos):
+            possible_moves.append(Directions.DOWN)
 
         #check up
-        if (self.board[xPos-1] is not None) and (xPos-1 != last_xPos):
-            possible_moves.append((xPos-1, yPos))
+        if xPos > 0 and (self.board[xPos-1][yPos] is not None) and (xPos-1 != last_xPos):
+            possible_moves.append(Directions.UP)
 
         #check left
-        if (self.board[yPos-1] is not None) and (yPos-1 != last_yPos):
-            possible_moves.append((xPos, yPos-1))
+        if yPos > 0 and (self.board[xPos][yPos-1] is not None) and (yPos-1 != last_yPos):
+            possible_moves.append(Directions.LEFT)
 
         #check right
-        if (self.board[yPos+1] is not None) and (yPos+1 != last_yPos):
-            possible_moves.append((xPos, yPos+1))
+        if yPos < 8 and (self.board[xPos][yPos+1] is not None) and (yPos+1 != last_yPos):
+            possible_moves.append(Directions.RIGHT)
 
         return possible_moves
 
     def get_current_square(self, token):
         xPos = token.location[0]
         yPos = token.location[1]
-        return type(self.board[xPos][yPos])
-
-    def get_current_square_type(self, token):
-        return self.get_current_square(token).__name__
+        return self.board[xPos][yPos]
 
     def get_and_create_categories(self):
         category_json = get_all_categories()
@@ -127,20 +130,40 @@ class GameBoard:
             self.categories.append(Category(item["name"], item["_id"]["$oid"]))
 
     def move_token_location(self, token, direction):
+        #update direction if token is in a corner
+        if (token.location == (0,0)):
+            if (token.last_location == (0,1)): #current direction would be LEFT approaching corner
+                direction = Directions.DOWN
+            else:
+                direction = Directions.RIGHT
+        elif (token.location == (0,8)):
+            if (token.last_location == (0,7)): #current direction would be RIGHT approaching corner
+                direction = Directions.DOWN
+            else:
+                direction = Directions.LEFT
+        elif (token.location == (8,0)):
+            if (token.last_location == (7,0)): #current direction would be DOWN approaching corner
+                direction = Directions.RIGHT
+            else:
+                direction = Directions.UP
+        elif (token.location == (8,8)):
+            if (token.last_location == (8,7)): #current direction would be RIGHT approaching corner
+                direction = Directions.UP
+            else:
+                direction = Directions.LEFT
+
+        #set old location to current location before updating to new location
         token.last_location = (token.location[0], token.location[1])
-        # update new location to be moved to given the direction passed
-        # check corners 
-        # maybe change dreciton
-        # direction = akjbkajbv
-        if (Directions[direction] == Directions.LEFT):
-            token.location = (token.location[0]-1, token.location[1])
-        elif (Directions[direction]  == Directions.RIGHT):
-            token.location = (token.location[0]+1, token.location[1])
-        elif (Directions[direction]  == Directions.UP):
+
+        # actually move the token now
+        if (direction == Directions.LEFT):
             token.location = (token.location[0], token.location[1]-1)
-        elif (Directions[direction]  == Directions.DOWN):
+        elif (direction == Directions.RIGHT):
             token.location = (token.location[0], token.location[1]+1)
+        elif (direction == Directions.UP):
+            token.location = (token.location[0]-1, token.location[1])
+        elif (direction == Directions.DOWN):
+            token.location = (token.location[0]+1, token.location[1])
         else :
             raise Exception("Direction Choosen is Not Valid")
-
         return direction
