@@ -60,5 +60,8 @@ def set_category():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state not in [State.POLL_CATEGORY_ALL, State.POLL_CATEGORY_CURRENT]:
         return jsonify({"error":"Invalid request for current state"}), 409
+    category = next((category for category in game_state.game_board.categories if category.category_id == category_id), None)
+    if category is None:
+        return jsonify({"error":"Invalid category_id"}), 409
     game_state.set_category(category_id)
     return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200
