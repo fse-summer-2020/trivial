@@ -84,7 +84,7 @@ class GameState:
         if (self.current_state == State.ROLL_DIE):
             diedata = requests.get(self.url).json()
             dieside = diedata["dice"]
-            self.moves_left = 4
+            self.moves_left = dieside[0].get('value')
             self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
             self.current_state = State.MOVE_DIRECTION
         else:
