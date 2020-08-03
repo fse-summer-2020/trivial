@@ -35,6 +35,9 @@
 Current Player: 
 </b>
 {{ currentPlayer.player_name }}
+
+<br>
+Moves Left: {{ movesLeft }}
 </div>
 
 <div *ngIf=isRollDieState>
@@ -44,7 +47,7 @@ Current Player:
     Choose a square to move to:
     <form [formGroup]="moveDirectionForm">
         <div *ngFor="let availableSquare of nextAvailableSquares">
-             <input type="radio" value=availableSquare formControlName="direction"/> <label>{{ availableSquare[0] }} , {{ availableSquare[1] }}</label>
+             <input id="availableSquare" type="radio" value=availableSquare formControlName="direction"/> <label>{{ availableSquare }}</label>
         </div>
     </form>
 </div>

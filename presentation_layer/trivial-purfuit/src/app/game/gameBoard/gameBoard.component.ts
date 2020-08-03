@@ -20,6 +20,7 @@ export class GameBoardComponent implements OnInit {
     currentRound: number;
     playerList: Player[];
     nextAvailableSquares: number[][]
+    movesLeft: number;
 
     constructor(
         private service: GameBoardService,
@@ -68,6 +69,7 @@ export class GameBoardComponent implements OnInit {
             this.updateCurrentState(data.state.current_state);
             this.nextAvailableSquares = data.state.available_next_squares;
             console.log(this.nextAvailableSquares);
+            this.movesLeft = data.state.moves_left;
         });
     }
     
@@ -82,13 +84,10 @@ export class GameBoardComponent implements OnInit {
         this.gameStateResponse.subscribe(data => {
             this.sessionId = data.session_id
             this.currentRound = data.state.current_round;
-            console.log(data);
             this.currentPlayer = data.state.current_player;
-            console.log(this.currentPlayer);
-            this.updateCurrentState(data.state.current_state);
-            console.log(this.isRollDieState);
             this.playerList = data.state.players;
-            console.log(this.playerList);
+            this.movesLeft = data.state.moves_left;
+            this.updateCurrentState(data.state.current_state);
         });
     }
 }
