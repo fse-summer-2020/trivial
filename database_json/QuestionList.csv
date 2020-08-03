@@ -1,0 +1,15 @@
+_id,category_id,question,possible_answer1,possible_answer2,possible_answer3,possible_answer4,correct_answer
+,5f0b7f2a90677a74898769a3,WhenwastheDeclarationofIndependencesigned?,1600s,1700s,1800s,1900s,1700s
+,5f0b7f2a90677a74898769a3,HowmanypeoplesignedtheDeclarationofIndependence?,13,26,52,56,56
+,5f0b7f5190677a74898769a6,WhenistheIndependenceDayholidaycelebrated?,"July4,1776","August23,1777","July8,1776","August2,1776",July4th
+,5f0b7f5190677a74898769a6,WhendidthecelebrationoftheIndependenceDayholidaybegin?,"July4,1776","August23,1777","July8,1776","August2,1776",July8th
+,5f0b7f4290677a74898769a5,WhatactionbyBritianwasamaincongtributortothedraftingoftheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorSchappelle,taxationwithoutrepresentation
+,5f0b7f3790677a74898769a4,WhowasthefirstpersontosigntheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorGaronzik,JohnHancock
+,5f0b7f3790677a74898769a4,Who'ssignatureisthelargestontheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorDemasco,JohnHancock
+,5f0b7f5190677a74898769a6,WhatcityistheDeclarationofIndependencestored?,Philadelphia,NewYorkCity,WashingtonDC,Pittsburg,WashingtonDC
+,5f0b7f5190677a74898769a6,WhereistheDeclarationofIndependencestored?,TheLouvre,WhiteHouseArchives,LibertyPlaza,NationalArchivesMuseum,NationalArchivesMuseum
+,5f0b7f2a90677a74898769a3,Howmanycolonies(outof13)votedinfavoroftheDeclarationofIndependence?,10,11,12,13,12
+,5f0b7f2a90677a74898769a3,WhatdatewastheDeclarationofIndependencesigned?,"July4,1776","August23,1777","July8,1776","August2,1776","August2,1776"
+,5f0b7f2a90677a74898769a3,WhenwasthefinaldraftoftheDeclarationofIndependenceapproved?,"July8,1776","August23,1777","July4,1776","August2,1776","July4,1776"
+,5f0b7f4290677a74898769a5,WhenwasthefirstpublicreadingoftheDeclarationofIndependence?,"July8,1776","August23,1777","July4,1776","August2,1776","July8,1776"
+,5f0b7f2a90677a74898769a3,WhichstateabstainedfromvotingfortheDeclarationofIndependence?,NewJersey,Ohio,Virginia,NewYork,NewYork
