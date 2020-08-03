@@ -1,15 +1,15 @@
-<div>
-    #    0   1   2   3   4   5   6   7   8<br>   
-    #0   C   C   RA  C   HQ  C   RA  C   C<br>
-    #1   RA              C               C<br>   
-    #2   C               C               RA<br>
-    #3   C               C               C<br>
-    #4   HQ  C   C   C   H   C   C   C   HQ<br>           
-    #5   C               C               RA<br>
-    #6   C               C               C<br>
-    #7   RA              C               C<br>
-    #8   C   C   RA  C   HQ  C   RA  C   C<br><br>
-</div>
+<pre>
+    #    0   1   2   3   4   5   6   7   8 
+    #0   C   C   RA  C   HQ  C   RA  C   C
+    #1   RA              C               C
+    #2   C               C               RA
+    #3   C               C               C
+    #4   HQ  C   C   C   H   C   C   C   HQ          
+    #5   C               C               RA
+    #6   C               C               C
+    #7   RA              C               C
+    #8   C   C   RA  C   HQ  C   RA  C   C
+</pre>
 <div><b>Round {{ currentRound }}</b></div>
 
 <div>
@@ -18,12 +18,15 @@
     <div *ngFor="let player of playerList">
     <br>
         {{ player.player_name }}
-        <div *ngIf="player.collected_wedges.length > 0">
+        <div *ngIf="player.collected_wedges.length > 0; else noWedges">
             Wedges:
             <div *ngFor="let wedge of player.collected_wedges">
-             {{ wedge }}
+             {{ wedge.name }}
             </div>
         </div>
+        <ng-template #noWedges>
+           <br> No Wedges Collected
+        </ng-template>
        <br> Color: {{ player.color }} 
        <br>
        Location: {{ player.location[0]}} , {{ player.location[1] }}
@@ -43,11 +46,23 @@ Moves Left: {{ movesLeft }}
 <div *ngIf=isRollDieState>
         <button (click)="rollDie()" class="content" role="main">Roll Die</button>
 </div>
+
 <div *ngIf=isMoveDirectionState>
     Choose a square to move to:
     <form [formGroup]="moveDirectionForm">
         <div *ngFor="let availableSquare of nextAvailableSquares">
-             <input id="availableSquare" type="radio" value=availableSquare formControlName="direction"/> <label>{{ availableSquare }}</label>
+             <input id="{{availableSquare}}" type="radio" value="{{availableSquare}}" name= "direction" formControlName="direction" required/> <label>{{ availableSquare }}</label>
         </div>
     </form>
+    <button (click)="moveDirection()" class="content" role="main">Submit</button>
+</div>
+
+<div *ngIf=isAnswerTriviaState>
+    Question: {{ currentQuestion }}
+    <form [formGroup]="answerTriviaForm">
+        <div *ngFor="let answer of possibleAnswers">
+            <input id={{answer}} type="radio" value="{{answer}}" name="trivia" formControlName="trivia" required/> <label>{{ answer }}</label>
+        </div>
+    </form>
+    <button (click)="answerTriviaQuestion()" class="content" role="main">Submit Answer</button>
 </div>

@@ -12,15 +12,21 @@ import { FormGroup, FormBuilder } from '@angular/forms'
 export class GameBoardComponent implements OnInit {
 
     moveDirectionForm: FormGroup;
+    answerTriviaForm: FormGroup;
     sessionId: string
     gameStateResponse: Observable<any>;
     isRollDieState: boolean = false;
     isMoveDirectionState: boolean = false;
+    isAnswerTriviaState: boolean = false;
     currentPlayer: Player;
     currentRound: number;
     playerList: Player[];
     nextAvailableSquares: number[][]
     movesLeft: number;
+    direction: string;
+    currentQuestion: string;
+    possibleAnswers: string[];
+    answer: string;
 
     constructor(
         private service: GameBoardService,
@@ -51,12 +57,19 @@ export class GameBoardComponent implements OnInit {
             case "ROLL_DIE": {
                 this.isRollDieState = true;
                 this.isMoveDirectionState = false;
+                this.isAnswerTriviaState = false;
                 break;
             }
             case "MOVE_DIRECTION": {
                 this.isMoveDirectionState = true;
                 this.isRollDieState = false;
                 this.createMoveDirectionForm();
+                break;
+            }
+            case "ANSWER_TRIVIA": {
+                this.isMoveDirectionState = false;
+                this.isAnswerTriviaState = true;
+                this.createAnswerTriviaForm();
                 break;
             }
         }
@@ -66,17 +79,63 @@ export class GameBoardComponent implements OnInit {
         this.gameStateResponse = this.service.getRollDie(this.sessionId);
         this.gameStateResponse.subscribe(data => {
             console.log(data);
-            this.updateCurrentState(data.state.current_state);
             this.nextAvailableSquares = data.state.available_next_squares;
-            console.log(this.nextAvailableSquares);
+            this.currentRound = data.state.current_round;
+            this.currentPlayer = data.state.current_player;
+            this.playerList = data.state.players;
             this.movesLeft = data.state.moves_left;
+            this.updateCurrentState(data.state.current_state);
         });
+    }
+
+    answerTriviaQuestion() {
+        this.answer = this.answerTriviaForm.get(
+            'trivia'
+        ).value;
+        console.log(this.answer);
+        this.gameStateResponse = this.service.answerTrivia(this.sessionId, this.answer);
+        this.gameStateResponse.subscribe(data => {
+            console.log(data);
+            this.currentRound = data.state.current_round;
+            this.currentPlayer = data.state.current_player;
+            this.playerList = data.state.players;
+            this.movesLeft = data.state.moves_left;
+            this.updateCurrentState(data.state.current_state);        
+        })
+    }
+
+    createAnswerTriviaForm(): void {
+        this.answerTriviaForm = this.formBuilder.group({
+            trivia: ''
+        })
     }
     
     createMoveDirectionForm(): void {
       this.moveDirectionForm = this.formBuilder.group({
           direction: ''
       })
+    }
+
+    moveDirection() {
+        this.direction = this.moveDirectionForm.get(
+            'direction'
+        ).value;
+        console.log(this.direction);
+        this.gameStateResponse = this.service.moveDirection(this.sessionId, this.direction);
+        this.gameStateResponse.subscribe(data => {
+            console.log(data);
+            this.nextAvailableSquares = data.state.available_next_squares;
+            this.currentRound = data.state.current_round;
+            this.currentPlayer = data.state.current_player;
+            this.playerList = data.state.players;
+            this.movesLeft = data.state.moves_left;
+            if(data.state.current_trivia_question) {
+                this.currentQuestion = data.state.current_trivia_question.question;
+                this.possibleAnswers = data.state.current_trivia_question.possible_answers;
+            }
+            console.log(this.possibleAnswers);
+            this.updateCurrentState(data.state.current_state);
+        });
     }
     
     ngOnInit() {
