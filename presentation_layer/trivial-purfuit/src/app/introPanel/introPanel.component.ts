@@ -12,7 +12,7 @@ export class IntroPanelComponent implements OnInit {
         private route: ActivatedRoute) {}
     ngOnInit() {}
     navigateToGame() {
-        this.router.navigate(['game'], { relativeTo: this.route} );
+        this.router.navigate(['game-config'], { relativeTo: this.route} );
     }
 
     navigateToConfigurationMode() {

@@ -1,11 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GameState } from '../model/gameState.model';
+import { Observable } from 'rxjs';
+import { Player } from '../model/player.model';
 
 const httpOptions = {
     headers: 
     new HttpHeaders({
         'Content-Type':  'application/json',
-        'Access-Control-Request-Method': 'GET',
+        'Access-Control-Request-Method': 'POST',
         'Access-Control-Allow-Origin': 'http://127.0.0.1:5000'
       })
   };
@@ -23,7 +26,7 @@ export class GameBoardService{
         },httpOptions)
     }
 
-    public createGame(players: object){
+    public createGame (players: object) {
         return this.http.post(url + 'create_game', {
             players: players
         },httpOptions)

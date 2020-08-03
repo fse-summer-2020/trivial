@@ -1,0 +1,50 @@
+<div>
+    #    0   1   2   3   4   5   6   7   8<br>   
+    #0   C   C   RA  C   HQ  C   RA  C   C<br>
+    #1   RA              C               C<br>   
+    #2   C               C               RA<br>
+    #3   C               C               C<br>
+    #4   HQ  C   C   C   H   C   C   C   HQ<br>           
+    #5   C               C               RA<br>
+    #6   C               C               C<br>
+    #7   RA              C               C<br>
+    #8   C   C   RA  C   HQ  C   RA  C   C<br><br>
+</div>
+<div><b>Round {{ currentRound }}</b></div>
+
+<div>
+    <br>
+    <b>Players:</b>
+    <div *ngFor="let player of playerList">
+    <br>
+        {{ player.player_name }}
+        <div *ngIf="player.collected_wedges.length > 0">
+            Wedges:
+            <div *ngFor="let wedge of player.collected_wedges">
+             {{ wedge }}
+            </div>
+        </div>
+       <br> Color: {{ player.color }} 
+       <br>
+       Location: {{ player.location[0]}} , {{ player.location[1] }}
+    </div>
+</div>
+
+<div *ngIf="currentPlayer"><br>
+<b>
+Current Player: 
+</b>
+{{ currentPlayer.player_name }}
+</div>
+
+<div *ngIf=isRollDieState>
+        <button (click)="rollDie()" class="content" role="main">Roll Die</button>
+</div>
+<div *ngIf=isMoveDirectionState>
+    Choose a square to move to:
+    <form [formGroup]="moveDirectionForm">
+        <div *ngFor="let availableSquare of nextAvailableSquares">
+             <input type="radio" value=availableSquare formControlName="direction"/> <label>{{ availableSquare[0] }} , {{ availableSquare[1] }}</label>
+        </div>
+    </form>
+</div>

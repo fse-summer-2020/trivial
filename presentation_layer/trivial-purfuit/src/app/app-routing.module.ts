@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GameBoardConfigurationComponent } from './game/gameBoardConfig/gameBoardConfiguration.component';
 import { IntroPanelComponent } from './introPanel/introPanel.component';
+import { GameBoardConfigurationComponent } from './game/gameBoardConfig/gameBoardConfiguration.component';
+import { GameBoardComponent } from './game/gameBoard/gameBoard.component';
 
 
 const routes: Routes = [
   { 
-    path: 'game', 
+    path: 'game-config', 
     component: GameBoardConfigurationComponent 
+  },
+  {
+    path: 'game',
+    component: GameBoardComponent
   },
   {
     path: '',
