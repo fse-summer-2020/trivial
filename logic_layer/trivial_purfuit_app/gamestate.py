@@ -45,7 +45,7 @@ class GameState:
             if (self.current_round == 1):
                 for player in self.player_order:
                     if (player.check_winning_condition() == True):
-                        if (idx == self.player_order.count - 1):
+                        if (idx == len(self.player_order) - 1):
                             self.current_state = State.GAME_END
                             return
             else:
@@ -68,7 +68,7 @@ class GameState:
                 else:
                     self.current_player.set_winning_condition(True)
                     if (self.current_round == 1):
-                        if (idx == self.player_order.count - 1):
+                        if (idx == len(self.player_order)- 1):
                             self.current_state = State.GAME_END
                             return
                         else:

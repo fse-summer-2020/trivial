@@ -15,7 +15,7 @@ class Token:
             return False
 
     def has_all_wedges(self):
-        return self.collected_wedges.count == 4
+        return len(self.collected_wedges) == 4
 
     def set_winning_condition(self, condition):
         self.winning_condition = condition
