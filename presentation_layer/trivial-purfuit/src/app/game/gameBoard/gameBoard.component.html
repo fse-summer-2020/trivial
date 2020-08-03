@@ -66,3 +66,13 @@ Moves Left: {{ movesLeft }}
     </form>
     <button (click)="answerTriviaQuestion()" class="content" role="main">Submit Answer</button>
 </div>
+
+<div *ngIf=isSetCategoryState>
+    Select a Category for next Question:
+    <form [formGroup]="setCategoryForm">
+        <div *ngFor="let category of available_categories">
+            <input id={{category._id.$oid}} type="radio" value="{{category._id.$oid}}" name="category" formControlName="category" required/> <label>{{ category.name }}</label>
+        </div>
+    </form>
+    <button (click)="setCategory()" class="content" role="main">Submit Category</button>
+</div>

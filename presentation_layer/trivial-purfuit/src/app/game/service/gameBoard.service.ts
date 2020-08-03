@@ -4,7 +4,7 @@ import { GameState } from '../model/gameState.model';
 import { Observable } from 'rxjs';
 import { Player } from '../model/player.model';
 
-const httpOptions = {
+const httpOptionsPost = {
     headers: 
     new HttpHeaders({
         'Content-Type':  'application/json',
@@ -12,7 +12,16 @@ const httpOptions = {
         'Access-Control-Allow-Origin': 'http://127.0.0.1:5000'
       })
   };
-const url = "http://localhost:5000/logic/"
+
+const httpOptionsGet = {
+    headers: 
+    new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Request-Method': 'GET',
+        'Access-Control-Allow-Origin': 'http://127.0.0.1:5000'
+      })
+  };
+const url = "http://localhost:5000/"
 
 @Injectable()
 export class GameBoardService{
@@ -20,35 +29,39 @@ export class GameBoardService{
     constructor(public http:HttpClient){}
 
     public moveDirection(session_id: string, direction: string){
-        return this.http.post(url + 'move_direction', {
+        return this.http.post(url + 'logic/move_direction', {
             session_id: session_id,
             direction: direction
-        },httpOptions)
+        },httpOptionsPost)
     }
 
     public createGame (players: object) {
-        return this.http.post(url + 'create_game', {
+        return this.http.post(url + 'logic/create_game', {
             players: players
-        },httpOptions)
+        },httpOptionsPost)
     }
 
-    public setCategory(session_id: string, category: string){
-        return this.http.post(url + 'set_category', {
+    public setCategory(session_id: string, category_id: string){
+        return this.http.post(url + 'logic/set_category', {
             session_id: session_id,
-            category: category
-        },httpOptions)
+            category_id: category_id
+        },httpOptionsPost)
     }
 
     public answerTrivia(session_id: string, answer: string){
-        return this.http.post(url + 'answer_trivia', {
+        return this.http.post(url + 'logic/answer_trivia', {
             session_id: session_id,
             answer: answer
-        },httpOptions)
+        },httpOptionsPost)
     }
 
     public getRollDie(session_id: string){
-        return this.http.post(url + 'roll_die',{
+        return this.http.post(url + 'logic/roll_die',{
             session_id: session_id
-        },httpOptions)
+        },httpOptionsPost)
+    }
+
+    public getAllCategory(){
+        return this.http.get(url + 'category/all' ,httpOptionsGet)
     }
 }

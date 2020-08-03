@@ -13,11 +13,13 @@ export class GameBoardComponent implements OnInit {
 
     moveDirectionForm: FormGroup;
     answerTriviaForm: FormGroup;
+    setCategoryForm: FormGroup;
     sessionId: string
     gameStateResponse: Observable<any>;
     isRollDieState: boolean = false;
     isMoveDirectionState: boolean = false;
     isAnswerTriviaState: boolean = false;
+    isSetCategoryState: boolean = false;
     currentPlayer: Player;
     currentRound: number;
     playerList: Player[];
@@ -27,6 +29,8 @@ export class GameBoardComponent implements OnInit {
     currentQuestion: string;
     possibleAnswers: string[];
     answer: string;
+    category: string;
+    available_categories: any;
 
     constructor(
         private service: GameBoardService,
@@ -68,8 +72,21 @@ export class GameBoardComponent implements OnInit {
             }
             case "ANSWER_TRIVIA": {
                 this.isMoveDirectionState = false;
+                this.isSetCategoryState = false;
                 this.isAnswerTriviaState = true;
                 this.createAnswerTriviaForm();
+                break;
+            }
+            case "POLL_CATEGORY_ALL": {
+                this.isMoveDirectionState = false;
+                this.isSetCategoryState = true;
+                this.createSetCategoryForm();
+                break;
+            }
+            case "POLL_CATEGORY_CURRENT": {
+                this.isMoveDirectionState = false;
+                this.isSetCategoryState = true;
+                this.createSetCategoryForm();
                 break;
             }
         }
@@ -104,6 +121,21 @@ export class GameBoardComponent implements OnInit {
         })
     }
 
+    setCategory() {
+        this.category = this.setCategoryForm.get(
+            'category'
+        ).value;
+        this.gameStateResponse = this.service.setCategory(this.sessionId, this.category);
+        this.gameStateResponse.subscribe(data => {
+            console.log(data);
+            this.currentRound = data.state.current_round;
+            this.currentPlayer = data.state.current_player;
+            this.playerList = data.state.players;
+            this.movesLeft = data.state.moves_left;
+            this.updateCurrentState(data.state.current_state);        
+        })
+    }
+
     createAnswerTriviaForm(): void {
         this.answerTriviaForm = this.formBuilder.group({
             trivia: ''
@@ -114,6 +146,12 @@ export class GameBoardComponent implements OnInit {
       this.moveDirectionForm = this.formBuilder.group({
           direction: ''
       })
+    }
+
+    createSetCategoryForm(): void {
+        this.setCategoryForm = this.formBuilder.group({
+            category: ''
+        })
     }
 
     moveDirection() {
@@ -139,6 +177,9 @@ export class GameBoardComponent implements OnInit {
     }
     
     ngOnInit() {
+        this.service.getAllCategory().toPromise().then((data: any)=>{
+            this.available_categories = data.categories
+        })
         this.gameStateResponse = this.service.createGame(this.players);
         this.gameStateResponse.subscribe(data => {
             this.sessionId = data.session_id
