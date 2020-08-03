@@ -9,10 +9,10 @@ from .models.category import Category
 
 class GameBoard:
     ROWS = COLS = 9
-    board = None
-    categories = []
 
     def __init__(self): #constructor
+        self.categories = []
+        self.board = None
         self.get_and_create_categories()
         self.__create_game_board()
     
