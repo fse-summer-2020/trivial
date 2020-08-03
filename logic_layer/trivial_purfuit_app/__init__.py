@@ -12,6 +12,8 @@ def create_app():
     app.register_blueprint(logic)
     from trivial_purfuit_app.views.dice import roll
     app.register_blueprint(roll)
+    from trivial_purfuit_app.views.category import category
+    app.register_blueprint(category)
     
     return app
 

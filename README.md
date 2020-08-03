@@ -44,3 +44,13 @@
  
  ### Test an endpoint
  - `http://localhost:5001/question`
+
+#presentation layer
+
+### How to run app
+ - Navigate to trivial/presentation_layer/trivial-purfuit/src/app
+ - Install node/npm
+ - run `npm install`
+ - run `npm run start`
+ - `http://localhost:4200/`
+
