@@ -1,11 +1,11 @@
 [{
   "_id": {
-    "$oid": "vmkWvwgtzDEGLnBwzNEfJgeF"
+    "$oid": "Tq5aMIL6LYWVfR7Fgd6Z2YXu"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "WhenwastheDeclarationofIndependencesigned?",
+  "question": "When was the Declaration of Independence signed?",
   "possible_answers": [
     "1600s",
     "1700s",
@@ -15,12 +15,12 @@
   "correct_answer": "1700s"
 },{
   "_id": {
-    "$oid": "ZNrdRsZpEqehyBtXIBC1iVHN"
+    "$oid": "kLn4Vf5TIVzu7Hhce9orXXeG"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "HowmanypeoplesignedtheDeclarationofIndependence?",
+  "question": "How many people signed the Declaration of Independence?",
   "possible_answers": [
     "13",
     "26",
@@ -30,117 +30,117 @@
   "correct_answer": "56"
 },{
   "_id": {
-    "$oid": "97TCoeQtaLyKOIGwTdTQwe8a"
+    "$oid": "6pRqYBn2b8bcsYG5E9eqxHIk"
   },
   "category_id": {
     "$oid": "5f0b7f5190677a74898769a6"
   },
-  "question": "WhenistheIndependenceDayholidaycelebrated?",
+  "question": "When is the Independence Day holiday celebrated?",
   "possible_answers": [
-    "July4,1776",
-    "August23,1777",
-    "July8,1776",
-    "August2,1776"
+    "July 4,1776",
+    "August 23,1777",
+    "July 8,1776",
+    "August 2,1776"
   ],
-  "correct_answer": "July4th"
+  "correct_answer": "July 4th"
 },{
   "_id": {
-    "$oid": "sfMMKAi6A1tZhyWSNR8f4PjF"
+    "$oid": "iuLM59Uj5DlUsmbvsYiZBRvk"
   },
   "category_id": {
     "$oid": "5f0b7f5190677a74898769a6"
   },
-  "question": "WhendidthecelebrationoftheIndependenceDayholidaybegin?",
+  "question": "When did the celebration of the Independence Day holiday begin?",
   "possible_answers": [
-    "July4,1776",
-    "August23,1777",
-    "July8,1776",
-    "August2,1776"
+    "July 4,1776",
+    "August 23,1777",
+    "July 8,1776",
+    "August 2,1776"
   ],
-  "correct_answer": "July8th"
+  "correct_answer": "July 8th"
 },{
   "_id": {
-    "$oid": "IlZHjlLt6AUJXsZADjm2bYdW"
+    "$oid": "ROmE9pQ4g2fFBlMp6PWsOXgW"
   },
   "category_id": {
     "$oid": "5f0b7f4290677a74898769a5"
   },
-  "question": "WhatactionbyBritianwasamaincongtributortothedraftingoftheDeclarationofIndependence?",
+  "question": "What action by Britian was a main congtributor to the drafting of the Declaration of Independence?",
   "possible_answers": [
-    "GeorgeWashington",
-    "JohnHancock",
-    "JohnAdams",
-    "ProfessorSchappelle"
+    "George Washington",
+    "John Hancock",
+    "John Adams",
+    "Professor Schappelle"
   ],
-  "correct_answer": "taxationwithoutrepresentation"
+  "correct_answer": "taxation without representation"
 },{
   "_id": {
-    "$oid": "68Y2b6b7YYpaaQ7w6SoyjyRn"
+    "$oid": "2ITEW023sTHyehzyPvmgxQAX"
   },
   "category_id": {
     "$oid": "5f0b7f3790677a74898769a4"
   },
-  "question": "WhowasthefirstpersontosigntheDeclarationofIndependence?",
+  "question": "Who was the first person to sign the Declaration of Independence?",
   "possible_answers": [
-    "GeorgeWashington",
-    "JohnHancock",
-    "JohnAdams",
-    "ProfessorGaronzik"
+    "George Washington",
+    "John Hancock",
+    "John Adams",
+    "Professor Garonzik"
   ],
-  "correct_answer": "JohnHancock"
+  "correct_answer": "John Hancock"
 },{
   "_id": {
-    "$oid": "TJbAG7DABvjNOtygXiroUeuN"
+    "$oid": "oPzXRedFObJJsahQrxpUv9n2"
   },
   "category_id": {
     "$oid": "5f0b7f3790677a74898769a4"
   },
-  "question": "Who'ssignatureisthelargestontheDeclarationofIndependence?",
+  "question": "Who's signature is the largest on the Declaration of Independence?",
   "possible_answers": [
-    "GeorgeWashington",
-    "JohnHancock",
-    "JohnAdams",
-    "ProfessorDemasco"
+    "George Washington",
+    "John Hancock",
+    "John Adams",
+    "Professor Demasco"
   ],
-  "correct_answer": "JohnHancock"
+  "correct_answer": "John Hancock"
 },{
   "_id": {
-    "$oid": "wklnfPf0IKC6IyCQ6B5gS1HS"
+    "$oid": "q2PYzpkk9ANoYgCmJs39p9BF"
   },
   "category_id": {
     "$oid": "5f0b7f5190677a74898769a6"
   },
-  "question": "WhatcityistheDeclarationofIndependencestored?",
+  "question": "What city is the Declaration of Independence stored?",
   "possible_answers": [
     "Philadelphia",
-    "NewYorkCity",
-    "WashingtonDC",
+    "New York City",
+    "Washington DC",
     "Pittsburg"
   ],
-  "correct_answer": "WashingtonDC"
+  "correct_answer": "Washington DC"
 },{
   "_id": {
-    "$oid": "1MeTyDPGoobi10k5huFDYofe"
+    "$oid": "ZJxuqcAPHXJ0dco2KaYvfb8S"
   },
   "category_id": {
     "$oid": "5f0b7f5190677a74898769a6"
   },
-  "question": "WhereistheDeclarationofIndependencestored?",
+  "question": "Where is the Declaration of Independence stored?",
   "possible_answers": [
-    "TheLouvre",
-    "WhiteHouseArchives",
-    "LibertyPlaza",
-    "NationalArchivesMuseum"
+    "The Louvre",
+    "White House Archives",
+    "Liberty Plaza",
+    "National Archives Museum"
   ],
-  "correct_answer": "NationalArchivesMuseum"
+  "correct_answer": "National Archives Museum"
 },{
   "_id": {
-    "$oid": "K2UGOkE8aTaogWSvhw6ziXRc"
+    "$oid": "Zxqg3HDa3GlIqKgGTZooJcuF"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "Howmanycolonies(outof13)votedinfavoroftheDeclarationofIndependence?",
+  "question": "How many colonies (out of 13) voted in favor of the Declaration of Independence?",
   "possible_answers": [
     "10",
     "11",
@@ -150,62 +150,62 @@
   "correct_answer": "12"
 },{
   "_id": {
-    "$oid": "MSHLeEoJpNsrk9FeJhvE2y6C"
+    "$oid": "TZkVEkJrVl5UbqqTjqaR22IN"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "WhatdatewastheDeclarationofIndependencesigned?",
+  "question": "What date was the Declaration of Independence signed?",
   "possible_answers": [
-    "July4,1776",
-    "August23,1777",
-    "July8,1776",
-    "August2,1776"
+    "July 4,1776",
+    "August 23,1777",
+    "July 8,1776",
+    "August 2,1776"
   ],
-  "correct_answer": "August2,1776"
+  "correct_answer": "August 2,1776"
 },{
   "_id": {
-    "$oid": "XAJRDB7qyIPJZ7OAjInW1jI9"
+    "$oid": "H97Zsj9wli3TXZHm8RJfSs49"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "WhenwasthefinaldraftoftheDeclarationofIndependenceapproved?",
+  "question": "When was the final draft of the Declaration of Independence approved?",
   "possible_answers": [
-    "July8,1776",
-    "August23,1777",
-    "July4,1776",
-    "August2,1776"
+    "July 8,1776",
+    "August 23,1777",
+    "July 4,1776",
+    "August 2,1776"
   ],
-  "correct_answer": "July4,1776"
+  "correct_answer": "July 4,1776"
 },{
   "_id": {
-    "$oid": "ZPfM0o6nXjH0DI62yQ0psG4I"
+    "$oid": "UVmQKiDqlrErFOW8rxiCwvLv"
   },
   "category_id": {
     "$oid": "5f0b7f4290677a74898769a5"
   },
-  "question": "WhenwasthefirstpublicreadingoftheDeclarationofIndependence?",
+  "question": "When was the first public reading of the Declaration of Independence?",
   "possible_answers": [
-    "July8,1776",
-    "August23,1777",
-    "July4,1776",
-    "August2,1776"
+    "July 8,1776",
+    "August 23,1777",
+    "July 4,1776",
+    "August 2,1776"
   ],
-  "correct_answer": "July8,1776"
+  "correct_answer": "July 8,1776"
 },{
   "_id": {
-    "$oid": "ExbXKIPRkLn2G4vniPDDTJMU"
+    "$oid": "Idvifwpd3HHUmkqA5jxhtBtj"
   },
   "category_id": {
     "$oid": "5f0b7f2a90677a74898769a3"
   },
-  "question": "WhichstateabstainedfromvotingfortheDeclarationofIndependence?",
+  "question": "Which state abstained from voting for the Declaration of Independence?",
   "possible_answers": [
-    "NewJersey",
+    "New Jersey",
     "Ohio",
     "Virginia",
-    "NewYork"
+    "New York"
   ],
-  "correct_answer": "NewYork"
+  "correct_answer": "New York"
 },]

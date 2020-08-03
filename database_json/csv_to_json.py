@@ -7,12 +7,12 @@ def make_output_json(csvFilePath):
     f.close()
     print("File successfully opened: "+csvFilePath)
     print("Stripping white spaces around commas")
-    lines = [line.replace(', ', '') for line in lines]
-    lines = [line.replace(' ,', '') for line in lines]
-    lines = [line.replace(',  ', '') for line in lines]
-    lines = [line.replace('  ,', '') for line in lines]
-    lines = [line.replace(' , ', '') for line in lines]
-    lines = [line.replace('  ,  ', '') for line in lines]
+    lines = [line.replace(', ', ',') for line in lines]
+    lines = [line.replace(' ,', ',') for line in lines]
+    lines = [line.replace(',  ', ',') for line in lines]
+    lines = [line.replace('  ,', ',') for line in lines]
+    lines = [line.replace(' , ', ',') for line in lines]
+    lines = [line.replace('  ,  ', ',') for line in lines]
     with open(csvFilePath, 'w') as f:
         f.writelines(lines)
     f.close()

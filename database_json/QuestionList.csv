@@ -1,15 +1,15 @@
 _id,category_id,question,possible_answer1,possible_answer2,possible_answer3,possible_answer4,correct_answer
-,5f0b7f2a90677a74898769a3,WhenwastheDeclarationofIndependencesigned?,1600s,1700s,1800s,1900s,1700s
-,5f0b7f2a90677a74898769a3,HowmanypeoplesignedtheDeclarationofIndependence?,13,26,52,56,56
-,5f0b7f5190677a74898769a6,WhenistheIndependenceDayholidaycelebrated?,"July4,1776","August23,1777","July8,1776","August2,1776",July4th
-,5f0b7f5190677a74898769a6,WhendidthecelebrationoftheIndependenceDayholidaybegin?,"July4,1776","August23,1777","July8,1776","August2,1776",July8th
-,5f0b7f4290677a74898769a5,WhatactionbyBritianwasamaincongtributortothedraftingoftheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorSchappelle,taxationwithoutrepresentation
-,5f0b7f3790677a74898769a4,WhowasthefirstpersontosigntheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorGaronzik,JohnHancock
-,5f0b7f3790677a74898769a4,Who'ssignatureisthelargestontheDeclarationofIndependence?,GeorgeWashington,JohnHancock,JohnAdams,ProfessorDemasco,JohnHancock
-,5f0b7f5190677a74898769a6,WhatcityistheDeclarationofIndependencestored?,Philadelphia,NewYorkCity,WashingtonDC,Pittsburg,WashingtonDC
-,5f0b7f5190677a74898769a6,WhereistheDeclarationofIndependencestored?,TheLouvre,WhiteHouseArchives,LibertyPlaza,NationalArchivesMuseum,NationalArchivesMuseum
-,5f0b7f2a90677a74898769a3,Howmanycolonies(outof13)votedinfavoroftheDeclarationofIndependence?,10,11,12,13,12
-,5f0b7f2a90677a74898769a3,WhatdatewastheDeclarationofIndependencesigned?,"July4,1776","August23,1777","July8,1776","August2,1776","August2,1776"
-,5f0b7f2a90677a74898769a3,WhenwasthefinaldraftoftheDeclarationofIndependenceapproved?,"July8,1776","August23,1777","July4,1776","August2,1776","July4,1776"
-,5f0b7f4290677a74898769a5,WhenwasthefirstpublicreadingoftheDeclarationofIndependence?,"July8,1776","August23,1777","July4,1776","August2,1776","July8,1776"
-,5f0b7f2a90677a74898769a3,WhichstateabstainedfromvotingfortheDeclarationofIndependence?,NewJersey,Ohio,Virginia,NewYork,NewYork
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,When was the Declaration of Independence signed?,1600s,1700s,1800s,1900s,1700s
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,How many people signed the Declaration of Independence?,13,26,52,56,56
+5f275afb34d7adc3684dc,5f0b7f5190677a74898769a6,When is the Independence Day holiday celebrated?,"July 4,1776","August 23,1777","July 8,1776","August 2,1776",July 4th
+5f275afb34d7adc3684dc,5f0b7f5190677a74898769a6,When did the celebration of the Independence Day holiday begin?,"July 4,1776","August 23,1777","July 8,1776","August 2,1776",July 8th
+5f275afb34d7adc3684dc,5f0b7f4290677a74898769a5,What action by Britian was a main congtributor to the drafting of the Declaration of Independence?,George Washington,John Hancock,John Adams,Professor Schappelle,taxation without representation
+5f275afb34d7adc3684dc,5f0b7f3790677a74898769a4,Who was the first person to sign the Declaration of Independence?,George Washington,John Hancock,John Adams,Professor Garonzik,John Hancock
+5f275afb34d7adc3684dc,5f0b7f3790677a74898769a4,Who's signature is the largest on the Declaration of Independence?,George Washington,John Hancock,John Adams,Professor Demasco,John Hancock
+5f275afb34d7adc3684dc,5f0b7f5190677a74898769a6,What city is the Declaration of Independence stored?,Philadelphia,New York City,Washington DC,Pittsburg,Washington DC
+5f275afb34d7adc3684dc,5f0b7f5190677a74898769a6,Where is the Declaration of Independence stored?,The Louvre,White House Archives,Liberty Plaza,National Archives Museum,National Archives Museum
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,How many colonies (out of 13) voted in favor of the Declaration of Independence?,10,11,12,13,12
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,What date was the Declaration of Independence signed?,"July 4,1776","August 23,1777","July 8,1776","August 2,1776","August 2,1776"
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,When was the final draft of the Declaration of Independence approved?,"July 8,1776","August 23,1777","July 4,1776","August 2,1776","July 4,1776"
+5f275afb34d7adc3684dc,5f0b7f4290677a74898769a5,When was the first public reading of the Declaration of Independence?,"July 8,1776","August 23,1777","July 4,1776","August 2,1776","July 8,1776"
+5f275afb34d7adc3684dc,5f0b7f2a90677a74898769a3,Which state abstained from voting for the Declaration of Independence?,New Jersey,Ohio,Virginia,New York,New York
