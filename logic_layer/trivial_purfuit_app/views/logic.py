@@ -1,6 +1,7 @@
+import json 
+
 from flask import Blueprint, jsonify, request
 from trivial_purfuit_app.game_instance_manager import GameInstanceManager
-import json 
 from trivial_purfuit_app.constants import State, Directions
 
 logic = Blueprint('logic', __name__, url_prefix='/logic')
@@ -21,8 +22,8 @@ def answer_trivia():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.ANSWER_TRIVIA:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state = game_state.answer_trivia(answer)
-    return jsonify({"session_id":session_id, "state":state}), 200
+    game_state.answer_trivia(answer)
+    return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200
 
 @logic.route('/roll_die', methods=['POST'])
 def roll_die():
@@ -33,8 +34,8 @@ def roll_die():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.ROLL_DIE:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state = game_state.get_die_roll()
-    return jsonify({"session_id":session_id, "state":state}), 200
+    game_state.get_die_roll()
+    return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200
 
 @logic.route('/move_direction', methods=['POST'])
 def move_direction():
@@ -46,8 +47,8 @@ def move_direction():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state is not State.MOVE_DIRECTION:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state = game_state.move_token(direction)
-    return jsonify({"session_id":session_id, "state":state}), 200
+    game_state.move_token(direction)
+    return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200
 
 @logic.route('/set_category', methods=['POST'])
 def set_category():
@@ -59,5 +60,5 @@ def set_category():
         return jsonify({"error":"Game session not found"}), 404
     if game_state.current_state not in [State.POLL_CATEGORY_ALL, State.POLL_CATEGORY_CURRENT]:
         return jsonify({"error":"Invalid request for current state"}), 409
-    state = game_state.set_category(category_id)
-    return jsonify({"session_id":session_id, "state":state}), 200
+    game_state.set_category(category_id)
+    return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200

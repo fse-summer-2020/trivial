@@ -47,56 +47,46 @@ class GameState:
                     if (player.check_winning_condition() == True):
                         if (idx == self.player_order.count - 1):
                             self.current_state = State.GAME_END
-                            #return self.current_state, None
-                            return self.get_class_dict()
+                            return
             else:
-                #return self.current_state, self.current_player
-                return self.get_class_dict()
+                return
         else:
             cur_square = self.game_board.get_current_square(self.current_player)
             if isinstance(cur_square, CategorySquare):
                 self.current_state = State.ROLL_DIE
-                #return self.current_state, self.current_player
-                return self.get_class_dict()
+                return
 
             if isinstance(cur_square, HeadquarterSquare):
-                 if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).name) == False):
-                     self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).name)
+                 if (self.current_player.has_category_wedge(self.game_board.get_current_square(self.current_player).category) == False):
+                     self.current_player.add_wedge(self.game_board.get_current_square(self.current_player).category)
                      self.current_state = State.ROLL_DIE
-                     #return self.current_state, self.current_player
-                     return self.get_class_dict()
+                     return
             else:
                 if (self.current_player.has_all_wedges() == False):
                      self.current_state = State.ROLL_DIE
-                     #return self.current_state, self.current_player
-                     return self.get_class_dict()
+                     return
                 else:
                     self.current_player.set_winning_condition(True)
                     if (self.current_round == 1):
                         if (idx == self.player_order.count - 1):
                             self.current_state = State.GAME_END
-                            #return self.current_state, None
-                            return self.get_class_dict()
+                            return
                         else:
                             self.go_to_next_player()
                             self.current_state = State.ROLL_DIE
-                            #return self.current_state, self.current_player
-                            return self.get_class_dict()
+                            return
                     else:
                         self.current_state = State.GAME_END
-                        #return self.current_state, None
-                        return self.get_class_dict()
-
-        return "lol"
+                        return
+                        
 
     def get_die_roll(self):
         if (self.current_state == State.ROLL_DIE):
             diedata = requests.get(self.url).json()
             dieside = diedata["dice"]
-            self.moves_left = dieside[0].get('value')
+            self.moves_left = 4
             self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
             self.current_state = State.MOVE_DIRECTION
-            return self.get_class_dict()
         else:
              raise Exception("Gamestate has not been set to ROLL_DIE, but get_die_roll has been called")   
 
@@ -104,7 +94,6 @@ class GameState:
         if (self.current_state == State.POLL_CATEGORY_ALL or self.current_state == State.POLL_CATEGORY_CURRENT):
             self.current_trivia_question = self.question_factory_proxy.get_question(category)
             self.current_state = State.ANSWER_TRIVIA
-            return self.get_class_dict() 
         else:
             raise Exception("Players should not be choosing which category to pull the question from")
 
@@ -117,6 +106,7 @@ class GameState:
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
+        self.available_next_squares = None
         while (self.moves_left > 0):
             direction = self.game_board.move_token_location(self.current_player, direction)
             self.moves_left = self.moves_left - 1
@@ -125,23 +115,19 @@ class GameState:
             if self.moves_left > 0 and isinstance(cur_square, (HeadquarterSquare, HubSquare)): #player is on HQ or HUB space
                 self.available_next_squares = self.game_board.determine_possible_moves(self.current_player)
                 self.current_state = State.MOVE_DIRECTION
-                return self.get_class_dict()
+                return
                 
         if isinstance(cur_square, RollAgainSquare): #player is on roll again square
             self.current_state = State.ROLL_DIE
-            return self.get_class_dict()
         else:
             if isinstance(cur_square, HubSquare): #player is on Hub square
                 if(self.current_player.has_all_wedges()):
                     self.current_state = State.POLL_CATEGORY_ALL # Poll the players for category choice
-                    return self.get_class_dict()
                 else:
                     self.current_state = State.POLL_CATEGORY_CURRENT # Ask current player for category choice
-                    return self.get_class_dict()
             else:
                 self.current_trivia_question = self.question_factory_proxy.get_question(self.game_board.get_current_square(self.current_player).category)
                 self.current_state = State.ANSWER_TRIVIA
-                return self.get_class_dict()
 
     def get_class_dict(self):
         class_dict = dict()
@@ -149,7 +135,7 @@ class GameState:
         class_dict["current_state"] = self.current_state.value
         class_dict["current_player"] = self.current_player.get_dict()
         class_dict["current_trivia_question"] = self.current_trivia_question.get_dict() if self.current_trivia_question is not None else None
-        class_dict["available_next_squares"] = self.available_next_squares
+        class_dict["available_next_squares"] = [next.value for next in self.available_next_squares] if self.available_next_squares is not None else None
         class_dict["current_round"] = self.current_round
         class_dict["moves_left"] = self.moves_left
         return class_dict
