@@ -101,10 +101,6 @@ class GameBoard:
         last_yPos = token.last_location[1]
 
         possible_moves = []
-        print(xPos)
-        print(yPos)
-        print(last_xPos)
-        print(last_yPos)
         #check down
         if xPos < 8 and (self.board[xPos+1][yPos] is not None) and (xPos+1 != last_xPos):
             possible_moves.append(Directions.DOWN)

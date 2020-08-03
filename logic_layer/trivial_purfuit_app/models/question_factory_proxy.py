@@ -12,7 +12,5 @@ class QuestionFactoryProxy():
             self.factories[cateogry_id] = QuestionFactory(cateogry_id)
 
     def get_question(self, category):
-        print(category)
-        print(type(category))
         return self.factories[category.category_id].get_random_question()
         
