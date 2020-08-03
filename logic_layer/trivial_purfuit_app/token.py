@@ -23,6 +23,9 @@ class Token:
     def check_winning_condition(self):
         return self.winning_condition
 
+    def reset_last_location(self):
+        self.last_location = self.location
+
     def add_wedge(self, category):
         if (category != None and not self.has_category_wedge(category)):
             self.collected_wedges.append(category)

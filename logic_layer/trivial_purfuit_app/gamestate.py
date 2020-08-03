@@ -117,6 +117,8 @@ class GameState:
                 self.current_state = State.MOVE_DIRECTION
                 return
                 
+        self.current_player.reset_last_location()
+
         if isinstance(cur_square, RollAgainSquare): #player is on roll again square
             self.current_state = State.ROLL_DIE
         else:
