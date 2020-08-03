@@ -63,5 +63,5 @@ def set_category():
     category = next((category for category in game_state.game_board.categories if category.category_id == category_id), None)
     if category is None:
         return jsonify({"error":"Invalid category_id"}), 409
-    game_state.set_category(category_id)
+    game_state.set_category(category)
     return jsonify({"session_id":session_id, "state":game_state.get_class_dict()}), 200
