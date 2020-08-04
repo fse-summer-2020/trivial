@@ -13,7 +13,7 @@ class GameBoard_Test(unittest.TestCase):
         board = GameBoard()
         token = Token("john", "doe")
         token.location = (4,4)
-        self.assertEqual(type(HubSquare()).__name__, board.get_current_square_type(token))
+        self.assertEqual(type(HubSquare()).__name__, board.get_current_square(token).__name__)
 
     def test_determine_possible_moves_center_last_pos_down(self):
         board = GameBoard()
