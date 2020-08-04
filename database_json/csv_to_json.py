@@ -38,6 +38,17 @@ def make_output_json(csvFilePath):
             count = count + 1
             random_values = get_random_alphanumeric_string(24)
 
+            if (''.join(str(rows['category_id']).lower().split()) == "declarationofindependenceandthecontinentalcongress" or ''.join(str(rows['category_id']).lower().split()) == "doi&cc"):
+                rows['category_id'] = "5f0b7f2a90677a74898769a3"
+            elif (''.join(rows['category_id'].lower().split()) == "people"):
+                rows['category_id'] = "5f0b7f2a90677a74898769a4"
+            elif (''.join(rows['category_id'].lower().split()) == "events"):
+                rows['category_id'] = "5f0b7f2a90677a74898769a5"
+            elif (''.join(rows['category_id'].lower().split()) == "independencedayholiday" or ''.join(rows['category_id'].lower().split()) == "holiday"):
+                rows['category_id'] = "5f0b7f2a90677a74898769a6"
+            else:
+                raise Exception("Category labeled as: '"+rows['category_id']+"' in the CSV sheet does not exist in the Database, please review CSV category labels")
+
             #ID START
             f.write('{\n')
             f.write('  "_id": {\n')
@@ -63,7 +74,7 @@ def make_output_json(csvFilePath):
             print("JSON entry "+str(count-1000)+" created succesfully.")
     f.write(']')
     f.close()
-    print("JSON file created successfully!!")
+    print("~~~ JSON file created successfully!! ~~~")
 
 #borrowed from https://pynative.com/python-generate-random-string/
 def get_random_alphanumeric_string(length):
