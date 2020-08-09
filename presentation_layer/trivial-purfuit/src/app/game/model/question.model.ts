@@ -1,6 +1,6 @@
 export interface QuestionApiResponse {
-    id: string,
-    category_id: string,
+    _id: any,
+    category_id: any,
     correct_answer: string,
     question: string
     possible_answers: string[]

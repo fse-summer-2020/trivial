@@ -1,0 +1,28 @@
+<h1 mat-dialog-title *ngIf="question._id.$oid == ''">Add Question</h1>
+<h1 mat-dialog-title *ngIf="question._id.$oid != ''">Edit Question</h1>
+
+<form>
+    <h3>Question: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Question: </mat-label>
+        <input matInput [(ngModel)]='question.question' [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <h3>Possible Answers: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;" *ngFor="let possible_answer of question.possible_answers; let i = index;trackBy:trackByIdx" >
+        <mat-label>Possible Answer {{i+1}}: </mat-label>
+        <input matInput [(ngModel)]="question.possible_answers[i]" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <h3>Correct Answer: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Correct Answer: </mat-label>
+        <input matInput [(ngModel)]='question.correct_answer' [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  <button mat-button class="btn btn-primary" [mat-dialog-close]="question" cdkFocusInitial>Save</button>
+</div>
