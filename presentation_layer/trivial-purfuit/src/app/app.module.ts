@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { GameBoardService } from './game/service/gameBoard.service';
 import { GameBoardComponent } from './game/gameBoard/gameBoard.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameBoardComponent
+    GameBoardComponent,
+    ConfigurationPageComponent
   ],
   imports: [
     BrowserModule,
