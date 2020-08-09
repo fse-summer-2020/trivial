@@ -2,7 +2,7 @@
     <h3>
         <b>Question Editor:</b>
     </h3>
-    <mat-accordion>
+    <mat-accordion style="margin-bottom: 10px;">
         <mat-expansion-panel *ngFor="let category of categories">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -73,8 +73,12 @@
     
         </mat-expansion-panel>
         </mat-accordion>
-    <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
-    <button class="btn btn-primary" (click)="onSave()">Save Changes</button>
+
+        <div style="margin-top: 10px;">
+            <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+            <button class="btn btn-primary" (click)="onSave()">Save Changes</button>
+        </div>
+    
     
     
 </div>
