@@ -225,7 +225,6 @@ export class ConfigurationPageComponent implements OnInit {
           duration: 2000,
         });
         return
-        return
       }
       const question_id = "new_question_" + uuid.v4()
       const category_id = question.category_id
@@ -246,7 +245,32 @@ export class ConfigurationPageComponent implements OnInit {
   }
 
   onSave(){
-    this.router.navigate([''], { relativeTo: this.route} );
+    this.adminService.saveCategories(this.categories).toPromise().then(()=>{
+      let question_list = []
+      for(let category_id in this.questions){
+        for(let question_id in this.questions[category_id]){
+          let question = this.questions[category_id][question_id]
+          if (question._id.includes("new_question")){
+            question._id = ""
+          }
+          question_list.push(this.questions[category_id][question_id])
+        }
+      }
+      this.adminService.saveQuestions(question_list).toPromise().then(()=>{
+        this.snackBar.open("Saved Successfully", "Close", {
+          duration: 2000,
+        });
+        this.router.navigate([''], { relativeTo: this.route} );
+      }, ()=>{
+        this.snackBar.open("Failed to save configurations", "Close", {
+          duration: 2000,
+        });
+      })
+    }, ()=>{
+      this.snackBar.open("Failed to save configurations", "Close", {
+        duration: 2000,
+      });
+    })
 
   }
 }

@@ -14,3 +14,11 @@ def get_all_categories():
     for category in categories:
         category["_id"] = category["_id"]["$oid"]
     return categories
+
+def save_questions(questions):
+    resp = requests.post(url + "question", json={"questions": questions})
+    return resp.json()
+
+def save_categories(categories):
+    resp = requests.post(url + "category", json={"categories": categories})
+    return resp.json()

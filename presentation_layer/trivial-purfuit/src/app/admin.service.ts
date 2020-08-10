@@ -34,5 +34,12 @@ export class AdminService {
   }
   public getAllCategory() {
     return this.http.get(url + 'utility/all_categories' ,httpOptionsGet)
-}
+  }
+  public saveCategories(categories) {
+    return this.http.post(url + 'utility/categories', categories,httpOptionsPost)
+  }
+  public saveQuestions(questions) {
+    return this.http.post(url + 'utility/questions', questions,httpOptionsPost)
+  }
+  
 }
