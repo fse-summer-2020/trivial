@@ -3,8 +3,7 @@ from bson.objectid import ObjectId
 from bson import  json_util
 import json 
 from trivial_purfuit_data_app.mongo_connector.config import config as mongo_config
-client = MongoClient('mongodb://localhost/')
-# client = MongoClient('mongodb+srv://' + mongo_config['username'] + ':' + mongo_config['password'] + '@' + mongo_config['host'])
+client = MongoClient('mongodb+srv://' + mongo_config['username'] + ':' + mongo_config['password'] + '@' + mongo_config['host'])
 db = client['trivial-purfuit-test']
 
 def get_questions_by_category(category_id):
