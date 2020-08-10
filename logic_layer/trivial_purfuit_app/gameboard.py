@@ -16,16 +16,21 @@ class GameBoard:
         self.get_and_create_categories()
         self.__create_game_board()
     
+    # WHITE = 0
+    # RED = 1
+    # GREEN = 2 
+    # BLUE = 3
+
     #    0   1   2   3   4   5   6   7   8   
-    #0   C   C   RA  C   HQ  C   RA  C   C
-    #1   RA              C               C   
-    #2   C               C               RA
-    #3   C               C               C
-    #4   HQ  C   C   C   H   C   C   C   HQ           
-    #5   C               C               RA
-    #6   C               C               C
-    #7   RA              C               C
-    #8   C   C   RA  C   HQ  C   RA  C   C
+    #0   W   R   RA  B   HQ  B   RA  R   G
+    #1   B               B               W   
+    #2   RA              R               RA
+    #3   G               W               R
+    #4   HQ  G   B   R   H   G   W   R   HQ           
+    #5   G               B               R
+    #6   RA              G               RA
+    #7   B               W               W
+    #8   R   G   RA  W   HQ  W   RA  G   B
 
     def __create_game_board(self):
         self.board = [[None for i in range(self.COLS)] for j in range(self.ROWS)] 
@@ -33,17 +38,17 @@ class GameBoard:
         # hq squares at the end of each spoke
         # TODO: adjust categories as needed to comply with game board rules
         self.board[0][4] = HeadquarterSquare(self.categories[0])
-        self.board[4][0] = HeadquarterSquare(self.categories[0])
-        self.board[8][4] = HeadquarterSquare(self.categories[0])
-        self.board[4][8] = HeadquarterSquare(self.categories[0])
+        self.board[4][0] = HeadquarterSquare(self.categories[1])
+        self.board[8][4] = HeadquarterSquare(self.categories[3])
+        self.board[4][8] = HeadquarterSquare(self.categories[2])
 
         # roll again squares
         self.board[0][2] = RollAgainSquare()
         self.board[0][6] = RollAgainSquare()
-        self.board[1][0] = RollAgainSquare()
+        self.board[2][0] = RollAgainSquare()
         self.board[2][8] = RollAgainSquare()
-        self.board[5][8] = RollAgainSquare()
-        self.board[7][0] = RollAgainSquare()
+        self.board[6][8] = RollAgainSquare()
+        self.board[6][0] = RollAgainSquare()
         self.board[8][2] = RollAgainSquare()
         self.board[8][6] = RollAgainSquare()
 
@@ -53,45 +58,45 @@ class GameBoard:
         # category squares
         # TODO: adjust categories as needed to comply with game board rules
         self.board[0][0] = CategorySquare(self.categories[0])
-        self.board[0][1] = CategorySquare(self.categories[0])
-        self.board[0][3] = CategorySquare(self.categories[0])
+        self.board[0][1] = CategorySquare(self.categories[1])
+        self.board[0][3] = CategorySquare(self.categories[3])
         self.board[0][5] = CategorySquare(self.categories[0])
-        self.board[0][7] = CategorySquare(self.categories[0])
-        self.board[0][8] = CategorySquare(self.categories[0])
+        self.board[0][7] = CategorySquare(self.categories[1])
+        self.board[0][8] = CategorySquare(self.categories[2])
 
-        self.board[1][4] = CategorySquare(self.categories[0])
+        self.board[1][0] = CategorySquare(self.categories[3])
+        self.board[1][4] = CategorySquare(self.categories[3])
         self.board[1][8] = CategorySquare(self.categories[0])
 
-        self.board[2][0] = CategorySquare(self.categories[0])
-        self.board[2][4] = CategorySquare(self.categories[0])
+        self.board[2][4] = CategorySquare(self.categories[1])
 
-        self.board[3][0] = CategorySquare(self.categories[0])
+        self.board[3][0] = CategorySquare(self.categories[2])
         self.board[3][4] = CategorySquare(self.categories[0])
-        self.board[3][8] = CategorySquare(self.categories[0])
+        self.board[3][8] = CategorySquare(self.categories[1])
 
-        self.board[4][1] = CategorySquare(self.categories[0])
-        self.board[4][2] = CategorySquare(self.categories[0])
-        self.board[4][3] = CategorySquare(self.categories[0])
-        self.board[4][5] = CategorySquare(self.categories[0])
+        self.board[4][1] = CategorySquare(self.categories[2])
+        self.board[4][2] = CategorySquare(self.categories[3])
+        self.board[4][3] = CategorySquare(self.categories[1])
+        self.board[4][5] = CategorySquare(self.categories[2])
         self.board[4][6] = CategorySquare(self.categories[0])
-        self.board[4][7] = CategorySquare(self.categories[0])
+        self.board[4][7] = CategorySquare(self.categories[1])
 
-        self.board[5][0] = CategorySquare(self.categories[0])
-        self.board[5][4] = CategorySquare(self.categories[0])
+        self.board[5][0] = CategorySquare(self.categories[2])
+        self.board[5][4] = CategorySquare(self.categories[3])
+        self.board[5][8] = CategorySquare(self.categories[1])
 
-        self.board[6][0] = CategorySquare(self.categories[0])
-        self.board[6][4] = CategorySquare(self.categories[0])
-        self.board[6][8] = CategorySquare(self.categories[0])
+        self.board[6][4] = CategorySquare(self.categories[2])
 
+        self.board[7][0] = CategorySquare(self.categories[3])
         self.board[7][4] = CategorySquare(self.categories[0])
         self.board[7][8] = CategorySquare(self.categories[0])
 
-        self.board[8][0] = CategorySquare(self.categories[0])
-        self.board[8][1] = CategorySquare(self.categories[0])
+        self.board[8][0] = CategorySquare(self.categories[1])
+        self.board[8][1] = CategorySquare(self.categories[2])
         self.board[8][3] = CategorySquare(self.categories[0])
         self.board[8][5] = CategorySquare(self.categories[0])
-        self.board[8][7] = CategorySquare(self.categories[0])
-        self.board[8][8] = CategorySquare(self.categories[0])
+        self.board[8][7] = CategorySquare(self.categories[2])
+        self.board[8][8] = CategorySquare(self.categories[3])
 
     def determine_possible_moves(self, token):
         xPos = token.location[0]
@@ -127,7 +132,7 @@ class GameBoard:
     def get_and_create_categories(self):
         category_json = get_all_categories()
         for item in category_json:
-            self.categories.append(Category(item["name"], item["_id"]["$oid"]))
+            self.categories.append(Category(item["name"], item["_id"]["$oid"], item["color"]))
 
     def move_token_location(self, token, direction):
         #update direction if token is in a corner
