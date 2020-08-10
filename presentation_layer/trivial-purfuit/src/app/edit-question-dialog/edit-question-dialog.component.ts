@@ -15,7 +15,7 @@ export class EditQuestionDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ConfigurationPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: QuestionApiResponse) {
-      this.question = { ...data };
+      this.question = data
     }
 
   onCancel(): void {

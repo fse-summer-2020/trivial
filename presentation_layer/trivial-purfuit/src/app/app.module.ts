@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { EditQuestionDialogComponent } from './edit-question-dialog/edit-question-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatExpansionModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule
     ],
   providers: [GameBoardService, AdminService],
   bootstrap: [AppComponent]

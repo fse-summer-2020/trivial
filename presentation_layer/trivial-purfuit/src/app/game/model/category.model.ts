@@ -1,5 +1,5 @@
 export interface Category {
-    _id: any,
+    _id: string,
     color: string,
     name: string
 }

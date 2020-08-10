@@ -6,6 +6,7 @@ import { Category } from '../game/model/category.model';
 import { QuestionApiResponse } from '../game/model/question.model';
 import * as uuid from 'uuid';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -171,17 +172,17 @@ export class ConfigurationPageComponent implements OnInit {
   
 
   constructor(private adminService: AdminService, public dialog: MatDialog, private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.adminService.getAllCategory().toPromise().then((res : any) =>{
-      res.categories.forEach((category: Category) => {
+    this.adminService.getAllCategory().toPromise().then((res : Category[]) =>{
+      res.forEach((category: Category) => {
         this.categories.push(category)
-        let category_id = category._id.$oid
+        let category_id = category._id
         this.questions[category_id] = {}
-        this.adminService.getQuestionPerCategory(category_id).toPromise().then((res:any)=>{
-          res.questions.forEach((question: QuestionApiResponse) => {
-            this.questions[category_id][question._id.$oid] = question
+        this.adminService.getQuestionPerCategory(category_id).toPromise().then((res:QuestionApiResponse[])=>{
+          res.forEach((question: QuestionApiResponse) => {
+            this.questions[category_id][question._id] = question
           });
           
         })
@@ -195,15 +196,18 @@ export class ConfigurationPageComponent implements OnInit {
   selectQuestion(question){
     const dialogRef = this.dialog.open(EditQuestionDialogComponent, {
       width: '500px',
-      data: question
+      data: JSON.parse(JSON.stringify(question))
     });
 
     dialogRef.afterClosed().subscribe(question => {
       if(question == undefined || question.question == "" || question.correct_answer == "" || question.possible_answers.indexOf("") > -1 || question.possible_answers.indexOf(question.correct_answer) < 0){
+        this.snackBar.open("Invalid question data", "Close", {
+          duration: 2000,
+        });
         return
       }
-      const question_id = question._id.$oid
-      const category_id = question.category_id.$oid
+      const question_id = question._id
+      const category_id = question.category_id
       this.questions[category_id][question_id] = question
     });
   }
@@ -211,25 +215,28 @@ export class ConfigurationPageComponent implements OnInit {
   addQuestion(category:Category){
     const dialogRef = this.dialog.open(EditQuestionDialogComponent, {
       width: '500px',
-      data: {_id: {$oid:""}, question:"", possible_answers:["","","",""], correct_answer:"", category_id : category._id}
+      data: {_id: "", question:"", possible_answers:["","","",""], correct_answer:"", category_id : category._id}
     });
 
     dialogRef.afterClosed().subscribe((question:QuestionApiResponse) => {
 
       if(question == undefined || question.question == "" || question.correct_answer == "" || question.possible_answers.indexOf("") > -1 || question.possible_answers.indexOf(question.correct_answer) < 0){
+        this.snackBar.open("Invalid question data", "Close", {
+          duration: 2000,
+        });
+        return
         return
       }
       const question_id = "new_question_" + uuid.v4()
-      const category_id = question.category_id.$oid
-      question._id.$oid = question_id
+      const category_id = question.category_id
+      question._id = question_id
       this.questions[category_id][question_id] = question
     });
   }
 
   removeQuestion(question){
-    console.log(question)
-    const question_id = question._id.$oid
-    const category_id = question.category_id.$oid
+    const question_id = question._id
+    const category_id = question.category_id
     delete this.questions[category_id][question_id]
   }
 
