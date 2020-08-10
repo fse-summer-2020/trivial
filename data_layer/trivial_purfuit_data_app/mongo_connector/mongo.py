@@ -25,6 +25,7 @@ def get_category():
 def save_questions(questions):
     question_collection = db.question
     ids = []
+    question_collection.delete_many({})
     for question in questions:
         if question["_id"] == "":
             question["_id"] = ObjectId()
