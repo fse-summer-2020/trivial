@@ -8,7 +8,7 @@ class QuestionFactoryProxy():
         categories = get_all_categories()
         self.factories = dict()
         for category in categories:
-            cateogry_id = category["_id"]["$oid"]
+            cateogry_id = category["_id"]
             self.factories[cateogry_id] = QuestionFactory(cateogry_id)
 
     def get_question(self, category):

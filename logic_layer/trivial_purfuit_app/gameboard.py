@@ -132,7 +132,8 @@ class GameBoard:
     def get_and_create_categories(self):
         category_json = get_all_categories()
         for item in category_json:
-            self.categories.append(Category(item["name"], item["_id"]["$oid"], item["color"]))
+            self.categories.append(Category(item["name"], item["_id"], item["color"]))
+        print(self.categories)
 
     def move_token_location(self, token, direction):
         #update direction if token is in a corner
