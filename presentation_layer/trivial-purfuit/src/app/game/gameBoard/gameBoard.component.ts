@@ -37,24 +37,7 @@ export class GameBoardComponent implements OnInit {
         private formBuilder: FormBuilder
     ) {}
 
-    players: Player[] = [
-    {
-        name: 'Ben Franklin',
-        color: 'red'
-    },
-    {
-        name: 'Alexander Hamilton',
-        color: 'white'
-    },
-    {
-        name: 'Thomas Jefferson',
-        color: 'blue'
-    },
-    {
-        name: 'John Hancock',
-        color: 'green' 
-    }
-    ];
+    players: Player[] = this.service.sortedPlayers;
 
     updateCurrentState(state: string) {
         switch(state) {

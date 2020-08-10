@@ -1,3 +1,22 @@
 <h1>Welcome To Trivial Purfuit!</h1>
 
-<button (click)="navigateToGame()" class="content" role="main">Start Trivial Purfuit!</button>
+<h2>Enter Player Information below:</h2>
+<h3>Please enter at least 2 players</h3>
+<form [formGroup]="playerForm">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="firstName" formControlName="firstName"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lastName" formControlName="lastName"><br>
+    <label for="color">Color:</label><br>
+    <input id=red type="radio" value="red" name="color" formControlName="color" required/> <label>Red</label>
+    <input id=white type="radio" value="white" name="color" formControlName="color" required/> <label>White</label>
+    <input id=blue type="radio" value="blue" name="color" formControlName="color" required/> <label>Blue</label>
+    <input id=green type="radio" value="green" name="color" formControlName="color" required/> <label>Green</label>
+
+
+
+</form>
+<button (click)="submitPlayer()" class="content" role="main">Submit Player</button>
+<br>
+<br>
+<button *ngIf="players.length > 1" (click)="navigateToGame()" class="content" role="main">Start Trivial Purfuit!</button>
