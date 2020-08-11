@@ -1,0 +1,84 @@
+<div style="padding: 1%">
+    <h3>
+        <b>Question Editor:</b>
+    </h3>
+    <mat-accordion style="margin-bottom: 10px;">
+        <mat-expansion-panel *ngFor="let category of categories">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Category Name: </b>{{ category.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Category Color</mat-label>
+                    <mat-select [(ngModel)]="category.color">
+                      <mat-option *ngFor="let color of css_colors" [value]="color">
+                            <img style="width: 10px; height: 10px; margin-right: 5px;" [style.background-color]="color">{{color}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+          <div style="max-height: 450px; overflow-y: scroll;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Question
+                        </th>
+                        <th>
+                            Possible answers
+                        </th>
+                        <th>
+                            Correct Answer
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let question of getQuestions(category._id) | keyvalue">
+                        <td>
+                            {{question.value.question}}
+                        </td>
+                        <td>
+                            <ul>
+                                <li *ngFor="let possible_answer of question.value.possible_answers">
+                                    {{possible_answer}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            {{question.value.correct_answer}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" (click)="selectQuestion(question.value)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="removeQuestion(question.value)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <mat-action-row>
+            <button class="btn btn-primary" (click)="addQuestion(category)">New Question</button>
+        </mat-action-row>
+    
+        </mat-expansion-panel>
+        </mat-accordion>
+
+        <div style="margin-top: 10px;">
+            <button class="btn btn-secondary" (click)="onCancel()" style="margin-right: 10px;">Cancel</button>
+            <button class="btn btn-primary" (click)="onSave()">Save Changes</button>
+        </div>
+    
+    
+    
+</div>

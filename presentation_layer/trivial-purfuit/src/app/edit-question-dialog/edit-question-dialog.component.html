@@ -1,0 +1,38 @@
+<h1 mat-dialog-title *ngIf="question._id == ''">Add Question</h1>
+<h1 mat-dialog-title *ngIf="question._id != ''">Edit Question</h1>
+
+<form [formGroup]="questionForm" (ngSubmit)="onSave()">
+    <h3>Question: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Question: </mat-label>
+        <input matInput [(ngModel)]='question.question' formControlName="question" required>
+    </mat-form-field>
+
+    <h3>Possible Answers: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;" *ngFor="let possible_answer of question.possible_answers; let i = index;trackBy:trackByIdx" >
+        <mat-label>Possible Answer {{i+1}}: </mat-label>
+        <input matInput (input)="onPossibleAnswersChange()" [(ngModel)]="question.possible_answers[i]" formControlName="possible_answer_{{i}}" required>
+    </mat-form-field>
+
+    <h3>Correct Answer: </h3>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Correct Answer: </mat-label>
+        <input name="correct_answer" id="correct_answer" matInput [(ngModel)]='question.correct_answer' formControlName="correct_answer" required>
+        
+        
+    </mat-form-field>
+    <div *ngIf="correct_answer.invalid && (correct_answer.dirty || correct_answer.touched)"
+    class="alert alert-danger">
+        <div *ngIf="correct_answer.errors.required">
+            Correct Answer is required.
+        </div>
+        <div *ngIf="correct_answer.errors.correctAnswer">
+            Correct Answer is must be one of the possible answers.
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button mat-button class="btn btn-primary" cdkFocusInitial submit>Save</button>
+      </div>
+</form>
+
