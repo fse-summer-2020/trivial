@@ -23,8 +23,16 @@ const httpOptionsGet = {
   };
 const url = "http://localhost:5000/"
 
-@Injectable()
-export class GameBoardService{
+@Injectable({
+    providedIn: 'root',
+})
+export class GameBoardService {
+
+    player: Player;
+    players: Player[] = [];
+    sortedPlayers: Player[] = [];
+    playerOrder: Map<Number, Player> = new Map<Number, Player>();
+    sortedMap;
     
     constructor(public http:HttpClient){}
 
@@ -63,5 +71,28 @@ export class GameBoardService{
 
     public getAllCategory(){
         return this.http.get(url + 'utility/all_categories' ,httpOptionsGet)
+    }
+
+    public addPlayer(player: Player) {
+        this.players.push(player);
+    }
+
+    public determinePlayerOrder() {
+        this.players.forEach(player => {
+            let diceValue = this.diceRoll();
+            while(this.playerOrder.has(diceValue)) {
+                diceValue = this.diceRoll();
+            }
+            this.playerOrder.set(diceValue, player);
+            this.sortedMap = new Map([...this.playerOrder.entries()].sort().reverse());
+        });
+        this.sortedMap.forEach(element => {
+            this.sortedPlayers.push(element);
+        });
+        console.log(this.sortedPlayers);
+    }
+
+    diceRoll() {
+        return Math.floor(Math.random() * 6) + 1;
     }
 }
