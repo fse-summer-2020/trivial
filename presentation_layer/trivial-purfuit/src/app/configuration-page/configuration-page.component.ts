@@ -16,7 +16,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./configuration-page.component.css']
 })
 export class ConfigurationPageComponent implements OnInit {
-
   questions : any = {}
   categories : any = []
   css_colors = [
@@ -175,6 +174,7 @@ export class ConfigurationPageComponent implements OnInit {
     private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    
     this.adminService.getAllCategory().toPromise().then((res : Category[]) =>{
       res.forEach((category: Category) => {
         this.categories.push(category)
