@@ -13,6 +13,8 @@ export class GameBoardConfigurationComponent implements OnInit {
 
     players: Player[] =  [];
     playerForm: FormGroup;
+    displayError = false;
+    colorsSelected = new Set<String>();
 
     constructor(
         private router: Router,
@@ -27,25 +29,32 @@ export class GameBoardConfigurationComponent implements OnInit {
 
     createPlayerForm(): void {
         this.playerForm = this.formBuilder.group({
-            firstName: '',
-            lastName: '',
-            color: ''
+            firstName: null,
+            lastName: null,
+            color: null
         })
     }
 
     submitPlayer() {
-      const player = {
-            name: this.playerForm.get('firstName').value + ' ' + 
-            this.playerForm.get('lastName').value,
-            color: this.playerForm.get('color').value
+        if (this.playerForm.get('firstName') && this.playerForm.get('lastName').value
+        && this.playerForm.get('color').value) {
+        const player = {
+                name: this.playerForm.get('firstName').value + ' ' + 
+                this.playerForm.get('lastName').value,
+                color: this.playerForm.get('color').value
+            }
+            this.colorsSelected.add(player.color);
+            console.log(player);
+            this.players.push(player);
+            console.log(this.players);
+            this.service.addPlayer(player);
+            console.log(this.service.players);
+            this.createPlayerForm();
+            this.displayError = false;
         }
-        console.log(player);
-        this.players.push(player);
-        console.log(this.players);
-        this.service.addPlayer(player);
-        console.log(this.service.players);
-        this.createPlayerForm();
-
+        else {
+            this.displayError = true;
+        }
     }
 
     navigateToGame() {
