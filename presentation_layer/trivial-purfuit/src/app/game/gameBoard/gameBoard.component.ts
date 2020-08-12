@@ -3,6 +3,7 @@ import { GameBoardService } from "../service/gameBoard.service";
 import { Player } from "../model/player.model";
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms'
+import { Category } from '../model/category.model';
 
 @Component({
     selector: 'game-board',
@@ -162,8 +163,8 @@ export class GameBoardComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.service.getAllCategory().toPromise().then((data: any)=>{
-            this.available_categories = data.categories
+        this.service.getAllCategory().toPromise().then((categories: Category[])=>{
+            this.available_categories = categories
         })
         this.gameStateResponse = this.service.createGame(this.players);
         this.gameStateResponse.subscribe(data => {

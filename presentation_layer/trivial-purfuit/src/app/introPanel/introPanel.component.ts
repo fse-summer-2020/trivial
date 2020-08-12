@@ -16,6 +16,6 @@ export class IntroPanelComponent implements OnInit {
     }
 
     navigateToConfigurationMode() {
-        console.log("insert navigation");
+        this.router.navigate(['config-mode'], { relativeTo: this.route} );
     }
 }

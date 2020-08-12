@@ -70,7 +70,7 @@ export class GameBoardService {
     }
 
     public getAllCategory(){
-        return this.http.get(url + 'category/all' ,httpOptionsGet)
+        return this.http.get(url + 'utility/all_categories' ,httpOptionsGet)
     }
 
     public addPlayer(player: Player) {
