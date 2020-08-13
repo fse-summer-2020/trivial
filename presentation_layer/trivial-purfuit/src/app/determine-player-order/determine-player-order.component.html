@@ -1,0 +1,29 @@
+<div>
+    <table class="table table-striped" style="text-align:center">
+        <thead>
+            <tr>
+                <th>Color</th>
+                <th>Name</th>
+                <th>Die Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of playerOrderMap | keyvalue">
+                <td>
+                    <img style="width: 10px; height: 10px; margin-right: 5px;" [style.background-color]="player.key.color">
+                </td>
+                <td>
+                    {{ player.key.name}} 
+                </td>
+                <td>
+                    {{player.value}}
+                    <button *ngIf="player.value == undefined " (click)="rollDie(player.key)" >Roll Die!</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+
+<button *ngIf="isPlayerOrderDetermined()" (click)="navigateToGame()" class="content" role="main">Start Trivial Purfuit!</button>

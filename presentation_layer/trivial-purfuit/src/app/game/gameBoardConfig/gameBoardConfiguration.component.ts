@@ -61,8 +61,7 @@ export class GameBoardConfigurationComponent implements OnInit {
         }
     }
 
-    navigateToGame() {
-        this.service.determinePlayerOrder();
-        this.router.navigate(['../game'], { relativeTo: this.route } );
+    navigateToPlayerOrder() {
+        this.router.navigate(['../player-order'], { relativeTo: this.route } );
     }
 }
