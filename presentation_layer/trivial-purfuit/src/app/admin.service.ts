@@ -41,5 +41,8 @@ export class AdminService {
   public saveQuestions(questions) {
     return this.http.post(url + 'utility/questions', questions,httpOptionsPost)
   }
-  
+  public rollDie() {
+    return this.http.get(url + 'utility/api_roll_value',httpOptionsGet)
+  }
+
 }

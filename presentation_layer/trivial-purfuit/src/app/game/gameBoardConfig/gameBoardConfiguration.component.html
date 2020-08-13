@@ -6,33 +6,17 @@
 
 <div *ngIf="displayError"><b>Required fields missing. Please complete required fields.</b></div>
 <form [formGroup]="playerForm">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="firstName" formControlName="firstName"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lastName" formControlName="lastName"><br>
+    <label for="uname">Username:</label><br>
+    <input type="text" id="uname" name="uname" formControlName="uname"><br>
     <label for="color">Color:</label><br>
-    <div *ngIf="!colorsSelected.has('red')">
-        <input id=red type="radio" value="red" name="color" formControlName="color" required/> 
-        <label>Red</label>
+    <div *ngFor="let color of availableColors">
+        <input type="radio" value="{{color}}" formControlName="color" required/> 
+        <label>{{color}}</label>
     </div>
-    <div *ngIf="!colorsSelected.has('white')">
-        <input id=white type="radio" value="white" name="color" formControlName="color" required/> 
-        <label>White</label>
-    </div>
-    <div *ngIf="!colorsSelected.has('blue')">
-    <input id=blue type="radio" value="blue" name="color" formControlName="color" required/> 
-    <label>Blue</label>
-    </div>
-    <div *ngIf="!colorsSelected.has('green')">
-        <input id=green type="radio" value="green" name="color" formControlName="color" required/> 
-        <label>Green</label>
-    </div>
-
-
 
 </form>
 <button (click)="submitPlayer()" class="content" role="main">Submit Player</button>
 </div>
 <br>
 <br>
-<button *ngIf="players.length > 1" (click)="navigateToGame()" class="content" role="main">Start Trivial Purfuit!</button>
+<button *ngIf="players.length > 1" (click)="navigateToPlayerOrder()" class="content" role="main">Next</button>

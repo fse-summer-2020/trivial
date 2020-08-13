@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { GameBoardService } from "../service/gameBoard.service";
 import { Player } from "../model/player.model";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Category } from '../model/category.model';
 
 @Component({
     selector: 'board-configuration',
@@ -14,7 +15,7 @@ export class GameBoardConfigurationComponent implements OnInit {
     players: Player[] =  [];
     playerForm: FormGroup;
     displayError = false;
-    colorsSelected = new Set<String>();
+    availableColors = new Set<String>();
 
     constructor(
         private router: Router,
@@ -24,26 +25,29 @@ export class GameBoardConfigurationComponent implements OnInit {
     ){}
 
     ngOnInit() {
+        this.service.getAllCategory().toPromise().then((categories: Category[])=>{
+            categories.forEach((category: Category) => {
+                this.availableColors.add(category.color)
+            });
+        })
         this.createPlayerForm();
     }
 
     createPlayerForm(): void {
         this.playerForm = this.formBuilder.group({
-            firstName: null,
-            lastName: null,
+            uname: null,
             color: null
         })
     }
 
     submitPlayer() {
-        if (this.playerForm.get('firstName') && this.playerForm.get('lastName').value
+        if (this.playerForm.get('uname').value
         && this.playerForm.get('color').value) {
         const player = {
-                name: this.playerForm.get('firstName').value + ' ' + 
-                this.playerForm.get('lastName').value,
+                name: this.playerForm.get('uname').value,
                 color: this.playerForm.get('color').value
             }
-            this.colorsSelected.add(player.color);
+            this.availableColors.delete(player.color)
             console.log(player);
             this.players.push(player);
             console.log(this.players);
@@ -57,8 +61,7 @@ export class GameBoardConfigurationComponent implements OnInit {
         }
     }
 
-    navigateToGame() {
-        this.service.determinePlayerOrder();
-        this.router.navigate(['../game'], { relativeTo: this.route } );
+    navigateToPlayerOrder() {
+        this.router.navigate(['../player-order'], { relativeTo: this.route } );
     }
 }
