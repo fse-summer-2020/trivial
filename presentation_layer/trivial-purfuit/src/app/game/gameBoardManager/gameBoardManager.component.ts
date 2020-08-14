@@ -6,11 +6,11 @@ import { FormGroup, FormBuilder } from '@angular/forms'
 import { Category } from '../model/category.model';
 
 @Component({
-    selector: 'game-board',
-    templateUrl: './gameBoard.component.html',
-    styleUrls: ['./gameBoard.component.css']
+    selector: 'app-game-board',
+    templateUrl: './gameBoardManager.component.html',
+    styleUrls: ['./gameBoardManager.component.css']
 })
-export class GameBoardComponent implements OnInit {
+export class GameBoardManagerComponent implements OnInit {
 
     moveDirectionForm: FormGroup;
     answerTriviaForm: FormGroup;
@@ -31,14 +31,14 @@ export class GameBoardComponent implements OnInit {
     possibleAnswers: string[];
     answer: string;
     category: string;
-    available_categories: any;
+    available_categories: Category[];
 
     constructor(
         private service: GameBoardService,
         private formBuilder: FormBuilder
     ) {}
 
-    players: Player[] = this.service.sortedPlayers;
+    players: Player[] = []
 
     updateCurrentState(state: string) {
         switch(state) {
@@ -163,6 +163,7 @@ export class GameBoardComponent implements OnInit {
     }
     
     ngOnInit() {
+        this.players = this.service.sortedPlayers;
         this.service.getAllCategory().toPromise().then((categories: Category[])=>{
             this.available_categories = categories
         })

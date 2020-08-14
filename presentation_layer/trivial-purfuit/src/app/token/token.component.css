@@ -1,0 +1,18 @@
+.category{
+    width:42% !important;
+    margin: 4%;
+    border: 1px outset #E6E6E6;
+}
+.category-row{
+    height: 50% !important;
+    width: 100% !important;
+    display: flex;
+}
+.wedge{
+    width: 100% !important;
+    height: 100% !important;
+    border:0;
+}
+.tr, .td{
+    border: none
+}

@@ -1,0 +1,25 @@
+<div style="width: 100%; height: 100%;">
+    <table style="width: 100%; height: 100%; background-color: burlywood;">
+        <tr *ngFor="let row of board; let rIdx = index">
+            <td *ngFor="let location of row; let cIdx = index" style="width: 11%; position: relative;">
+                <img *ngIf="location && (location.type == 'C' || location.type == 'HQ')" class="location bordered" style="width: 100%;height: 100%;" [style.background-color]="getColor(rIdx,cIdx)">
+                <img *ngIf="location && (location.type == 'RA')" class="location ra bordered" style="width: 100%;height: 100%;" [style.background-color]="getColor(rIdx,cIdx)">
+                <img *ngIf="location && (location.type == 'H')" class="hub center bordered" style="width: 100%;height: 100%;" src="assets/ntm-logo.png">
+                <div *ngIf="location && (location.type == 'HQ')" class="center ra">
+                    <img  class="crown" src="assets/crown.png">
+                </div>
+                <div *ngIf="location && (location.type == 'RA')" class="center ra">
+                    <img  class="crown" src="assets/die.png">
+                </div>
+                <div class="tokenHolder container">
+                    <div class="row" style="max-width: 100%; height: 100%; margin:0;">
+                        <div *ngFor="let player of getTokensOnLocation(rIdx, cIdx)" style="position:relative;" class="tokenDiv col-6">
+                            <token [player]="player"></token>
+                        </div>
+                    </div>
+                
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

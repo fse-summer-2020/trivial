@@ -1,18 +1,10 @@
 <div style="display: flex;">
-    <div>
-        <pre>
-            #    0   1   2   3   4   5   6   7   8 
-            #0   C   C   RA  C   HQ  C   RA  C   C
-            #1   RA              C               C
-            #2   C               C               RA
-            #3   C               C               C
-            #4   HQ  C   C   C   H   C   C   C   HQ          
-            #5   C               C               RA
-            #6   C               C               C
-            #7   RA              C               C
-            #8   C   C   RA  C   HQ  C   RA  C   C
-        </pre>
+    <div style="width: 650px; height: 650px;">
+        <game-board [categories]="available_categories" [players]="playerList" >
+
+        </game-board>
     </div>
+    
     <div>
         <div><b>Round {{ currentRound }}</b></div>
         <div *ngIf="currentPlayer"><br>
