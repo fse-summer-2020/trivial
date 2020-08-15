@@ -32,6 +32,8 @@ export class GameBoardManagerComponent implements OnInit {
     answer: string;
     category: string;
     available_categories: Category[];
+    isCorrectAnswer: boolean;
+    isIncorrectAnswer: boolean;
 
     constructor(
         private service: GameBoardService,
@@ -80,6 +82,8 @@ export class GameBoardManagerComponent implements OnInit {
         this.gameStateResponse = this.service.getRollDie(this.sessionId);
         this.gameStateResponse.subscribe(data => {
             console.log(data);
+            this.isCorrectAnswer = false;
+            this.isIncorrectAnswer = false;
             this.nextAvailableSquares = data.state.available_next_squares;
             this.currentRound = data.state.current_round;
             this.currentPlayer = data.state.current_player;
@@ -97,6 +101,12 @@ export class GameBoardManagerComponent implements OnInit {
         this.gameStateResponse = this.service.answerTrivia(this.sessionId, this.answer);
         this.gameStateResponse.subscribe(data => {
             console.log(data);
+            if(this.currentPlayer.color === data.state.current_player.color) {
+                this.isCorrectAnswer = true;
+            }
+            else{
+                this.isIncorrectAnswer = true;
+            }
             this.currentRound = data.state.current_round;
             this.currentPlayer = data.state.current_player;
             this.playerList = data.state.players;
