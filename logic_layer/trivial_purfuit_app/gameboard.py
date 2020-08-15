@@ -60,7 +60,7 @@ class GameBoard:
         self.board[0][0] = CategorySquare(self.categories[0])
         self.board[0][1] = CategorySquare(self.categories[1])
         self.board[0][3] = CategorySquare(self.categories[3])
-        self.board[0][5] = CategorySquare(self.categories[0])
+        self.board[0][5] = CategorySquare(self.categories[3])
         self.board[0][7] = CategorySquare(self.categories[1])
         self.board[0][8] = CategorySquare(self.categories[2])
 

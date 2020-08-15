@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GameBoardService } from './game/service/gameBoard.service';
 import { AdminService } from './admin.service';
-import { GameBoardComponent } from './game/gameBoard/gameBoard.component';
+import { GameBoardManagerComponent } from './game/gameBoardManager/gameBoardManager.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameBoardConfigurationComponent } from './game/gameBoardConfig/gameBoardConfiguration.component';
 import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
@@ -20,15 +20,21 @@ import { EditQuestionDialogComponent } from './edit-question-dialog/edit-questio
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeterminePlayerOrderComponent } from './determine-player-order/determine-player-order.component';
+import { TokenComponent } from './token/token.component';
+import { IntroPanelComponent } from './introPanel/introPanel.component';
+import { GameBoardComponent } from './game-board/game-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameBoardComponent,
+    GameBoardManagerComponent,
     GameBoardConfigurationComponent,
     ConfigurationPageComponent,
     EditQuestionDialogComponent,
-    DeterminePlayerOrderComponent
+    DeterminePlayerOrderComponent,
+    TokenComponent,
+    IntroPanelComponent,
+    GameBoardComponent
   ],
   imports: [
     BrowserModule,
