@@ -5,17 +5,23 @@
     </div>
     
     <div style="margin-left: 670px;">
-        <div>
-            <h1><b>Players:</b></h1>
-            <div class="container">
-                <div class="row">
-                    <div *ngFor="let player of playerList" class="col-6" style="margin-bottom:10px">
-                        <player-card [player]="player"></player-card>
-                       </div>
+        <div class="card" style="margin-bottom: 10px;">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1><b>Players</b></h1>
                 </div>
-            </div>
+                <div class="card-text">
+                    <div class="container">
+                        <div class="row">
+                            <div *ngFor="let player of playerList" class="col-6" style="margin-bottom:10px">
+                                <player-card [player]="player"></player-card>
+                               </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
-        <div class="card">
+        <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
                 <h1 class="card-title"><b>Round {{ currentRound }}</b></h1>
                 <div class="card-text">
@@ -74,7 +80,33 @@
             
             
         </div>
-        
+        <div class="card" style="margin-bottom: 10px;">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1><b>Game Categories</b></h1>
+                </div>
+                <div class="card-text">
+                    <table class="table table-striped" style="text-align:center">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Color</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let category of available_categories">
+                                <td>
+                                    <img style="width: 10px; height: 10px; margin-right: 5px;" [style.background-color]="category.color">
+                                </td>
+                                <td>
+                                    {{ category.name}} 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div>
     </div>
 
     
