@@ -55,8 +55,9 @@
                     <button (click)="answerTriviaQuestion()" class="content" role="main">Submit Answer</button>
                 </div>
                 
-                <div *ngIf=isSetCategoryState class="card">
-                    <h4>Select a Category for next Question: </h4>
+                <div *ngIf="isSetCategoryAllState || isSetCategoryAllState" class="card">
+                    <h4 *ngIf="isSetCategoryAllState">All Players Please Select a Category for Next Question: </h4>
+                    <h4 *ngIf="isSetCategoryAllState">Current Players Please Select a Category for Next Question: </h4>
                     <form [formGroup]="setCategoryForm">
                         <div *ngFor="let category of available_categories">
                             <input id={{category._id}} type="radio" value="{{category._id}}" name="category" formControlName="category" required/> <label>{{ category.name }}</label>

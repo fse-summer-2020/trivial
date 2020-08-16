@@ -20,7 +20,8 @@ export class GameBoardManagerComponent implements OnInit {
     isRollDieState: boolean = false;
     isMoveDirectionState: boolean = false;
     isAnswerTriviaState: boolean = false;
-    isSetCategoryState: boolean = false;
+    isSetCategoryCurrentState: boolean = false;
+    isSetCategoryAllState: boolean = false;
     currentPlayer: Player;
     currentRound: number;
     playerList: Player[];
@@ -58,20 +59,21 @@ export class GameBoardManagerComponent implements OnInit {
             }
             case "ANSWER_TRIVIA": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = false;
+                this.isSetCategoryCurrentState = false;
+                this.isSetCategoryAllState = false;
                 this.isAnswerTriviaState = true;
                 this.createAnswerTriviaForm();
                 break;
             }
             case "POLL_CATEGORY_ALL": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = true;
+                this.isSetCategoryAllState = true;
                 this.createSetCategoryForm();
                 break;
             }
             case "POLL_CATEGORY_CURRENT": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = true;
+                this.isSetCategoryCurrentState = true;
                 this.createSetCategoryForm();
                 break;
             }
