@@ -29,6 +29,7 @@ def make_output_json(csvFilePath):
         f = open('QuestionList.json', 'w')
         print("Output file started: QuestionList.json")
         f.write('[')
+        spaceConstant = '    "'
         for rows in csvReader: 
             # Assuming a column named 'No' to 
             # be the primary key 
@@ -52,26 +53,42 @@ def make_output_json(csvFilePath):
             #ID START
             f.write('{\n')
             f.write('  "_id": {\n')
-            f.write('    "$oid": "'+random_values+'"\n')
+            f.write(spaceConstant+'$oid": "'+random_values+'"\n')
             f.write('  },\n')
             #ID END
             #CAT START
             f.write('  "category_id": {\n')
-            f.write('    "$oid": "'+rows['category_id']+'"\n')
+            f.write(spaceConstant+'$oid": "'+rows['category_id']+'"\n')
             f.write('  },\n')
             #CAT END
             #QUES START
             f.write('  "question": "'+rows['question']+'",\n')
             f.write('  "possible_answers": [\n')
-            f.write('    "'+rows['possible_answer1']+'",\n')
-            f.write('    "'+rows['possible_answer2']+'",\n')
-            f.write('    "'+rows['possible_answer3']+'",\n')
-            f.write('    "'+rows['possible_answer4']+'"\n')
+            f.write(spaceConstant+rows['possible_answer1']+'",\n')
+            f.write(spaceConstant+rows['possible_answer2']+'",\n')
+            f.write(spaceConstant+rows['possible_answer3']+'",\n')
+            f.write(spaceConstant+rows['possible_answer4']+'"\n')
             f.write('  ],\n')
             f.write('  "correct_answer": "'+rows['correct_answer']+'"\n')
             f.write('},')
             #QUES END
-            print("JSON entry "+str(count-1000)+" created succesfully.")
+            if (rows['correct_answer'] == rows['possible_answer1']):
+                check = True
+            elif (rows['correct_answer'] == rows['possible_answer2']):
+                check = True
+            elif (rows['correct_answer'] == rows['possible_answer3']):
+                check = True
+            elif (rows['correct_answer'] == rows['possible_answer4']):
+                check = True
+            else:
+                check = False
+
+            if (check == True):
+                print("JSON entry "+str(count-1000)+" created succesfully.")
+            else:
+                print("JSON entry "+str(count-1000)+" created with an error...")
+                print("   ***WARNING*** JSON entry "+str(count-1000)+" does not have any answers that match: "+rows['correct_answer'])
+    
     f.write(']')
     f.close()
     print("~~~ JSON file created successfully!! ~~~")

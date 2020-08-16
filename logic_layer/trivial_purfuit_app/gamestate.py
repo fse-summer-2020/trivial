@@ -103,6 +103,8 @@ class GameState:
         if (idx == len(self.player_order) - 1):
             self.current_player = self.player_order[0]
         else:
+            if (idx == 0 & current_round != 1):
+                current_round = current_round + 1
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
