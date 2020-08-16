@@ -4,6 +4,7 @@ import { Player } from "../model/player.model";
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { Category } from '../model/category.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-game-board',
@@ -38,7 +39,9 @@ export class GameBoardManagerComponent implements OnInit {
 
     constructor(
         private service: GameBoardService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private route: ActivatedRoute,
     ) {}
 
     players: Player[] = []
@@ -76,6 +79,9 @@ export class GameBoardManagerComponent implements OnInit {
                 this.isSetCategoryCurrentState = true;
                 this.createSetCategoryForm();
                 break;
+            }
+            case "END_GAME": {
+                this.router.navigate(['end-game', {players: JSON.stringify(this.playerList)}], { relativeTo: this.route });
             }
         }
     }
