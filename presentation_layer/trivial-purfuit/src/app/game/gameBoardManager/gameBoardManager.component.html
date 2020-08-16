@@ -1,67 +1,80 @@
-<div>
-    <div style="width: 650px; height: 650px;">
+<div >
+    <div style="width: 650px; height: 650px; float:left;">
         <game-board [categories]="available_categories" [players]="playerList" >
-
         </game-board>
     </div>
     
-    <div>
-        <div class="card"><h1><b>Round {{ currentRound }}</b></h1>
-            <div *ngIf="currentPlayer"><br>
-                <h3>
-                <b>
-                Current Player: 
-                </b>
-                {{ currentPlayer.player_name }}
-                </h3>
-                <h3>
-                Moves Left: {{ movesLeft }}
-                </h3>
+    <div style="margin-left: 670px;">
+        <div>
+            <h1><b>Players:</b></h1>
+            <div class="container">
+                <div class="row">
+                    <div *ngFor="let player of playerList" class="col-6" style="margin-bottom:10px">
+                        <player-card [player]="player"></player-card>
+                       </div>
+                </div>
             </div>
         </div>
-            <div *ngIf=isRollDieState>
-                    <button (click)="rollDie()" class="content" role="main">Roll Die</button>
-            </div>
-            
-            <div *ngIf=isMoveDirectionState class="card">
-                <h4>Choose a square to move to:</h4>
-                <form [formGroup]="moveDirectionForm">
-                    <div *ngFor="let availableSquare of nextAvailableSquares">
-                         <input id="{{availableSquare}}" type="radio" value="{{availableSquare}}" name= "direction" formControlName="direction" required/> <label>{{ availableSquare }}</label>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title"><b>Round {{ currentRound }}</b></h1>
+                <div class="card-text">
+                    <div *ngIf="currentPlayer"><br>
+                        <h3>
+                        <b>
+                        Current Player: 
+                        </b>
+                        <img  class="player-color"  [style.background-color]="currentPlayer.color">
+                        {{ currentPlayer.player_name }}
+                        </h3>
+                        <h3>
+                        Moves Left: {{ movesLeft }}
+                        </h3>
                     </div>
-                </form>
-                <button (click)="moveDirection()" class="content" role="main">Submit</button>
+                    <div *ngIf=isRollDieState>
+                        <button (click)="rollDie()" class="content" role="main">Roll Die</button>
+                </div>
+                
+                <div *ngIf=isMoveDirectionState>
+                    <h4>Choose a square to move to:</h4>
+                    <form [formGroup]="moveDirectionForm">
+                        <div *ngFor="let availableSquare of nextAvailableSquares">
+                             <input id="{{availableSquare}}" type="radio" value="{{availableSquare}}" name= "direction" formControlName="direction" required/> <label>{{ availableSquare }}</label>
+                        </div>
+                    </form>
+                    <button (click)="moveDirection()" class="content" role="main">Submit</button>
+                </div>
+                
+                <div *ngIf=isAnswerTriviaState class="card">
+                    <h4>Question: {{ currentQuestion }} </h4>
+                    <form [formGroup]="answerTriviaForm">
+                        <div *ngFor="let answer of possibleAnswers">
+                            <input id={{answer}} type="radio" value="{{answer}}" name="trivia" formControlName="trivia" required/> <label>{{ answer }}</label>
+                        </div>
+                    </form>
+                    <button (click)="answerTriviaQuestion()" class="content" role="main">Submit Answer</button>
+                </div>
+                
+                <div *ngIf=isSetCategoryState class="card">
+                    <h4>Select a Category for next Question: </h4>
+                    <form [formGroup]="setCategoryForm">
+                        <div *ngFor="let category of available_categories">
+                            <input id={{category._id}} type="radio" value="{{category._id}}" name="category" formControlName="category" required/> <label>{{ category.name }}</label>
+                        </div>
+                    </form>
+                    <button (click)="setCategory()" class="content" role="main">Submit Category</button>
+                </div>
+        
+                <div *ngIf=isCorrectAnswer> <h2><b>Correct Answer! </b></h2></div>
+                <div *ngIf=isIncorrectAnswer><h2><b>Incorrect Answer!</b></h2></div>
+            </div> 
             </div>
+                
             
-            <div *ngIf=isAnswerTriviaState class="card">
-                <h4>Question: {{ currentQuestion }} </h4>
-                <form [formGroup]="answerTriviaForm">
-                    <div *ngFor="let answer of possibleAnswers">
-                        <input id={{answer}} type="radio" value="{{answer}}" name="trivia" formControlName="trivia" required/> <label>{{ answer }}</label>
-                    </div>
-                </form>
-                <button (click)="answerTriviaQuestion()" class="content" role="main">Submit Answer</button>
-            </div>
             
-            <div *ngIf=isSetCategoryState class="card">
-                <h4>Select a Category for next Question: </h4>
-                <form [formGroup]="setCategoryForm">
-                    <div *ngFor="let category of available_categories">
-                        <input id={{category._id}} type="radio" value="{{category._id}}" name="category" formControlName="category" required/> <label>{{ category.name }}</label>
-                    </div>
-                </form>
-                <button (click)="setCategory()" class="content" role="main">Submit Category</button>
-            </div>
-
-            <div *ngIf=isCorrectAnswer> <h2><b>Correct Answer! </b></h2></div>
-            <div *ngIf=isIncorrectAnswer><h2><b>Incorrect Answer!</b></h2></div>
-    </div>
-
-    <br>
-    <h1><b>Players:</b></h1>
-    <div style="display: flex;">
-        <div *ngFor="let player of playerList" style="width: 20%; margin-right: 5%;">
-         <player-card [player]="player"></player-card>
         </div>
+        
     </div>
+
+    
 </div>
