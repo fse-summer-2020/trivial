@@ -11,7 +11,8 @@
     <label for="color">Color:</label><br>
     <div *ngFor="let color of availableColors">
         <input type="radio" value="{{color}}" formControlName="color" required/> 
-        <label>{{color}}</label>
+
+        <label style="margin-right: 5px;">{{color }} </label><img [style.background-color]="color" style="width: 10px;height: 10px;"> 
     </div>
 
 </form>
@@ -19,4 +20,4 @@
 </div>
 <br>
 <br>
-<button *ngIf="players.length > 1" (click)="navigateToPlayerOrder()" class="content" role="main">Next</button>
+<button *ngIf="players.length > 1" (click)="navigateToPlayerOrder()" class="content" role="main">Pick Player Order</button>
