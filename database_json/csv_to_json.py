@@ -2,10 +2,11 @@ import csv, random, string
 
 def make_output_json(csvFilePath):
     #strip spaces around commas
-    with open(csvFilePath, 'r') as f:
+    with open(csvFilePath, 'r', encoding='utf-8', errors='ignore') as f:
         lines = f.readlines()
     f.close()
     print("File successfully opened: "+csvFilePath)
+
     print("Stripping white spaces around commas")
     lines = [line.replace(', ', ',') for line in lines]
     lines = [line.replace(' ,', ',') for line in lines]
@@ -13,6 +14,7 @@ def make_output_json(csvFilePath):
     lines = [line.replace('  ,', ',') for line in lines]
     lines = [line.replace(' , ', ',') for line in lines]
     lines = [line.replace('  ,  ', ',') for line in lines]
+
     with open(csvFilePath, 'w') as f:
         f.writelines(lines)
     f.close()
@@ -22,6 +24,8 @@ def make_output_json(csvFilePath):
     with open(csvFilePath, encoding='utf-8') as csvf: 
         csvReader = csv.DictReader(csvf) 
         count = 1000
+        inputproblem = []
+        inputproblemcount = []
         # Convert each row into a dictionary  
         # and add it to data 
        
@@ -39,7 +43,7 @@ def make_output_json(csvFilePath):
             count = count + 1
             random_values = get_random_alphanumeric_string(24)
 
-            if (''.join(str(rows['category_id']).lower().split()) == "declarationofindependenceandthecontinentalcongress" or ''.join(str(rows['category_id']).lower().split()) == "doi&cc"):
+            if (''.join(str(rows['category_id']).lower().split()) == "places"):
                 rows['category_id'] = "5f0b7f2a90677a74898769a3"
             elif (''.join(rows['category_id'].lower().split()) == "people"):
                 rows['category_id'] = "5f0b7f2a90677a74898769a4"
@@ -87,11 +91,18 @@ def make_output_json(csvFilePath):
                 print("JSON entry "+str(count-1000)+" created succesfully.")
             else:
                 print("JSON entry "+str(count-1000)+" created with an error...")
-                print("   ***WARNING*** JSON entry "+str(count-1000)+" does not have any answers that match: "+rows['correct_answer'])
+                inputproblem.append(rows['correct_answer'])
+                inputproblemcount.append(str(count-1000))
     
     f.write(']')
     f.close()
-    print("~~~ JSON file created successfully!! ~~~")
+
+    if (len(inputproblem) == 0):
+        print("~~~ JSON file created successfully!! ~~~")
+    else:
+        print("***WARNING: JSON file NOT created successfully!! ***")
+        for idx, prob in enumerate(inputproblem):
+            print("  ~~~: JSON entry number "+inputproblemcount[idx]+" answer does not have any potential answers that match: "+prob)
 
 #borrowed from https://pynative.com/python-generate-random-string/
 def get_random_alphanumeric_string(length):
