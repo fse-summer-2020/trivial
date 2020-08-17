@@ -24,6 +24,7 @@ class GameState:
         self.moves_left = 0
         self.current_trivia_question = None
         self.available_next_squares = None
+        self.round_turns = [False] * len(self.player_order)
     
     @classmethod
     def get_player_order(cls, players):
@@ -39,17 +40,17 @@ class GameState:
         idx = self.player_order.index(self.current_player)
 
         # Start Logic Sequence to Check Answer and Change Game Parameters as Required
+        # untested
         if (self.answer_result == False):
             self.go_to_next_player()
             self.current_state = State.ROLL_DIE
             if (self.current_round == 1):
+                #broken
                 for player in self.player_order:
-                    if (player.check_winning_condition() == True):
-                        if (idx == len(self.player_order) - 1):
+                    if (player.check_winning_condition() == True and all(self.round_turns)):
                             self.current_state = State.GAME_END
-                            return
-            else:
-                return
+        # end untested
+            return self.current_state
         else:
             cur_square = self.game_board.get_current_square(self.current_player)
             if isinstance(cur_square, CategorySquare):
@@ -67,6 +68,7 @@ class GameState:
                      return
                 else:
                     self.current_player.set_winning_condition(True)
+                    # untested
                     if (self.current_round == 1):
                         if (idx == len(self.player_order)- 1):
                             self.current_state = State.GAME_END
@@ -75,6 +77,7 @@ class GameState:
                             self.go_to_next_player()
                             self.current_state = State.ROLL_DIE
                             return
+                    # end untested
                     else:
                         self.current_state = State.GAME_END
                         return
@@ -102,11 +105,14 @@ class GameState:
         idx = self.player_order.index(self.current_player)
         if (idx == len(self.player_order) - 1):
             self.current_player = self.player_order[0]
+            self.current_round = self.current_round + 1
+            self.round_turns = [False] * len(self.player_order)
         else:
             self.current_player = self.player_order[idx+1]
 
     def move_token(self, direction):
         self.available_next_squares = None
+        idx = self.player_order.index(self.current_player)
         while (self.moves_left > 0):
             direction = self.game_board.move_token_location(self.current_player, direction)
             self.moves_left = self.moves_left - 1
@@ -117,6 +123,7 @@ class GameState:
                 self.current_state = State.MOVE_DIRECTION
                 return
                 
+        self.round_turns[idx] = True
         self.current_player.reset_last_location()
 
         if isinstance(cur_square, RollAgainSquare): #player is on roll again square
