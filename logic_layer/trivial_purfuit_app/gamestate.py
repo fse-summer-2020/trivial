@@ -105,6 +105,8 @@ class GameState:
         idx = self.player_order.index(self.current_player)
         if (idx == len(self.player_order) - 1):
             self.current_player = self.player_order[0]
+            self.current_round = self.current_round + 1
+            self.round_turns = [False] * len(self.player_order)
         else:
             self.current_player = self.player_order[idx+1]
 
