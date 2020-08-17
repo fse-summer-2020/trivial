@@ -5,6 +5,7 @@ import { GameBoardConfigurationComponent } from './game/gameBoardConfig/gameBoar
 import { GameBoardManagerComponent } from './game/gameBoardManager/gameBoardManager.component';
 import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
 import { DeterminePlayerOrderComponent } from './determine-player-order/determine-player-order.component';
+import { EndGamePageComponent } from './end-game-page/end-game-page.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'player-order',
     component: DeterminePlayerOrderComponent
+  },
+  {
+    path: 'end-game',
+    component: EndGamePageComponent
   }
 ];
 

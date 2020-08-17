@@ -1,0 +1,45 @@
+<div style="width: 100%;" class="center-container">
+    <div class="vertically-center">
+        <h1 style="text-align:center ;">
+            <b>
+                End of Game
+            </b>
+        </h1>
+    </div>
+    
+    <div class="card container vertically-center" style="width: 75%;">
+        <div class="card-body">
+            <div class="card-title">
+                <h3><b>
+                    Winning Player(s)
+                </b></h3>
+            </div>
+            <div class="card-text">
+                    <div class="row">
+                        <div class="col-3" *ngFor="let player of winningPlayers()">
+                            <player-card  [player]="player">
+                            </player-card>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="card container vertically-center" style="width: 75%; margin-top: 20px;">
+        <div class="card-body">
+            <div class="card-title">
+                <h3><b>
+                    Players
+                </b></h3>
+            </div>
+            <div class="card-text">
+                    <div class="row">
+                        <div class="col-3" *ngFor="let player of players">
+                            <player-card  [player]="player">
+                            </player-card>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

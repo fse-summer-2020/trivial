@@ -23,6 +23,8 @@ import { DeterminePlayerOrderComponent } from './determine-player-order/determin
 import { TokenComponent } from './token/token.component';
 import { IntroPanelComponent } from './introPanel/introPanel.component';
 import { GameBoardComponent } from './game-board/game-board.component';
+import { PlayerCardComponent } from './game/components/playerCard/playerCard.component';
+import { EndGamePageComponent } from './end-game-page/end-game-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { GameBoardComponent } from './game-board/game-board.component';
     DeterminePlayerOrderComponent,
     TokenComponent,
     IntroPanelComponent,
-    GameBoardComponent
+    GameBoardComponent,
+    PlayerCardComponent,
+    EndGamePageComponent
   ],
   imports: [
     BrowserModule,
