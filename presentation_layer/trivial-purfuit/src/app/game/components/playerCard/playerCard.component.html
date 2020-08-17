@@ -1,0 +1,25 @@
+<div class="card" [style.border-color]="player.color">
+    <div class="card-body">
+        <h1 class="card-title">
+            {{ player.player_name }}
+            </h1>
+            <div class="card-text">
+
+                <div *ngIf="player.collected_wedges.length > 0; else noWedges">
+                    <h3> Wedges:
+                       <div *ngFor="let wedge of player.collected_wedges">
+                           <img class="color" [style.background-color]="wedge.color">
+                           {{ wedge.name }}
+                       </div>
+                   </h3>  
+                   </div>
+                   <ng-template #noWedges>
+                   <h3>
+                    No Wedges Collected
+                   </h3>
+                   </ng-template>
+            </div>
+    </div>
+   
+    
+</div>

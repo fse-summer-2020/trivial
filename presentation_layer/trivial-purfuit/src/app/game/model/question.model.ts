@@ -1,5 +1,5 @@
 export interface QuestionApiResponse {
-    id: string,
+    _id: string,
     category_id: string,
     correct_answer: string,
     question: string

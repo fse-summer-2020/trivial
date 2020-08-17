@@ -3,13 +3,15 @@ import { GameBoardService } from "../service/gameBoard.service";
 import { Player } from "../model/player.model";
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms'
+import { Category } from '../model/category.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'game-board',
-    templateUrl: './gameBoard.component.html',
-    styleUrls: ['./gameBoard.component.css']
+    selector: 'app-game-board',
+    templateUrl: './gameBoardManager.component.html',
+    styleUrls: ['./gameBoardManager.component.css']
 })
-export class GameBoardComponent implements OnInit {
+export class GameBoardManagerComponent implements OnInit {
 
     moveDirectionForm: FormGroup;
     answerTriviaForm: FormGroup;
@@ -19,7 +21,8 @@ export class GameBoardComponent implements OnInit {
     isRollDieState: boolean = false;
     isMoveDirectionState: boolean = false;
     isAnswerTriviaState: boolean = false;
-    isSetCategoryState: boolean = false;
+    isSetCategoryCurrentState: boolean = false;
+    isSetCategoryAllState: boolean = false;
     currentPlayer: Player;
     currentRound: number;
     playerList: Player[];
@@ -30,31 +33,18 @@ export class GameBoardComponent implements OnInit {
     possibleAnswers: string[];
     answer: string;
     category: string;
-    available_categories: any;
+    available_categories: Category[];
+    isCorrectAnswer: boolean;
+    isIncorrectAnswer: boolean;
 
     constructor(
         private service: GameBoardService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private route: ActivatedRoute,
     ) {}
 
-    players: Player[] = [
-    {
-        name: 'Ben Franklin',
-        color: 'red'
-    },
-    {
-        name: 'Alexander Hamilton',
-        color: 'white'
-    },
-    {
-        name: 'Thomas Jefferson',
-        color: 'blue'
-    },
-    {
-        name: 'John Hancock',
-        color: 'green' 
-    }
-    ];
+    players: Player[] = []
 
     updateCurrentState(state: string) {
         switch(state) {
@@ -72,22 +62,26 @@ export class GameBoardComponent implements OnInit {
             }
             case "ANSWER_TRIVIA": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = false;
+                this.isSetCategoryCurrentState = false;
+                this.isSetCategoryAllState = false;
                 this.isAnswerTriviaState = true;
                 this.createAnswerTriviaForm();
                 break;
             }
             case "POLL_CATEGORY_ALL": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = true;
+                this.isSetCategoryAllState = true;
                 this.createSetCategoryForm();
                 break;
             }
             case "POLL_CATEGORY_CURRENT": {
                 this.isMoveDirectionState = false;
-                this.isSetCategoryState = true;
+                this.isSetCategoryCurrentState = true;
                 this.createSetCategoryForm();
                 break;
+            }
+            case "END_GAME": {
+                this.router.navigate(['end-game', {players: JSON.stringify(this.playerList)}], { relativeTo: this.route });
             }
         }
     }
@@ -96,6 +90,8 @@ export class GameBoardComponent implements OnInit {
         this.gameStateResponse = this.service.getRollDie(this.sessionId);
         this.gameStateResponse.subscribe(data => {
             console.log(data);
+            this.isCorrectAnswer = false;
+            this.isIncorrectAnswer = false;
             this.nextAvailableSquares = data.state.available_next_squares;
             this.currentRound = data.state.current_round;
             this.currentPlayer = data.state.current_player;
@@ -113,6 +109,12 @@ export class GameBoardComponent implements OnInit {
         this.gameStateResponse = this.service.answerTrivia(this.sessionId, this.answer);
         this.gameStateResponse.subscribe(data => {
             console.log(data);
+            if(this.currentPlayer.color === data.state.current_player.color) {
+                this.isCorrectAnswer = true;
+            }
+            else{
+                this.isIncorrectAnswer = true;
+            }
             this.currentRound = data.state.current_round;
             this.currentPlayer = data.state.current_player;
             this.playerList = data.state.players;
@@ -179,8 +181,9 @@ export class GameBoardComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.service.getAllCategory().toPromise().then((data: any)=>{
-            this.available_categories = data.categories
+        this.players = this.service.sortedPlayers;
+        this.service.getAllCategory().toPromise().then((categories: Category[])=>{
+            this.available_categories = categories
         })
         this.gameStateResponse = this.service.createGame(this.players);
         this.gameStateResponse.subscribe(data => {

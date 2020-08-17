@@ -20,3 +20,24 @@ def get_category():
     category_collection = db.category
     categories = category_collection.find({})
     return json.loads(json.dumps({"categories": list(categories)} , default=json_util.default))
+
+def save_questions(questions):
+    question_collection = db.question
+    ids = []
+    question_collection.delete_many({})
+    for question in questions:
+        if question["_id"] == "":
+            question["_id"] = ObjectId()
+        else:
+            question["_id"] = ObjectId(question["_id"])
+        question["category_id"] = ObjectId(question["category_id"])
+        ids.append(question_collection.update(spec={"_id":question["_id"]},document=question, upsert=True))
+    return json.loads(json.dumps({"ids":ids}, default=json_util.default))
+
+def save_categories(categories):
+    category_collection = db.category
+    ids= []
+    for category in categories:
+        category["_id"] = ObjectId(category["_id"])
+        ids.append(category_collection.update(spec={"_id":category["_id"]},document=category, upsert=True))
+    return json.loads(json.dumps({"ids":ids}, default=json_util.default))

@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IntroPanelComponent } from './introPanel/introPanel.component';
 import { GameBoardConfigurationComponent } from './game/gameBoardConfig/gameBoardConfiguration.component';
-import { GameBoardComponent } from './game/gameBoard/gameBoard.component';
+import { GameBoardManagerComponent } from './game/gameBoardManager/gameBoardManager.component';
+import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
+import { DeterminePlayerOrderComponent } from './determine-player-order/determine-player-order.component';
+import { EndGamePageComponent } from './end-game-page/end-game-page.component';
 
 
 const routes: Routes = [
@@ -12,11 +15,23 @@ const routes: Routes = [
   },
   {
     path: 'game',
-    component: GameBoardComponent
+    component: GameBoardManagerComponent
   },
   {
     path: '',
     component: IntroPanelComponent
+  },
+  {
+    path: 'config-mode',
+    component: ConfigurationPageComponent
+  },
+  {
+    path: 'player-order',
+    component: DeterminePlayerOrderComponent
+  },
+  {
+    path: 'end-game',
+    component: EndGamePageComponent
   }
 ];
 
