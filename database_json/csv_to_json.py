@@ -1,4 +1,5 @@
 import csv, random, string
+from bson import ObjectId
 
 def make_output_json(csvFilePath):
     #strip spaces around commas
@@ -32,16 +33,17 @@ def make_output_json(csvFilePath):
         #WRITE OUT
         f = open('QuestionList.json', 'w')
         print("Output file started: QuestionList.json")
-        f.write('[')
-        spaceConstant = '    "'
-        for rows in csvReader: 
+        f.write('[\n')
+        for index, rows in enumerate(csvReader): 
             # Assuming a column named 'No' to 
             # be the primary key 
             key = rows['_id'] 
             data[key] = rows 
 
             count = count + 1
-            random_values = get_random_alphanumeric_string(24)
+            #static_lead = "5f399bbc7aef0f2b0c"
+            #random_values = get_random_alphanumeric_string(6)
+            object_id = str(ObjectId()); #static_lead + random_values
 
             if (''.join(str(rows['category_id']).lower().split()) == "places"):
                 rows['category_id'] = "5f0b7f2a90677a74898769a3"
@@ -55,26 +57,28 @@ def make_output_json(csvFilePath):
                 raise Exception("Category labeled as: '"+rows['category_id']+"' in the CSV sheet does not exist in the Database, please review CSV category labels")
 
             #ID START
+            if (index != 0):
+                f.write(',\n')
             f.write('{\n')
-            f.write('  "_id": {\n')
-            f.write(spaceConstant+'$oid": "'+random_values+'"\n')
-            f.write('  },\n')
+            f.write('  "_id": {')
+            f.write('"$oid": "'+object_id+'"')
+            f.write('},\n')
             #ID END
             #CAT START
-            f.write('  "category_id": {\n')
-            f.write(spaceConstant+'$oid": "'+rows['category_id']+'"\n')
-            f.write('  },\n')
+            f.write('  "category_id": {')
+            f.write('"$oid": "'+rows['category_id']+'"')
+            f.write('},\n')
             #CAT END
             #QUES START
-            f.write('  "question": "'+rows['question']+'",\n')
-            f.write('  "possible_answers": [\n')
-            f.write(spaceConstant+rows['possible_answer1']+'",\n')
-            f.write(spaceConstant+rows['possible_answer2']+'",\n')
-            f.write(spaceConstant+rows['possible_answer3']+'",\n')
-            f.write(spaceConstant+rows['possible_answer4']+'"\n')
-            f.write('  ],\n')
+            f.write('  "question": "'+rows['question']+'" ,\n')
+            f.write('  "possible_answers": [')
+            f.write('"'+rows['possible_answer1']+'",')
+            f.write('"'+rows['possible_answer2']+'",')
+            f.write('"'+rows['possible_answer3']+'",')
+            f.write('"'+rows['possible_answer4']+'"')
+            f.write('],\n')
             f.write('  "correct_answer": "'+rows['correct_answer']+'"\n')
-            f.write('},')
+            f.write('}\n')
             #QUES END
             if (rows['correct_answer'] == rows['possible_answer1']):
                 check = True
@@ -106,8 +110,7 @@ def make_output_json(csvFilePath):
 
 #borrowed from https://pynative.com/python-generate-random-string/
 def get_random_alphanumeric_string(length):
-    letters_and_digits = string.ascii_letters + string.digits
-    return ''.join((random.choice(letters_and_digits) for i in range(length)))
+    return ''.join((random.choice(string.digits) for i in range(length)))
 
 csvFilePath = r'QuestionList.csv'
 

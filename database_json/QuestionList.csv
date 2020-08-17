@@ -36,7 +36,7 @@ _id,category_id,question,possible_answer1,possible_answer2,possible_answer3,poss
 ,Independence Day holiday,What two groups did the Declaration not give equal rights?,Women,African Americans,Asians,Women and African Americans,Women and African Americans
 ,People,Who was the main author of the document?,Thomas Jefferson,John Adams,Robert Livingston,Benjamin Franklin,Thomas Jefferson
 ,Independence Day Holiday,When was the Declaration adopted?,"July 4,1776","July 28,1776","July 14,1776","July 5,1776","July 4,1776"
-,People,"Who does ""HE"" refer to in the Declaration?",King George III,King George I,King George II,King George IIII,King George III
+,People,Who does HE refer to in the Declaration?,King George III,King George I,King George II,King George IIII,King George III
 ,People,What was the article that Thomas Paine wrote called?,Common Sense,Civilized,Both,None of the above,Common Sense
 ,People,Who wrote the Virginia Resolution?,Richard Henrylee,John Adams,Robert Livingston,Richard Stockton,Richard Henrylee
 ,Events,Who reviewed the declaration of independence?,Adams and Franklin,Adams,Franklin,None of the above,Adams and Franklin
@@ -58,16 +58,11 @@ _id,category_id,question,possible_answer1,possible_answer2,possible_answer3,poss
 ,Events,In what year was The Declaration of Independence written?,1775,1776,1777,1787,1776
 ,People,Who was the principal author of The Declaration of Independence?,Roger Sherman,John Adams,Benjamin Franklin,Thomas Jefferson,Thomas Jefferson
 ,Events,The Declaration of Independence is highly critical of what king?,Louis XVI,George I,George II,George III,George III
-,Independence Day holiday,"The people of the American colonies,at the time The Declaration of Independence was written,were excited mainly about this part of the document?
-",Criticism of the king,That all men are created equal,Independence from England,Freedom of worship,Independence from England
-,Places,"The original manuscript of The Declaration of Independence is on display in what institution?
-",The Smithsonian Institution,"Beinecke Rare Book and Manuscript Library,Yale University ",The Library of Congress,The National Archives,The National Archives
-,People,"Who was President of the Congress when The Declaration of Independence was written?
-",John Adams,John Hancock,George Washington,Thomas Jefferson,John Hancock
-,Events,"Representatives of how many American colonies signed The Declaration of Independence?
-",13,12,24,10,13
-,Places,"From whom did the signers of the Declaration of Independence receive their authority to declare independence?
-",From the King of England,From the European nations,From the people of the American colonies,They needed no authority,From the people of the American colonies
+,Independence Day holiday,"The people of the American colonies,at the time The Declaration of Independence was written,were excited mainly about this part of the document?",Criticism of the king,That all men are created equal,Independence from England,Freedom of worship,Independence from England
+,Places,The original manuscript of The Declaration of Independence is on display in what institution?,The Smithsonian Institution,"Beinecke Rare Book and Manuscript Library,Yale University ",The Library of Congress,The National Archives,The National Archives
+,People,Who was President of the Congress when The Declaration of Independence was written?,John Adams,John Hancock,George Washington,Thomas Jefferson,John Hancock
+,Events,Representatives of how many American colonies signed The Declaration of Independence?,13,12,24,10,13
+,Places,From whom did the signers of the Declaration of Independence receive their authority to declare independence?,From the King of England,From the European nations,From the people of the American colonies,They needed no authority,From the people of the American colonies
 ,Events,The List of Grievances were the part of the Declaration that?,detailed the colonists' complaints with King George,listed a man's natural rights,introduced the Declaration,"concluded the Declaration,declaring America a free country",detailed the colonists' complaints with King George
 ,Events,What is the connection between natural rights and government?,government is meant to provide services,people have certain unalienable rights,people have the right to alter government,government is meant to protect rights,government is meant to protect rights
 ,Independence Day holiday,What did the Colonists do after the Stamp Act?,Boycott British goods,Made their own goods,Decided they didn't need goods,Stopped paying all of their taxes,Boycott British goods
