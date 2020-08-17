@@ -6,7 +6,6 @@ from trivial_purfuit_app.models.category import Category
 
 class Token_Test(unittest.TestCase):
 
-
     def setUp(self):
         self.collected_wedges = []
         self.board = GameBoard()
@@ -14,37 +13,28 @@ class Token_Test(unittest.TestCase):
         self.token.location = (3,4)
 
     def test_has_category_wedge_none(self):
-        self.assertFalse(self.token.has_category_wedge(self.board.get_current_square(self.token).category))
-        # self.assertEqual(collected_wedges, self.token.has_category_wedge(self.board.get_current_square(self.token).category))
+        current_square_category = self.board.get_current_square(self.token).category
+        has_category_wedge = self.token.has_category_wedge(current_square_category)
+        self.assertFalse(has_category_wedge)
 
     def test_has_category_wedge_one(self):
-        cat = Category("Places","Dksnn34", "Blue")
+        cat = Category("places","1", "blue")
         self.token.add_wedge(cat)
         self.assertTrue(self.token.has_category_wedge(cat))
 
-    # def has_all_wedges(self):
-    #     #s
-    #     pass
+    def test_has_all_wedges_true(self):
+        cat1 = Category("places","1", "blue")
+        cat2 = Category("people","2", "green")
+        cat3 = Category("events","3", "red")
+        cat4 = Category("holidays","4", "white")
+        self.token.add_wedge(cat1);
+        self.token.add_wedge(cat2);
+        self.token.add_wedge(cat3);
+        self.token.add_wedge(cat4);
+        self.assertTrue(self.token.has_all_wedges())
 
-    # def set_winning_condition(self):
-    #     #
-    #     pass
+    def test_has_all_wedges_false(self):
+        self.assertFalse(self.token.has_all_wedges())
 
-    # def check_winning_condition(self):
-    #     #
-    #     pass
-
-    # def reset_last_location(self):
-    #     #
-    #     pass
-
-    # def add_wedge(self, category):
-    #     #
-    #     pass
-    
-    # def get_dict(self):
-    #     #
-    #     pass
-        
 if __name__ == '__main__':
     unittest.main()

@@ -45,11 +45,9 @@ class GameState:
             self.go_to_next_player()
             self.current_state = State.ROLL_DIE
             if (self.current_round == 1):
-                #broken
                 for player in self.player_order:
                     if (player.check_winning_condition() == True and all(self.round_turns)):
                             self.current_state = State.GAME_END
-        # end untested
             return self.current_state
         else:
             cur_square = self.game_board.get_current_square(self.current_player)
@@ -68,7 +66,6 @@ class GameState:
                      return
                 else:
                     self.current_player.set_winning_condition(True)
-                    # untested
                     if (self.current_round == 1):
                         if (idx == len(self.player_order)- 1):
                             self.current_state = State.GAME_END
@@ -77,7 +74,6 @@ class GameState:
                             self.go_to_next_player()
                             self.current_state = State.ROLL_DIE
                             return
-                    # end untested
                     else:
                         self.current_state = State.GAME_END
                         return
