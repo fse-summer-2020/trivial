@@ -32,7 +32,7 @@ export class DeterminePlayerOrderComponent implements OnInit {
   }
 
   navigateToGame() {
-    let sortedMap = new Map([...this.playerOrderMap.entries()].sort((a, b) => a[1] - b[1]));
+    let sortedMap = new Map([...this.playerOrderMap.entries()].sort((a, b) => b[1] - a[1]));
     let sortedPlayers = []
     sortedMap.forEach((value, player) => {
         sortedPlayers.push(player);
