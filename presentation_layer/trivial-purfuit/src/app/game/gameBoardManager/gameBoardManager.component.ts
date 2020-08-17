@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { Category } from '../model/category.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-game-board',
@@ -42,6 +43,7 @@ export class GameBoardManagerComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private route: ActivatedRoute,
+        private snackBar: MatSnackBar
     ) {}
 
     players: Player[] = []
@@ -110,10 +112,9 @@ export class GameBoardManagerComponent implements OnInit {
         this.gameStateResponse.subscribe(data => {
             console.log(data);
             if(this.currentPlayer.color === data.state.current_player.color) {
-                this.isCorrectAnswer = true;
-            }
+                this.openSnackBar("Correct Answer!", "Close");            }
             else{
-                this.isIncorrectAnswer = true;
+                this.openSnackBar("Incorrect Answer", "Close");
             }
             this.currentRound = data.state.current_round;
             this.currentPlayer = data.state.current_player;
@@ -177,6 +178,12 @@ export class GameBoardManagerComponent implements OnInit {
             }
             console.log(this.possibleAnswers);
             this.updateCurrentState(data.state.current_state);
+        });
+    }
+
+    openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
         });
     }
     
