@@ -5,3 +5,5 @@ env/
 venv/
 virtualenv/
 virtualenv\
+node_modules\
+node_modules/

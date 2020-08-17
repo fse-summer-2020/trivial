@@ -1,0 +1,801 @@
+[
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe151"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "When was the Declaration of Independence signed?" ,
+  "possible_answers": ["1600s","1700s","1800s","1900s"],
+  "correct_answer": "1700s"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe152"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "How many people signed the Declaration of Independence?" ,
+  "possible_answers": ["13","26","52","56"],
+  "correct_answer": "56"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe153"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "When is the Independence Day holiday celebrated?" ,
+  "possible_answers": ["July 4,1776","August 23,1777","July 8,1776","August 2,1776"],
+  "correct_answer": "July 4,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe154"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "When did the celebration of the Independence Day holiday begin?" ,
+  "possible_answers": ["July 4,1776","August 23,1777","July 8,1776","August 2,1776"],
+  "correct_answer": "July 8,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe155"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What action by Britian was a main contributor to the drafting of the Declaration of Independence?" ,
+  "possible_answers": ["George Washington","Taxation without representation","John Adams","Professor Schappelle"],
+  "correct_answer": "Taxation without representation"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe156"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the first person to sign the Declaration of Independence?" ,
+  "possible_answers": ["George Washington","John Hancock","John Adams","Professor Garonzik"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe157"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who's signature is the largest on the Declaration of Independence?" ,
+  "possible_answers": ["George Washington","John Hancock","John Adams","Professor Demasco"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe158"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What city is the Declaration of Independence stored?" ,
+  "possible_answers": ["Philadelphia","New York City","Washington DC","Pittsburg"],
+  "correct_answer": "Washington DC"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe159"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Where is the Declaration of Independence stored?" ,
+  "possible_answers": ["The Louvre","White House Archives","Liberty Plaza","National Archives Museum"],
+  "correct_answer": "National Archives Museum"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15a"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "How many colonies (out of 13) voted in favor of the Declaration of Independence?" ,
+  "possible_answers": ["10","11","12","13"],
+  "correct_answer": "12"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15b"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What date was the Declaration of Independence signed?" ,
+  "possible_answers": ["July 4,1776","August 23,1777","July 8,1776","August 2,1776"],
+  "correct_answer": "August 2,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15c"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "When was the final draft of the Declaration of Independence approved?" ,
+  "possible_answers": ["July 8,1776","August 23,1777","July 4,1776","August 2,1776"],
+  "correct_answer": "July 4,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15d"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "When was the first public reading of the Declaration of Independence?" ,
+  "possible_answers": ["July 8,1776","August 23,1777","July 4,1776","August 2,1776"],
+  "correct_answer": "July 8,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15e"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Which state abstained from voting for the Declaration of Independence?" ,
+  "possible_answers": ["New Jersey","Ohio","Virginia","New York"],
+  "correct_answer": "New York"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe15f"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "What famous founding father wrote the first draft of the Declaration of Independence?" ,
+  "possible_answers": ["George Washington","Thomas Jefferson","John Adams","Samuel Adams"],
+  "correct_answer": "Thomas Jefferson"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe160"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "In the final voting by the Continental Congress to approve the Declaration,one colony chose not to vote. Which colony was it?" ,
+  "possible_answers": ["New York","North Carolina","Maryland","Virginia"],
+  "correct_answer": "New York"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe161"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What was the date that the Continental Congress adopted the Declaration of Independence?" ,
+  "possible_answers": ["December 16,1773","April 18,1775","July 4,1776","December 25,1776"],
+  "correct_answer": "July 4,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe162"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What was the name of the group that the Continental Congress chose to write the Declaration?" ,
+  "possible_answers": ["The Declarers","The Founding Fathers","The Independent Writers","The Committee of Five"],
+  "correct_answer": "The Committee of Five"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe163"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was not a member of the Committee of Five?" ,
+  "possible_answers": ["Thomas Jefferson","John Adams","Roger Sherman","George Washington"],
+  "correct_answer": "George Washington"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe164"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What did the Continental Congress do with the Declaration once they had signed it?" ,
+  "possible_answers": ["Made copies to send to the colonies","Had it published in newspapers","Sent a copy to the King of England","All of the above"],
+  "correct_answer": "All of the above"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe165"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Which of the following statements is true about what was included in the Declaration of Independence?" ,
+  "possible_answers": ["The Bill of Rights","A list of the three branches of government","That the first President of the United States was George Washington","None of the above"],
+  "correct_answer": "None of the above"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe166"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "What two signers of the Declaration of Independence would later become President of the United States?" ,
+  "possible_answers": ["Ben Franklin and John Hancock","George Washington and Ben Franklin","Thomas Jefferson and John Adams","John Adams and Benjamin Harrison"],
+  "correct_answer": "Thomas Jefferson and John Adams"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe167"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the first to sign the document with a big signature nearly five inches long?" ,
+  "possible_answers": ["John Hancock","Thomas Jefferson","Ben Franklin","John Adams"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe168"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Which of the following statements is a famous quote from the Declaration of Independence?" ,
+  "possible_answers": ["First,We have granted to God,and by this our present Charter have confirmed","We the People of the United States,in Order to form a more perfect Union","Four score and seven years ago our fathers brought forth on this continent a new nation","We hold these truths to be self-evident,that all men are created equal"],
+  "correct_answer": "We hold these truths to be self-evident,that all men are created equal"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe169"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "On what day in 1776 did the Continental Congress declare its freedom from Britain?" ,
+  "possible_answers": ["July 2nd","July 4th","July 20th","May 2nd"],
+  "correct_answer": "July 2nd"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16a"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "How many copies of the original Declaration exist today?" ,
+  "possible_answers": ["2","26","1","10"],
+  "correct_answer": "26"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16b"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "During which war did the U.S. hide the Declaration of Independence?" ,
+  "possible_answers": ["World War I","World War II","The Civil War","The Vietnam War"],
+  "correct_answer": "World War II"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16c"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Which co-author of the Declaration of Independence did not sign it?" ,
+  "possible_answers": ["Thomas Jefferson","John Adams","Robert Livingston","Benjamin Franklin"],
+  "correct_answer": "Robert Livingston"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16d"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who physically wrote the Declaration of Independence?" ,
+  "possible_answers": ["Thomas Jefferson","John Adams","Robert Livingston","Benjamin Franklin"],
+  "correct_answer": "Thomas Jefferson"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16e"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Which colony rioted when news of the Declaration spread?" ,
+  "possible_answers": ["Virginia","Maryland","New York","Delaware"],
+  "correct_answer": "New York"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe16f"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Who was the only Congressman to recant his support for the Declaration?" ,
+  "possible_answers": ["John Hancock","William Ellery","Arthur Middleton","Richard Stockton"],
+  "correct_answer": "Richard Stockton"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe170"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What is written on the back of the Declaration of Independence?" ,
+  "possible_answers": ["The secret location of the treasure that Nicolas Cage hunted in National Treasure","Liberty","Original Declaration of Independence dated July 4th 1776","Created in 1776"],
+  "correct_answer": "Original Declaration of Independence dated July 4th 1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe171"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the oldest person to sign the Declaration of Independence?" ,
+  "possible_answers": ["Benjamin Franklin","John Adams","Thomas Jefferson","George Washington"],
+  "correct_answer": "Benjamin Franklin"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe172"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "How many sections of the Declaration of Independence are there?" ,
+  "possible_answers": ["1","3","4","5"],
+  "correct_answer": "5"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe173"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What two groups did the Declaration not give equal rights?" ,
+  "possible_answers": ["Women","African Americans","Asians","Women and African Americans"],
+  "correct_answer": "Women and African Americans"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe174"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the main author of the document?" ,
+  "possible_answers": ["Thomas Jefferson","John Adams","Robert Livingston","Benjamin Franklin"],
+  "correct_answer": "Thomas Jefferson"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe175"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "When was the Declaration adopted?" ,
+  "possible_answers": ["July 4,1776","July 28,1776","July 14,1776","July 5,1776"],
+  "correct_answer": "July 4,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe176"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who does HE refer to in the Declaration?" ,
+  "possible_answers": ["King George III","King George I","King George II","King George IIII"],
+  "correct_answer": "King George III"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe177"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "What was the article that Thomas Paine wrote called?" ,
+  "possible_answers": ["Common Sense","Civilized","Both","None of the above"],
+  "correct_answer": "Common Sense"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe178"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who wrote the Virginia Resolution?" ,
+  "possible_answers": ["Richard Henrylee","John Adams","Robert Livingston","Richard Stockton"],
+  "correct_answer": "Richard Henrylee"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe179"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Who reviewed the declaration of independence?" ,
+  "possible_answers": ["Adams and Franklin","Adams","Franklin","None of the above"],
+  "correct_answer": "Adams and Franklin"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17a"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What is the introduction the the declaration of independence called?" ,
+  "possible_answers": ["Preamble","Conclusion","The beginning","None of the above"],
+  "correct_answer": "Preamble"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17b"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What is the list of grievances?" ,
+  "possible_answers": ["List of complaints","Human Rights","Women Rights","All of the above"],
+  "correct_answer": "List of complaints"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17c"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "On what day did the Second Continental Congress vote in favor of independence from Britain?" ,
+  "possible_answers": ["July 1,1776","July 2,1776","July 3,1776","July 4,1776"],
+  "correct_answer": "July 2,1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17d"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Thomas Jefferson was the main author of the Declaration of Independence. To whom did he give the first draft for revisions?" ,
+  "possible_answers": ["Benjamin Franklin and John Hancock","Robert Sherman and John Adams","John Adams and Benjamin Franklin","Robert Sherman and John Hancock"],
+  "correct_answer": "John Adams and Benjamin Franklin"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17e"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What special meaning do the colors red,white and blue on the American flag hold?" ,
+  "possible_answers": ["blood,sweat and tears","purity,hardiness,vigilance","innocence,valor,justice","none"],
+  "correct_answer": "none"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe17f"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "The last battle of the Revolutionary War was...?" ,
+  "possible_answers": ["Battle of Cuddalore,1783","Battle of Cape Spartel,1782","Battle of Blue Licks,1782","Second Battle of Ushant,1781"],
+  "correct_answer": "Battle of Cuddalore,1783"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe180"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "When did Britain recognize America as a free country?" ,
+  "possible_answers": ["1781","1782","1783","1784"],
+  "correct_answer": "1783"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe181"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the president of the Second Continental Congress,which declared independence and approved the Declaration?" ,
+  "possible_answers": ["George Washington","John Adams","John Hancock","Thomas Jefferson"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe182"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "When did July 4 become a federal holiday?" ,
+  "possible_answers": ["1777","1778","1870","1941"],
+  "correct_answer": "1870"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe183"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Which two presidents died on July 4,1826?" ,
+  "possible_answers": ["Jefferson and Adams","Washington and Jefferson","Adams and Monroe","Adams and Jefferson"],
+  "correct_answer": "Jefferson and Adams"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe184"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "How many men signed the Declaration?" ,
+  "possible_answers": ["60","56","40","48"],
+  "correct_answer": "56"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe185"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the youngest person to sign the Declaration?" ,
+  "possible_answers": ["Richard Henrylee","Thomas Jefferson","John Adams","Edward Rutledge"],
+  "correct_answer": "Edward Rutledge"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe186"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Whos was the oldest person to sign the Declaration?" ,
+  "possible_answers": ["Richard Henrylee","Thomas Jefferson","John Adams","Benjamin Franklin"],
+  "correct_answer": "Benjamin Franklin"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe187"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Whose signature is considered the most valuable on the Declaration?" ,
+  "possible_answers": ["Thomas Jefferson","Benjamin Franklin","Button Gwinnett","Richard Stockton"],
+  "correct_answer": "Button Gwinnett"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe188"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Who was not part of the Committee of five?" ,
+  "possible_answers": ["John Hancock","Thomas Jefferson","Roger Sherman","Robert Livingston"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe189"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "In what year was The Declaration of Independence written?" ,
+  "possible_answers": ["1775","1776","1777","1787"],
+  "correct_answer": "1776"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe18a"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was the principal author of The Declaration of Independence?" ,
+  "possible_answers": ["Roger Sherman","John Adams","Benjamin Franklin","Thomas Jefferson"],
+  "correct_answer": "Thomas Jefferson"
+}
+,
+{
+  "_id": {"$oid": "5f39c0ff4b7ed8318f4fe18b"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "The Declaration of Independence is highly critical of what king?" ,
+  "possible_answers": ["Louis XVI","George I","George II","George III"],
+  "correct_answer": "George III"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe18c"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "The people of the American colonies,at the time The Declaration of Independence was written,were excited mainly about this part of the document?" ,
+  "possible_answers": ["Criticism of the king","That all men are created equal","Independence from England","Freedom of worship"],
+  "correct_answer": "Independence from England"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe18d"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "The original manuscript of The Declaration of Independence is on display in what institution?" ,
+  "possible_answers": ["The Smithsonian Institution","Beinecke Rare Book and Manuscript Library,Yale University ","The Library of Congress","The National Archives"],
+  "correct_answer": "The National Archives"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe18e"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Who was President of the Congress when The Declaration of Independence was written?" ,
+  "possible_answers": ["John Adams","John Hancock","George Washington","Thomas Jefferson"],
+  "correct_answer": "John Hancock"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe18f"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Representatives of how many American colonies signed The Declaration of Independence?" ,
+  "possible_answers": ["13","12","24","10"],
+  "correct_answer": "13"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe190"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "From whom did the signers of the Declaration of Independence receive their authority to declare independence?" ,
+  "possible_answers": ["From the King of England","From the European nations","From the people of the American colonies","They needed no authority"],
+  "correct_answer": "From the people of the American colonies"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe191"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "The List of Grievances were the part of the Declaration that?" ,
+  "possible_answers": ["detailed the colonists' complaints with King George","listed a man's natural rights","introduced the Declaration","concluded the Declaration,declaring America a free country"],
+  "correct_answer": "detailed the colonists' complaints with King George"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe192"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What is the connection between natural rights and government?" ,
+  "possible_answers": ["government is meant to provide services","people have certain unalienable rights","people have the right to alter government","government is meant to protect rights"],
+  "correct_answer": "government is meant to protect rights"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe193"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "What did the Colonists do after the Stamp Act?" ,
+  "possible_answers": ["Boycott British goods","Made their own goods","Decided they didn't need goods","Stopped paying all of their taxes"],
+  "correct_answer": "Boycott British goods"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe194"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "What are unalienable rights?" ,
+  "possible_answers": ["rights for aliens","Rights that government takes away","Government is needed to promote equality","Rights that government cannot take away"],
+  "correct_answer": "Rights that government cannot take away"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe195"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Forced colonists to give shelter (house) to British soldiers?" ,
+  "possible_answers": ["Sugar Act","Townshend Act","Housing Act","Quartering Act"],
+  "correct_answer": "Quartering Act"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe196"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What are the three inalienable rights that all people have?" ,
+  "possible_answers": ["Food,Shelter,and Clothing","Life,Liberty and the Pursuit of Happiness","Life,Liberty and Death","Life,Liberty"],
+  "correct_answer": "Life,Liberty and the Pursuit of Happiness"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe197"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "According to the Declaration,what causes a government to be just? " ,
+  "possible_answers": ["powerful institutions","ease of altering","a Bill of Rights","Consent of the people being governed"],
+  "correct_answer": "Consent of the people being governed"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe198"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "What two acts did the British Parliament make that put very high taxes on paper and sugar?" ,
+  "possible_answers": ["Stamp Act and Sugar Act","Cookie Act and Cake Act","Tea Act and Trade Act","Letter Act and Molasses Act"],
+  "correct_answer": "Stamp Act and Sugar Act"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe199"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "Which came first?" ,
+  "possible_answers": ["the Declaration of Independence","the beginning of the American Revolution","Both","None"],
+  "correct_answer": "the beginning of the American Revolution"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19a"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "The Declaration of Independence is most like a what?" ,
+  "possible_answers": ["Love Letter","Break-up letter","Treaty","Constitution"],
+  "correct_answer": "Break-up letter"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19b"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Why were the colonists being taxed so heavily?" ,
+  "possible_answers": ["Because they wanted a revolution","Because the King felt like it","They owed a lot of money to China","To pay for the French and Indian War"],
+  "correct_answer": "To pay for the French and Indian War"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19c"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "An effect of the French and Indian War?" ,
+  "possible_answers": ["Colonists taxed to pay for the war","Quartering Act","Boycott of imported goods","Boston Tea Party"],
+  "correct_answer": "Colonists taxed to pay for the war"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19d"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "The original manuscript of the Declaration of Independence is on display in what institution?" ,
+  "possible_answers": ["The Library of Congress","The Smithsonian Institution","The National Archives","None of the above"],
+  "correct_answer": "The Library of Congress"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19e"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Pursuit of Happiness originally applied to?" ,
+  "possible_answers": ["Jobs","A vacation","A good spouse","Owning land"],
+  "correct_answer": "Owning land"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe19f"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Equality in 1776 meant?" ,
+  "possible_answers": ["Slaves","Women","White males","All people"],
+  "correct_answer": "White males"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a0"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Why was the Declaration of Independence read to Washington's troops days after it was adopted?" ,
+  "possible_answers": ["To inspire the troops and encourage enlistments","To discourage the troops","To warn them about the war","To make them furious"],
+  "correct_answer": "To inspire the troops and encourage enlistments"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a1"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Why didn't George Washington sign the Declaration of Independence?" ,
+  "possible_answers": ["He refused to","He was against it","He sided with Britain","As Commander of the army,he was unable to participate"],
+  "correct_answer": "As Commander of the army,he was unable to participate"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a2"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was the Declaration of Independence adopted?" ,
+  "possible_answers": ["Washington D.C.","South Carolina","Washington state","Pennsylvania"],
+  "correct_answer": "Pennsylvania"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a3"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a4"},
+  "question": "John Hancock is well known for his signature on the Declaration of Independence. How else did he contribute to the American Revolution?" ,
+  "possible_answers": ["Through his wealth","By fighting in the war","For recruiting soldiers","None of the above"],
+  "correct_answer": "Through his wealth"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a4"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was Congress meeting while the troops were fighting in the field?" ,
+  "possible_answers": ["Philadelphia","California","Virginia","Washington"],
+  "correct_answer": "Philadelphia"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a5"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Which war was a result of The Intolerable Acts?" ,
+  "possible_answers": ["World War I","World War II","Revolutionary War","Civil War"],
+  "correct_answer": "Revolutionary War"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a6"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Who had the right to protest and not vote for lawmakers who passed such high tax laws?" ,
+  "possible_answers": ["People living in Britain","King George","King James","King George"],
+  "correct_answer": "People living in Britain"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a7"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "The Declaration of Independence was a desperate cry for what?" ,
+  "possible_answers": ["Liberty","Justice","Freedom","Pursuit of happiness"],
+  "correct_answer": "Freedom"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a8"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Most of the signers actually signed the Declaration of Independence on what date?" ,
+  "possible_answers": ["July 2nd","July 4th","July 6th","August 2nd"],
+  "correct_answer": "August 2nd"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1a9"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "How many grievances were listed in the Declaration of Independence?" ,
+  "possible_answers": ["10","27","25","8"],
+  "correct_answer": "27"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1aa"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "Where is the shortest Independence Day parade held?" ,
+  "possible_answers": ["California","Maryland","Virginia","Delaware"],
+  "correct_answer": "California"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1ab"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a6"},
+  "question": "Where was the Declaration signed?" ,
+  "possible_answers": ["Library of Congress","Independence Hall","National Archives","None of the above"],
+  "correct_answer": "Independence Hall"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1ac"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a5"},
+  "question": "What was the average age of the Declaration signers?" ,
+  "possible_answers": ["44","25","35","75"],
+  "correct_answer": "44"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1ad"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was Samuel Adams from?" ,
+  "possible_answers": ["Delaware","New Jersey","New York","Massachusetts"],
+  "correct_answer": "Massachusetts"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1ae"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was John Hancock from?" ,
+  "possible_answers": ["Massachusetts","Delaware","New York","Virginia"],
+  "correct_answer": "Massachusetts"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1af"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was George Wasington from?" ,
+  "possible_answers": ["Maryland","New Jersey","New York","Virginia"],
+  "correct_answer": "Virginia"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1b0"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was Robert Livingston from?" ,
+  "possible_answers": ["Maryland","New Jersey","New York","Delaware"],
+  "correct_answer": "New York"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1b1"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was Thomas Jefferson from?" ,
+  "possible_answers": ["Maryland","New Jersey","Virginia","Delaware"],
+  "correct_answer": "Virginia"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1b2"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was Benjamin Franklin from?" ,
+  "possible_answers": ["Maryland","New Jersey","Delaware","Pennsylvania"],
+  "correct_answer": "Pennsylvania"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1b3"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Where was John Adams from?" ,
+  "possible_answers": ["Maryland","New Jersey","Massachusetts","Delaware"],
+  "correct_answer": "Massachusetts"
+}
+,
+{
+  "_id": {"$oid": "5f39c1004b7ed8318f4fe1b4"},
+  "category_id": {"$oid": "5f0b7f2a90677a74898769a3"},
+  "question": "Who are the professors that asked for the creation of this game?" ,
+  "possible_answers": ["Professor Schappelle","Professor Garonzik","Professor Demasco","All three professors"],
+  "correct_answer": "All three professors"
+}
+]
